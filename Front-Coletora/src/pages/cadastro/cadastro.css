@@ -1,0 +1,165 @@
+:root {
+  --verde-escuro: #416a53;
+  --verde-botao: #6fb48c;
+  --fundo: #eef8f1;
+  --superficie: #f8fafb;
+  --texto: #111;
+  --texto-titulo: #263d31;
+  --borda: #8a8f8c;
+  --erro: #c00000;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, sans-serif;
+  color: var(--texto);
+}
+
+.cadastro {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 75px 16px 80px;
+  background: var(--fundo);
+  overflow: hidden;
+}
+
+/* faixas verdes laterais com cantos arredondados */
+.cadastro::before,
+.cadastro::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 75px;
+  background: var(--verde-escuro);
+}
+.cadastro::before { left: 0; border-radius: 0 60px 60px 0; }
+.cadastro::after  { right: 0; border-radius: 60px 0 0 60px; }
+
+.cadastro__card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 646px;
+}
+
+.cadastro__titulo {
+  padding: 22px 32px 20px;
+  text-align: center;
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  border-radius: 20px;
+}
+.cadastro__titulo h1 {
+  margin: 0 0 14px;
+  font-size: 28px;
+  font-weight: 500;
+}
+.cadastro__titulo p {
+  margin: 0;
+  font-size: 22px;
+  line-height: 1.25;
+  color: var(--texto-titulo);
+}
+
+.cadastro__form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 17px;
+  margin-top: 40px;
+}
+.col-2 { grid-column: 1 / -1; }
+
+/* campo */
+.campo { display: flex; flex-direction: column; min-width: 0; }
+.campo label { font-size: 15px; line-height: 1.3; }
+.campo input,
+.campo select {
+  width: 100%;
+  height: 34px;
+  padding: 0 12px;
+  font: inherit;
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  border-radius: 6px;
+}
+.campo input:focus-visible,
+.campo select:focus-visible {
+  outline: 2px solid var(--verde-botao);
+  outline-offset: 1px;
+}
+.campo__erro {
+  min-height: 20px;
+  padding-top: 3px;
+  font-size: 10px;
+  color: var(--erro);
+}
+
+/* select com seta própria */
+.select { position: relative; }
+.select select { appearance: none; padding-right: 40px; }
+.select__seta {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  width: 18px;
+  height: 11px;
+  transform: translateY(-50%);
+  fill: none;
+  stroke: var(--borda);
+  stroke-width: 1.5;
+  pointer-events: none;
+}
+
+/* senha */
+.senha { position: relative; }
+.senha input { padding-right: 48px; }
+.senha__olho {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: grid;
+  place-items: center;
+  padding: 2px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+.senha__olho svg {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: #b5b9b7;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+/* botões */
+.cadastro__acoes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 17px;
+  margin-top: 40px;
+}
+.btn {
+  height: 47px;
+  font: inherit;
+  font-size: 24px;
+  color: var(--texto);
+  border: 1px solid var(--borda);
+  border-radius: 14px;
+  cursor: pointer;
+}
+.btn--sair { background: var(--superficie); }
+.btn--cadastrar { background: var(--verde-botao); }
+.btn:focus-visible { outline: 2px solid var(--verde-escuro); outline-offset: 2px; }
+
+@media (max-width: 600px) {
+  .cadastro__form { grid-template-columns: 1fr; }
+  .cadastro__titulo p { font-size: 18px; }
+}
