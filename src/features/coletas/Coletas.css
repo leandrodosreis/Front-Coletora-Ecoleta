@@ -1,0 +1,74 @@
+.tela_coletas {
+  min-height: calc(100vh - 64px);
+  padding: 44px 24px 24px;
+  box-sizing: border-box;
+  background: #eef8f1;
+  font-family: 'Inter', sans-serif;
+}
+
+.conteudo_coletas {
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+.etiqueta {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: #2fa866;
+}
+
+.titulo_coletas {
+  margin: 6px 0;
+  font-size: 40px;
+  font-weight: 500;
+  color: #1b3a2d;
+}
+
+.subtitulo {
+  margin: 0 0 24px;
+  font-size: 12px;
+  color: #6b8577;
+}
+
+/* abas: Todas | Aguardando finalização | Agendado */
+.abas {
+  display: inline-flex;
+  gap: 4px;
+  padding: 3px;
+  background: #e6f0ea;
+  border: 1px solid #d3ded7;
+  border-radius: 12px;
+}
+.aba {
+  min-width: 80px;
+  padding: 10px 16px;
+  font: inherit;
+  font-size: 12px;
+  color: #1b3a2d;
+  background: none;
+  border: 0;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.aba_ativa {
+  background: #fff;
+  border: 1px solid #d3ded7;
+}
+
+.secao { margin-top: 32px; }
+.secao h2 {
+  margin: 4px 0 20px;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.rodape {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+  padding-top: 12px;
+  font-size: 9px;
+  color: #9aa8a0;
+  border-top: 1px solid #d3ded7;
+}

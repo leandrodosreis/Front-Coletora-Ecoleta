@@ -1,0 +1,1 @@
+export const rotaBase = 'http://localhost:3000'; // trocar rota

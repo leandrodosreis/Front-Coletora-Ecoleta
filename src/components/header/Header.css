@@ -1,0 +1,86 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 64px;
+  padding: 0 24px;
+  background: #fff;
+  border-bottom: 1px solid #e3e8e5;
+  font-family: 'Inter', sans-serif;
+}
+
+.header_logo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 18px;
+  color: #14b8a6;
+  text-decoration: none;
+}
+
+.header_hamburguer {
+  background: none;
+  border: 0;
+  font-size: 32px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+/* fundo transparente que cobre a tela abaixo do header */
+.header_fundo {
+  position: fixed;
+  top: 64px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 2;
+  width: 180px;
+  padding: 16px;
+  background: #fff;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.menu h2 {
+  margin: 0 0 12px;
+  font-size: 15px;
+}
+
+.menu_item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 4px;
+  box-sizing: border-box;
+  border: 0;
+  border-radius: 6px;
+  background: none;
+  font: inherit;
+  font-size: 13px;
+  color: #2d4a3c;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* o NavLink coloca a classe "active" na tela em que o usuário está */
+.menu_item.active {
+  background: #d1f5df;
+}
+
+.menu_linha {
+  margin: 8px 0;
+  border: 0;
+  border-top: 1px solid #e3e8e5;
+}
