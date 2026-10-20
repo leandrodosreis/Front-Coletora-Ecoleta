@@ -63,12 +63,3 @@
   font-weight: 700;
 }
 
-.rodape {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 40px;
-  padding-top: 12px;
-  font-size: 9px;
-  color: #9aa8a0;
-  border-top: 1px solid #d3ded7;
-}

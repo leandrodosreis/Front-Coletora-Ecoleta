@@ -3,6 +3,7 @@ import { Header } from '../components/header/Header';
 import { Cadastro } from '../features/cadastro/Cadastro';
 import { Home } from '../features/home/Home';
 import { Coletas } from '../features/coletas/Coletas';
+import { Footer } from '../components/footer/Footer';
 
 
 // tela provisória: troque pelas telas de verdade quando criá-las
@@ -16,6 +17,7 @@ function LayoutComHeader() {
     <>
       <Header />
       <Outlet />
+      <Footer />
     </>
   );
 }
@@ -23,10 +25,8 @@ function LayoutComHeader() {
 export function Rotas() {
   return (
     <Routes>
-      {/* sem header */}
       <Route path="/" element={<Cadastro />} />
 
-      {/* com header */}
       <Route element={<LayoutComHeader />}>
         <Route path="/home" element={<Home />} />
         <Route path="/residuos" element={<EmBreve titulo="Resíduos" />} />

@@ -25,6 +25,45 @@ export function Coletas() {
 
   return (
     <main className="tela_coletas">
+      <div className="conteudo_coletas">
+        <p className="etiqueta">PAINEL DA EMPRESA COLETORA</p>
+        <h1 className="titulo_coletas">Coletas</h1>
+        <p className="subtitulo">Gerencie e acompanhe suas operações na Ecoleta.</p>
+ 
+        <div className="abas">
+          {abas.map((aba) => (
+            <button
+              key={aba.valor}
+              className={filtro === aba.valor ? 'aba aba_ativa' : 'aba'}
+              onClick={() => setFiltro(aba.valor)}
+            >
+              {aba.nome}
+            </button>
+          ))}
+        </div>
+ 
+        {(filtro === 'todas' || filtro === 'aguardando') && (
+          <section className="secao">
+            <p className="etiqueta">Atenção necessária</p>
+            <h2>Coletas aguardando finalização</h2>
+            {aguardando.map((coleta) => (
+              <CardColeta key={coleta.id} coleta={coleta} />
+            ))}
+          </section>
+        )}
+ 
+        {(filtro === 'todas' || filtro === 'agendado') && (
+          <section className="secao">
+            <p className="etiqueta">Agendadas</p>
+            <h2>Coletas agendadas</h2>
+            {agendadas.map((coleta) => (
+              <CardColeta key={coleta.id} coleta={coleta} />
+            ))}
+          </section>
+        )}
+ 
+      </div>
     </main>
+
   );
 }
