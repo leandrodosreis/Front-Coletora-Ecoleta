@@ -1,8 +1,9 @@
+/* Fundo da tela. "position: relative" é necessário para posicionar as faixas verdes */
 .tela_cadastro {
   position: relative;
-  min-height: 100vh;
+  min-height: 100vh; /* ocupa pelo menos a altura toda da tela */
   display: flex;
-  justify-content: center;
+  justify-content: center; /* centraliza o formulário na horizontal */
   padding: 75px 16px 80px;
   background: #eef8f1;
   font-family: 'Inter', sans-serif;
@@ -10,7 +11,7 @@
   overflow: hidden;
 }
 
-/* faixas verdes dos lados */
+/* Faixas verdes nas laterais (::before = esquerda, ::after = direita) */
 .tela_cadastro::before,
 .tela_cadastro::after {
   content: '';
@@ -20,15 +21,23 @@
   width: 75px;
   background: #416a53;
 }
-.tela_cadastro::before { left: 0; border-radius: 0 60px 60px 0; }
-.tela_cadastro::after { right: 0; border-radius: 60px 0 0 60px; }
+.tela_cadastro::before {
+  left: 0;
+  border-radius: 0 60px 60px 0; /* cantos arredondados só do lado de dentro */
+}
+.tela_cadastro::after {
+  right: 0;
+  border-radius: 60px 0 0 60px;
+}
 
+/* Coluna central. "max-width" limita a largura em telas grandes */
 .container_cadastro {
   position: relative;
   width: 100%;
   max-width: 646px;
 }
 
+/* Caixa do título */
 .card_titulo {
   padding: 22px 32px;
   text-align: center;
@@ -36,9 +45,18 @@
   border: 1px solid #8a8f8c;
   border-radius: 20px;
 }
-.card_titulo h1 { margin: 0 0 14px; font-size: 28px; font-weight: 500; }
-.card_titulo p { margin: 0; font-size: 22px; color: #263d31; }
+.card_titulo h1 {
+  margin: 0 0 14px;
+  font-size: 28px;
+  font-weight: 500;
+}
+.card_titulo p {
+  margin: 0;
+  font-size: 22px;
+  color: #263d31;
+}
 
+/* Formulário em GRID de 2 colunas (os campos "grandes" ocupam as duas) */
 .formulario {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -46,6 +64,7 @@
   margin-top: 40px;
 }
 
+/* Mensagem geral (sucesso ou erro da API), ocupa a linha toda */
 .mensagem {
   grid-column: 1 / -1;
   margin: 8px 0 0;
@@ -53,9 +72,16 @@
   border-radius: 8px;
   font-size: 14px;
 }
-.mensagem_erro { color: #c00000; background: #fdecec; }
-.mensagem_sucesso { color: #416a53; background: #dff2e6; }
+.mensagem_erro {
+  color: #c00000;
+  background: #fdecec;
+}
+.mensagem_sucesso {
+  color: #416a53;
+  background: #dff2e6;
+}
 
+/* Linha dos botões Sair e Cadastrar, lado a lado */
 .botoes {
   grid-column: 1 / -1;
   display: grid;
@@ -71,6 +97,50 @@
   border-radius: 14px;
   cursor: pointer;
 }
-.botao_sair { background: #f8fafb; }
-.botao_cadastrar { background: #6fb48c; }
-.botao:disabled { opacity: 0.6; cursor: not-allowed; }
+.botao_sair {
+  background: #f8fafb;
+}
+.botao_cadastrar {
+  background: #6fb48c;
+}
+/* Botão desligado (enquanto envia) fica mais claro */
+.botao:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* CELULAR (telas de até 700px): o formulário vira uma coluna só
+   e as faixas verdes ficam finas */
+@media (max-width: 700px) {
+  .tela_cadastro {
+    padding: 32px 24px 48px;
+  }
+  .tela_cadastro::before,
+  .tela_cadastro::after {
+    width: 12px;
+  }
+  .tela_cadastro::before {
+    border-radius: 0 12px 12px 0;
+  }
+  .tela_cadastro::after {
+    border-radius: 12px 0 0 12px;
+  }
+
+  .card_titulo {
+    padding: 16px;
+  }
+  .card_titulo h1 {
+    font-size: 22px;
+  }
+  .card_titulo p {
+    font-size: 16px;
+  }
+
+  .formulario {
+    grid-template-columns: 1fr; /* uma coluna só */
+    margin-top: 24px;
+  }
+  .botao {
+    font-size: 18px;
+  }
+}

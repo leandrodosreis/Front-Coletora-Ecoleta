@@ -1,3 +1,14 @@
+/* CSS GLOBAL: vale para o projeto inteiro */
+
+/* Tira a margem padrão do navegador ao redor da página */
 body {
   margin: 0;
+}
+
+/* Layout das telas que têm Header e Footer:
+   a coluna ocupa a altura toda da tela, assim o Footer fica sempre embaixo */
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }

@@ -1,5 +1,7 @@
+/* Caixa branca do card. "flex-wrap" deixa os itens quebrarem de linha no celular */
 .card_coleta {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 12px;
   margin-bottom: 16px;
@@ -9,11 +11,33 @@
   border-radius: 12px;
 }
 
-.card_icone { font-size: 26px; }
+.card_icone {
+  font-size: 26px;
+}
 
-.card_info { flex: 1; }
-.card_nome { margin: 0; font-size: 12px; font-weight: 600; }
-.card_detalhes { margin: 4px 0 0; font-size: 10px; color: #6b7a72; }
+/* "flex: 1" faz o nome e os detalhes ocuparem o espaço que sobrar */
+.card_info {
+  flex: 1;
+  min-width: 140px;
+}
+.card_nome {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+}
+.card_detalhes {
+  margin: 4px 0 0;
+  font-size: 10px;
+  color: #6b7a72;
+}
+
+/* Grupo valor + selo + botão, alinhado à direita */
+.card_lado {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: auto;
+}
 
 .card_valor {
   display: flex;
@@ -22,8 +46,12 @@
   font-size: 9px;
   color: #8a968f;
 }
-.card_valor strong { font-size: 12px; color: #111; }
+.card_valor strong {
+  font-size: 12px;
+  color: #111;
+}
 
+/* Selo de status (a cor muda nas duas classes abaixo) */
 .card_status {
   width: 72px;
   padding: 8px 4px;
@@ -34,16 +62,39 @@
   text-transform: uppercase;
   border-radius: 6px;
 }
-.status_aguardando { color: #d97706; background: #fdf0c4; }
-.status_agendado { color: #0b86d6; background: #dcefff; }
+.status_aguardando {
+  color: #d97706;
+  background: #fdf0c4;
+}
+.status_agendado {
+  color: #0b86d6;
+  background: #dcefff;
+}
 
 .card_botao {
   width: 72px;
-  height: 32px;
+  height: 36px;
   font: inherit;
   font-size: 11px;
   background: #fff;
   border: 1px solid #c9d1cc;
   border-radius: 6px;
   cursor: pointer;
+}
+
+/* CELULAR (telas de até 600px): o nome fica em cima e
+   valor, selo e botão descem para a linha de baixo */
+@media (max-width: 600px) {
+  .card_lado {
+    width: 100%;
+    justify-content: space-between;
+    margin-left: 0;
+  }
+  .card_valor {
+    align-items: flex-start;
+    margin-right: auto;
+  }
+  .card_botao {
+    height: 40px; /* mais fácil de tocar com o dedo */
+  }
 }

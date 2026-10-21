@@ -1,16 +1,19 @@
+/* Fundo da tela. "flex: 1" faz ela ocupar o espaço entre o Header e o Footer */
 .tela_coletas {
-  min-height: calc(100vh - 64px);
-  padding: 44px 24px 24px;
+  flex: 1;
+  padding: 44px 24px 0;
   box-sizing: border-box;
   background: #eef8f1;
   font-family: 'Inter', sans-serif;
 }
 
+/* Coluna central: limita a largura e centraliza (margin "auto" nas laterais) */
 .conteudo_coletas {
   max-width: 750px;
   margin: 0 auto;
 }
 
+/* Textos verdes pequenos acima dos títulos */
 .etiqueta {
   margin: 0;
   font-size: 12px;
@@ -18,9 +21,10 @@
   color: #2fa866;
 }
 
+/* "clamp" deixa o tamanho se ajustar: mínimo 32px, máximo 40px */
 .titulo_coletas {
   margin: 6px 0;
-  font-size: 40px;
+  font-size: clamp(32px, 6vw, 40px);
   font-weight: 500;
   color: #1b3a2d;
 }
@@ -31,7 +35,7 @@
   color: #6b8577;
 }
 
-/* abas: Todas | Aguardando finalização | Agendado */
+/* Barra de abas: Todas | Aguardando finalização | Agendada */
 .abas {
   display: inline-flex;
   gap: 4px;
@@ -51,15 +55,46 @@
   border-radius: 10px;
   cursor: pointer;
 }
+/* A aba escolhida fica com fundo branco */
 .aba_ativa {
   background: #fff;
   border: 1px solid #d3ded7;
 }
 
-.secao { margin-top: 32px; }
+/* Cada seção de cards (aguardando / agendadas) */
+.secao {
+  margin-top: 32px;
+}
 .secao h2 {
   margin: 4px 0 20px;
   font-size: 22px;
   font-weight: 700;
 }
 
+/* "Carregando..." e "Nenhuma coleta encontrada." */
+.aviso {
+  margin-top: 32px;
+  font-size: 14px;
+  color: #6b8577;
+}
+
+/* CELULAR (telas de até 600px): menos espaço nas laterais
+   e as abas dividem a largura toda */
+@media (max-width: 600px) {
+  .tela_coletas {
+    padding: 28px 16px 0;
+  }
+  .abas {
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .aba {
+    flex: 1; /* cada aba ocupa a mesma largura */
+    min-width: 0;
+    padding: 10px 6px;
+  }
+  .secao h2 {
+    font-size: 18px;
+  }
+}

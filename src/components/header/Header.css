@@ -1,9 +1,10 @@
+/* Faixa branca no topo. "sticky" faz ela ficar presa no topo ao rolar a página */
 .header {
   position: sticky;
   top: 0;
-  z-index: 20;
+  z-index: 20; /* fica por cima do conteúdo da página */
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* logo na esquerda, hambúrguer na direita */
   align-items: center;
   height: 64px;
   padding: 0 24px;
@@ -29,7 +30,8 @@
   cursor: pointer;
 }
 
-/* fundo transparente que cobre a tela abaixo do header */
+/* Área transparente embaixo do header que cobre a tela toda.
+   Serve para fechar o menu quando o usuário clica fora dele */
 .header_fundo {
   position: fixed;
   top: 64px;
@@ -39,11 +41,12 @@
   z-index: 1;
 }
 
+/* Caixa do menu, que aparece logo abaixo do header, no canto direito */
 .menu {
   position: absolute;
   top: 100%;
   right: 0;
-  z-index: 2;
+  z-index: 2; /* fica acima da área transparente */
   width: 180px;
   padding: 16px;
   background: #fff;
@@ -56,12 +59,13 @@
   font-size: 15px;
 }
 
+/* Cada item do menu (ícone + nome) */
 .menu_item {
   display: flex;
   align-items: center;
   gap: 10px;
   width: 100%;
-  padding: 8px;
+  padding: 10px 8px; /* altura boa para tocar no celular */
   margin-bottom: 4px;
   box-sizing: border-box;
   border: 0;
@@ -74,11 +78,13 @@
   cursor: pointer;
 }
 
-/* o NavLink coloca a classe "active" na tela em que o usuário está */
+/* O NavLink coloca a classe "active" na tela em que o usuário está:
+   o item fica com fundo verde */
 .menu_item.active {
   background: #d1f5df;
 }
 
+/* Linha separando "Sair" dos outros itens */
 .menu_linha {
   margin: 8px 0;
   border: 0;

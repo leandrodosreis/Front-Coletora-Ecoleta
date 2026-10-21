@@ -1,14 +1,16 @@
+/* Fundo com a mesma cor das telas, para o rodapé "continuar" a página */
 .footer {
   padding: 0 24px 24px;
   background: #eef8f1;
   font-family: 'Inter', sans-serif;
 }
 
+/* Texto da esquerda e da direita nas pontas, com uma linha em cima */
 .footer_conteudo {
   display: flex;
   justify-content: space-between;
-  max-width: 750px;
-  margin: 24px auto 0;
+  max-width: 750px; /* mesma largura do conteúdo das telas */
+  margin: 24px auto 0; /* "auto" nas laterais centraliza */
   padding-top: 12px;
   font-size: 9px;
   color: #9aa8a0;
