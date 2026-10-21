@@ -1,0 +1,46 @@
+/* Fundo da tela. "flex: 1" faz ela ocupar o espaço entre o Header e o Footer */
+.tela_perfil {
+    flex: 1;
+    padding: 44px 24px 0;
+    box-sizing: border-box;
+    background: #eef8f1;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  /* Coluna central: limita a largura e centraliza (margin "auto" nas laterais) */
+  .conteudo_perfil {
+    max-width: 750px;
+    margin: 0 auto;
+  }
+  
+  /* Textos verdes pequenos acima dos títulos */
+  .etiqueta {
+    margin: 0;
+    font-size: 12px;
+    font-weight: 600;
+    color: #2fa866;
+  }
+  
+  /* "clamp" deixa o tamanho se ajustar: mínimo 32px, máximo 40px */
+  .titulo_perfil {
+    margin: 6px 0;
+    font-size: clamp(32px, 6vw, 40px);
+    font-weight: 500;
+    color: #1b3a2d;
+  }
+  
+  .subtitulo {
+    margin: 0 0 24px;
+    font-size: 12px;
+    color: #6b8577;
+  }
+
+  /* CELULAR (telas de até 600px): menos espaço nas laterais
+     e as abas dividem a largura toda */
+  @media (max-width: 600px) {
+    .tela_perfil {
+      padding: 28px 16px 0;
+    }
+
+  }
+  

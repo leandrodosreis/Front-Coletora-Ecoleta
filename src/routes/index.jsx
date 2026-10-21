@@ -5,6 +5,7 @@ import { Header } from '../components/header/Header';
 import { Footer } from '../components/footer/Footer';
 import { Cadastro } from '../features/cadastro/Cadastro';
 import { Coletas } from '../features/coletas/Coletas';
+import { Perfil } from '../features/perfil/Perfil';
 
 // Tela provisória, só mostra um título.
 // Quando criar a tela de verdade, troque o element da rota pelo componente dela.
@@ -36,7 +37,7 @@ export function Rotas() {
         <Route path="/residuos" element={<EmBreve titulo="Resíduos" />} />
         <Route path="/coletas" element={<Coletas />} />
         <Route path="/historico" element={<EmBreve titulo="Histórico" />} />
-        <Route path="/perfil" element={<EmBreve titulo="Perfil" />} />
+        <Route path="/perfil" element={<Perfil/>} />
       </Route>
     </Routes>
   );
