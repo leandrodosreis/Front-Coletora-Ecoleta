@@ -9,7 +9,7 @@ import './Header.css';
 // Lista dos itens do menu. Para adicionar uma tela nova ao menu,
 // basta incluir mais uma linha aqui (e a rota em routes/index.jsx).
 const itens = [
-  { nome: 'Início', rota: '/inicio', icone: '🍃' },
+  { nome: 'home', rota: '/home', icone: '🍃' },
   { nome: 'Resíduos', rota: '/residuos', icone: '📦' },
   { nome: 'Coletas', rota: '/coletas', icone: '🚚' },
   { nome: 'Histórico', rota: '/historico', icone: '📅' },
@@ -29,8 +29,8 @@ export function Header() {
 
   return (
     <header className="header">
-      {/* Logo: ao clicar, vai para a tela de início */}
-      <Link to="/inicio" className="header_logo">
+      {/* Logo: ao clicar, vai para a tela de home */}
+      <Link to="/home" className="header_logo">
         <span>♻</span> Ecoleta
       </Link>
 

@@ -1,0 +1,333 @@
+/* DICA: todo CSS do projeto é global (vale para todas as telas).
+   Por isso todas as classes desta tela começam com "home_":
+   assim elas não se misturam com as classes de outras telas. */
+
+/* Fundo da tela. "flex: 1" ocupa o espaço entre o Header e o Footer */
+.home_tela {
+  flex: 1;
+  padding: 44px 24px 0;
+  box-sizing: border-box;
+  background: #eef8f1;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Coluna central: limita a largura e centraliza (margin "auto" nas laterais) */
+.home_conteudo {
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+/* Textos do topo */
+.home_etiqueta {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: #2fa866;
+}
+.home_etiqueta_secao {
+  margin-top: 40px;
+}
+.home_titulo {
+  margin: 6px 0;
+  font-size: clamp(32px, 6vw, 40px); /* mínimo 32px, máximo 40px */
+  font-weight: 500;
+  color: #1b3a2d;
+}
+.home_subtitulo {
+  margin: 0 0 28px;
+  font-size: 14px;
+  color: #6b8577;
+}
+.home_aviso {
+  font-size: 14px;
+  color: #6b8577;
+}
+
+/* ===== CARD BRANCO (usado no card de boas-vindas) ===== */
+.home_card {
+  padding: 24px;
+  background: #fff;
+  border: 1px solid #dfe5e1;
+  border-radius: 18px;
+  box-sizing: border-box;
+}
+
+/* ===== PARTE 1: BOAS-VINDAS =====
+   flex coloca o texto à esquerda e o total de kg à direita */
+.home_boasvindas {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap; /* no celular os itens quebram de linha */
+}
+.home_sustentavel {
+  margin: 0 0 20px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #2fa866;
+}
+.home_boasvindas_texto h2 {
+  margin: 0 0 8px;
+  font-size: 24px;
+  font-weight: 500;
+}
+.home_boasvindas_texto p {
+  margin: 0;
+}
+.home_boasvindas_texto > p:last-child {
+  font-size: 14px;
+  color: #6b8577;
+}
+
+/* Lado do total de kg, com uma linha vertical à esquerda */
+.home_kg {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 8px 24px;
+  border-left: 1px solid #d3ded7;
+}
+.home_kg_icone {
+  font-size: 30px;
+}
+.home_kg strong {
+  display: block;
+  font-size: 22px;
+}
+.home_kg span {
+  font-size: 11px;
+  color: #6b8577;
+}
+
+/* ===== PARTE 2: OS 4 CARDS DE NÚMEROS =====
+   grid com 4 colunas do mesmo tamanho */
+.home_numeros {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 24px;
+}
+.home_numero {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 16px;
+  background: #fff;
+  border: 1px solid #dfe5e1;
+  border-radius: 14px;
+}
+/* Card em destaque (fundo verde) */
+.home_numero_destaque {
+  background: #d1f5df;
+  border-color: #a6dfbc;
+}
+/* Quadradinho do ícone */
+.home_numero_icone {
+  display: grid;
+  place-items: center; /* centraliza o ícone */
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0; /* não deixa o quadrado encolher */
+  font-size: 15px;
+  background: #e6f4ec;
+  border-radius: 8px;
+}
+.home_numero strong {
+  display: block;
+  font-size: 18px;
+}
+.home_numero span {
+  font-size: 10px;
+  color: #6b8577;
+}
+
+/* ===== PARTE 3: BANNER ESCURO ===== */
+.home_banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+  padding: 28px 24px;
+  background: #062b24;
+  border-radius: 12px;
+}
+.home_banner_etiqueta {
+  margin: 0 0 8px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #2fa866;
+}
+.home_banner h2 {
+  margin: 0 0 6px;
+  font-size: 28px;
+  font-weight: 500;
+  color: #fff;
+}
+.home_banner p {
+  margin: 0;
+}
+.home_banner div > p:last-child {
+  font-size: 14px;
+  color: #9db8ae;
+}
+.home_banner_botao {
+  padding: 10px 16px;
+  font: inherit;
+  font-size: 12px;
+  color: #062b24;
+  background: #fff;
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* ===== PARTE 4: OFERTAS RECENTES ===== */
+/* Linha com o título à esquerda e "VER TODAS" à direita */
+.home_lista_topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin: 16px 0 12px;
+}
+.home_lista_topo h2 {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 500;
+}
+.home_ver_todas {
+  padding: 0;
+  font: inherit;
+  font-size: 10px;
+  font-weight: 700;
+  color: #5c8a3c;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+/* Cada oferta é uma linha branca. "flex-wrap" deixa quebrar de linha no celular */
+.home_oferta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  padding: 12px 16px;
+  background: #fff;
+  border: 1px solid #dfe5e1;
+  border-radius: 10px;
+}
+.home_oferta_icone {
+  font-size: 26px;
+}
+/* "flex: 1" faz o nome ocupar o espaço que sobrar */
+.home_oferta_info {
+  flex: 1;
+  min-width: 140px;
+}
+.home_oferta_nome {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 500;
+}
+.home_oferta_detalhes {
+  margin: 4px 0 0;
+  font-size: 11px;
+  color: #8a968f;
+}
+
+/* Grupo valor + selo + botão, alinhado à direita */
+.home_oferta_lado {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: auto;
+}
+.home_oferta_valor {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-size: 10px;
+  color: #8a968f;
+}
+.home_oferta_valor strong {
+  font-size: 14px;
+  color: #111;
+}
+
+/* Selo de status: a cor muda nas três classes abaixo */
+.home_selo {
+  padding: 8px 12px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase; /* mostra o texto em MAIÚSCULAS */
+  border-radius: 6px;
+}
+.home_selo_aceita {
+  color: #1e9c58;
+  background: #d8f5e3;
+}
+.home_selo_pendente {
+  color: #d97706;
+  background: #fdf0c4;
+}
+.home_selo_recusada {
+  color: #c53030;
+  background: #fde4e4;
+}
+
+.home_botao_pequeno {
+  padding: 8px 12px;
+  font: inherit;
+  font-size: 11px;
+  background: #fff;
+  border: 1px solid #c9d1cc;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* ===== TABLET E CELULAR (telas de até 700px) ===== */
+@media (max-width: 700px) {
+  .home_tela {
+    padding: 28px 16px 0;
+  }
+
+  /* o total de kg desce para baixo do texto, com a linha em cima */
+  .home_kg {
+    width: 100%;
+    padding: 16px 0 0;
+    border-left: 0;
+    border-top: 1px solid #d3ded7;
+  }
+
+  /* cards de números: 2 por linha */
+  .home_numeros {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* o botão do banner ocupa a largura toda */
+  .home_banner_botao {
+    width: 100%;
+    min-height: 44px; /* mais fácil de tocar com o dedo */
+  }
+  .home_banner h2 {
+    font-size: 22px;
+  }
+
+  /* valor, selo e botão descem para a linha de baixo da oferta */
+  .home_oferta_lado {
+    width: 100%;
+    justify-content: space-between;
+    margin-left: 0;
+  }
+  .home_oferta_valor {
+    align-items: flex-start;
+    margin-right: auto;
+  }
+  .home_botao_pequeno {
+    min-height: 40px;
+  }
+}

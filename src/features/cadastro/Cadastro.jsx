@@ -26,7 +26,7 @@ function numeros(texto) {
 }
 
 // O banco guarda o CNPJ formatado: 12.345.678/0001-90
-// slice(inicio, fim) corta um pedaço do texto
+// slice(home, fim) corta um pedaço do texto
 function formatarCnpj(cnpj) {
   return `${cnpj.slice(0, 2)}.${cnpj.slice(2, 5)}.${cnpj.slice(5, 8)}/${cnpj.slice(8, 12)}-${cnpj.slice(12)}`;
 }
