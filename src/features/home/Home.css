@@ -1,7 +1,3 @@
-/* DICA: todo CSS do projeto é global (vale para todas as telas).
-   Por isso todas as classes desta tela começam com "home_":
-   assim elas não se misturam com as classes de outras telas. */
-
 /* Fundo da tela. "flex: 1" ocupa o espaço entre o Header e o Footer */
 .home_tela {
   flex: 1;
@@ -17,7 +13,6 @@
   margin: 0 auto;
 }
 
-/* Textos do topo */
 .home_etiqueta {
   margin: 0;
   font-size: 12px;

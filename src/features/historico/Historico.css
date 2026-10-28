@@ -35,8 +35,7 @@
   color: #6b8577;
 }
 
-/* ===== BARRA DE BUSCA E FILTROS =====
-   flex coloca tudo lado a lado; flex-wrap deixa quebrar de linha quando não couber */
+/* Barra de busca e filtros */
 .historico_filtros {
   display: flex;
   flex-wrap: wrap;
@@ -64,8 +63,9 @@
   font-size: 15px;
   background: transparent;
   border: 0;
-  outline: none; /* tira a borda azul do navegador; a caixa muda de cor no foco (abaixo) */
+  outline: none; 
 }
+
 .historico_busca:focus-within {
   border-color: #6fb48c;
 }
@@ -112,8 +112,7 @@
   cursor: pointer;
 }
 
-/* ===== CADA LINHA DO HISTÓRICO =====
-   flex-wrap deixa os itens quebrarem de linha no celular */
+/* Linhas do Historico*/
 .historico_item {
   display: flex;
   flex-wrap: wrap;
@@ -232,6 +231,6 @@
     margin-left: 0;
   }
   .historico_botao_detalhe {
-    min-height: 44px; /* mais fácil de tocar com o dedo */
+    min-height: 44px; 
   }
 }

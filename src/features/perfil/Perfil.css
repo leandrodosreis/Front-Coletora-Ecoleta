@@ -13,7 +13,6 @@
     margin: 0 auto;
   }
   
-  /* Textos verdes pequenos acima dos títulos */
   .etiqueta {
     margin: 0;
     font-size: 12px;
@@ -57,10 +56,9 @@
   display: flex;
   align-items: center;
   gap: 16px;
-  flex-wrap: wrap; /* no celular os itens quebram de linha */
+  flex-wrap: wrap; 
 }
  
-/* Quadrado verde claro com o ícone */
 .perfil_icone {
   display: grid;
   place-items: center; /* centraliza o ícone no quadrado */
@@ -87,7 +85,6 @@
   color: #5f6f66;
 }
  
-/* Botão branco com borda (Editar perfil / Alterar senha) */
 .perfil_botao {
   padding: 12px 20px;
   font: inherit;
@@ -103,7 +100,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
-  align-items: start; /* cada card tem a altura do seu conteúdo */
+  align-items: start; 
   margin-top: 16px;
 }
  
@@ -126,7 +123,7 @@
 .perfil_campos {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px 16px; /* 12px entre linhas, 16px entre colunas */
+  gap: 12px 16px; 
 }
  
 .perfil_campo {
@@ -140,7 +137,6 @@
   color: #4b5a52;
 }
  
-/* Campo só de leitura: fundo verde claro e texto cinza em negrito */
 .perfil_campo input {
   width: 100%;
   height: 34px;
@@ -156,7 +152,6 @@
 }
  
 /* ===== CARD 3: SEGURANÇA ===== */
-/* Tem metade da largura da coluna, como no design */
 .perfil_card_seguranca {
   width: 50%;
 }
@@ -166,7 +161,7 @@
 }
 .perfil_botao_centro {
   display: block;
-  margin: 0 auto; /* centraliza o botão no card */
+  margin: 0 auto; 
 }
  
 /* ===== CELULAR (telas de até 700px) ===== */
@@ -175,13 +170,13 @@
     padding: 28px 16px 0;
   }
   .perfil_grade {
-    grid-template-columns: 1fr; /* cards um embaixo do outro */
+    grid-template-columns: 1fr; 
   }
   .perfil_card_seguranca {
-    width: 100%; /* ocupa a largura toda */
+    width: 100%; 
   }
   .perfil_botao {
-    min-height: 44px; /* mais fácil de tocar com o dedo */
+    min-height: 44px; 
   }
 }
  
