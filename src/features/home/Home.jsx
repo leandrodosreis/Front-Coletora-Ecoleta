@@ -6,7 +6,7 @@
 // Nada aqui é componente separado: tudo fica neste arquivo, porque só esta tela usa.
 // Os botões ainda não têm função.
 import { useState, useEffect } from 'react';
-import { getHome } from './homeAPI';
+import { getHome } from './homeApi';
 import './home.css';
 
 // Valores iniciais: tudo zerado, para a tela já ter o que mostrar antes da API responder
@@ -81,7 +81,7 @@ export function Home() {
       <div className="home_conteudo">
         {/* Textos do topo da tela */}
         <p className="home_etiqueta">PAINEL DA EMPRESA COLETORA</p>
-        <h1 className="home_titulo">home</h1>
+        <h1 className="home_titulo">Home</h1>
         <p className="home_subtitulo">Encontre novos materiais e acompanhe suas atividades.</p>
 
         {/* Avisos de carregamento e de erro */}
