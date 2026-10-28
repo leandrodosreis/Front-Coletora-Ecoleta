@@ -1,242 +1,237 @@
-/* DICA: todo CSS do projeto é global (vale para todas as telas).
-   Por isso todas as classes desta tela começam com "historico_":
-   assim elas não se misturam com as classes de outras telas. */
-
 /* Fundo da tela. "flex: 1" ocupa o espaço entre o Header e o Footer */
 .historico_tela {
-    flex: 1;
-    padding: 44px 24px 0;
-    box-sizing: border-box;
-    background: #eef8f1;
-    font-family: 'Inter', sans-serif;
+  flex: 1;
+  padding: 44px 24px 0;
+  box-sizing: border-box;
+  background: #eef8f1;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Coluna central: limita a largura e centraliza (margin "auto" nas laterais) */
+.historico_conteudo {
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.historico_etiqueta {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: #2fa866;
+}
+.historico_titulo {
+  margin: 8px 0;
+  font-size: clamp(32px, 6vw, 48px); /* mínimo 32px, máximo 48px */
+  font-weight: 500;
+  color: #1b3a2d;
+}
+.historico_subtitulo {
+  margin: 0 0 32px;
+  font-size: 14px;
+  color: #6b8577;
+}
+.historico_aviso {
+  font-size: 14px;
+  color: #6b8577;
+}
+
+/* ===== BARRA DE BUSCA E FILTROS =====
+   flex coloca tudo lado a lado; flex-wrap deixa quebrar de linha quando não couber */
+.historico_filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+/* Caixa de busca: ícone + campo de texto. "flex: 1 1 300px" faz ela ocupar o espaço que sobrar */
+.historico_busca {
+  flex: 1 1 300px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 52px;
+  padding: 0 20px;
+  box-sizing: border-box;
+  background: #fff;
+  border: 1px solid #dfe5e1;
+  border-radius: 16px;
+}
+.historico_busca input {
+  flex: 1;
+  min-width: 0;
+  font: inherit;
+  font-size: 15px;
+  background: transparent;
+  border: 0;
+  outline: none; /* tira a borda azul do navegador; a caixa muda de cor no foco (abaixo) */
+}
+.historico_busca:focus-within {
+  border-color: #6fb48c;
+}
+
+/* Caixa que envolve o select. "position: relative" permite desenhar a setinha por cima */
+.historico_select_caixa {
+  position: relative;
+}
+/* "appearance: none" tira a setinha padrão do navegador, para desenharmos a nossa */
+.historico_select_caixa select {
+  appearance: none;
+  height: 52px;
+  padding: 0 44px 0 20px;
+  font: inherit;
+  font-size: 15px;
+  color: #2d4a3c;
+  background: #fff;
+  border: 1px solid #dfe5e1;
+  border-radius: 16px;
+  cursor: pointer;
+}
+/* Setinha: um quadradinho com 2 bordas, girado em 45 graus */
+.historico_select_caixa::after {
+  content: '';
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  border-right: 2px solid #5f6f66;
+  border-bottom: 2px solid #5f6f66;
+  transform: translateY(-70%) rotate(45deg);
+  pointer-events: none; /* o clique passa direto para o select */
+}
+
+.historico_botao_filtrar {
+  height: 52px;
+  padding: 0 28px;
+  font: inherit;
+  font-size: 15px;
+  background: #fff;
+  border: 1px solid #dfe5e1;
+  border-radius: 16px;
+  cursor: pointer;
+}
+
+/* ===== CADA LINHA DO HISTÓRICO =====
+   flex-wrap deixa os itens quebrarem de linha no celular */
+.historico_item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+  padding: 20px 24px;
+  background: #fff;
+  border: 1px solid #dfe5e1;
+  border-radius: 18px;
+}
+
+/* Data: dia grande em cima, mês/ano pequeno embaixo */
+.historico_data {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 80px;
+  text-align: center;
+}
+.historico_data strong {
+  font-size: 26px;
+  font-weight: 400;
+}
+.historico_data span {
+  font-size: 12px;
+}
+
+/* "flex: 1" faz o nome e os detalhes ocuparem o espaço que sobrar */
+.historico_info {
+  flex: 1;
+  min-width: 180px;
+}
+.historico_nome {
+  margin: 0;
+  font-size: 16px;
+}
+.historico_detalhes {
+  margin: 10px 0 0;
+  font-size: 12px;
+  color: #3d4f46;
+}
+
+/* Grupo selo + botão, alinhado à direita */
+.historico_lado {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-left: auto;
+}
+
+/* Selo de status: a cor muda nas três classes abaixo */
+.historico_selo {
+  padding: 8px 14px;
+  font-size: 15px;
+  font-weight: 700;
+  border-radius: 20px;
+}
+.historico_selo_verde {
+  color: #0b4f33;
+  background: #d4f5e2;
+}
+.historico_selo_vermelho {
+  color: #b91c1c;
+  background: #fecaca;
+}
+.historico_selo_cinza {
+  color: #4b5563;
+  background: #e5e7eb;
+}
+
+.historico_botao_detalhe {
+  padding: 14px 20px;
+  font: inherit;
+  font-size: 15px;
+  background: #fff;
+  border: 1px solid #c9d1cc;
+  border-radius: 14px;
+  cursor: pointer;
+}
+
+/* ===== TABLET E CELULAR (telas de até 700px) ===== */
+@media (max-width: 700px) {
+  .historico_tela {
+    padding: 28px 16px 0;
   }
-  
-  /* Coluna central: limita a largura e centraliza (margin "auto" nas laterais) */
-  .historico_conteudo {
-    max-width: 920px;
-    margin: 0 auto;
-  }
-  
-  /* Textos do topo */
-  .historico_etiqueta {
-    margin: 0;
-    font-size: 13px;
-    font-weight: 600;
-    color: #2fa866;
-  }
-  .historico_titulo {
-    margin: 8px 0;
-    font-size: clamp(32px, 6vw, 48px); /* mínimo 32px, máximo 48px */
-    font-weight: 500;
-    color: #1b3a2d;
-  }
-  .historico_subtitulo {
-    margin: 0 0 32px;
-    font-size: 14px;
-    color: #6b8577;
-  }
-  .historico_aviso {
-    font-size: 14px;
-    color: #6b8577;
-  }
-  
-  /* ===== BARRA DE BUSCA E FILTROS =====
-     flex coloca tudo lado a lado; flex-wrap deixa quebrar de linha quando não couber */
-  .historico_filtros {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    margin-bottom: 28px;
-  }
-  
-  /* Caixa de busca: ícone + campo de texto. "flex: 1 1 300px" faz ela ocupar o espaço que sobrar */
+
+  /* a busca ocupa uma linha inteira; os filtros dividem a linha de baixo */
   .historico_busca {
-    flex: 1 1 300px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    height: 52px;
-    padding: 0 20px;
-    box-sizing: border-box;
-    background: #fff;
-    border: 1px solid #dfe5e1;
-    border-radius: 16px;
+    flex: 1 1 100%;
   }
-  .historico_busca input {
+  .historico_select_caixa {
     flex: 1;
     min-width: 0;
-    font: inherit;
-    font-size: 15px;
-    background: transparent;
-    border: 0;
-    outline: none; /* tira a borda azul do navegador; a caixa muda de cor no foco (abaixo) */
   }
-  .historico_busca:focus-within {
-    border-color: #6fb48c;
-  }
-  
-  /* Caixa que envolve o select. "position: relative" permite desenhar a setinha por cima */
-  .historico_select_caixa {
-    position: relative;
-  }
-  /* "appearance: none" tira a setinha padrão do navegador, para desenharmos a nossa */
   .historico_select_caixa select {
-    appearance: none;
-    height: 52px;
-    padding: 0 44px 0 20px;
-    font: inherit;
-    font-size: 15px;
-    color: #2d4a3c;
-    background: #fff;
-    border: 1px solid #dfe5e1;
-    border-radius: 16px;
-    cursor: pointer;
+    width: 100%;
+    padding: 0 36px 0 14px;
+    font-size: 14px;
   }
-  /* Setinha: um quadradinho com 2 bordas, girado em 45 graus */
-  .historico_select_caixa::after {
-    content: '';
-    position: absolute;
-    right: 18px;
-    top: 50%;
-    width: 7px;
-    height: 7px;
-    border-right: 2px solid #5f6f66;
-    border-bottom: 2px solid #5f6f66;
-    transform: translateY(-70%) rotate(45deg);
-    pointer-events: none; /* o clique passa direto para o select */
-  }
-  
+  /* o botão Filtrar ocupa uma linha inteira */
   .historico_botao_filtrar {
-    height: 52px;
-    padding: 0 28px;
-    font: inherit;
-    font-size: 15px;
-    background: #fff;
-    border: 1px solid #dfe5e1;
-    border-radius: 16px;
-    cursor: pointer;
+    flex: 1 1 100%;
   }
-  
-  /* ===== CADA LINHA DO HISTÓRICO =====
-     flex-wrap deixa os itens quebrarem de linha no celular */
+
+  /* linha do histórico: data e nome em cima; selo e botão descem para baixo */
   .historico_item {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 16px;
-    margin-bottom: 16px;
-    padding: 20px 24px;
-    background: #fff;
-    border: 1px solid #dfe5e1;
-    border-radius: 18px;
+    padding: 16px;
   }
-  
-  /* Data: dia grande em cima, mês/ano pequeno embaixo */
   .historico_data {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    width: 80px;
-    text-align: center;
+    width: 56px;
   }
-  .historico_data strong {
-    font-size: 26px;
-    font-weight: 400;
-  }
-  .historico_data span {
-    font-size: 12px;
-  }
-  
-  /* "flex: 1" faz o nome e os detalhes ocuparem o espaço que sobrar */
-  .historico_info {
-    flex: 1;
-    min-width: 180px;
-  }
-  .historico_nome {
-    margin: 0;
-    font-size: 16px;
-  }
-  .historico_detalhes {
-    margin: 10px 0 0;
-    font-size: 12px;
-    color: #3d4f46;
-  }
-  
-  /* Grupo selo + botão, alinhado à direita */
   .historico_lado {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    margin-left: auto;
+    width: 100%;
+    justify-content: space-between;
+    margin-left: 0;
   }
-  
-  /* Selo de status: a cor muda nas três classes abaixo */
-  .historico_selo {
-    padding: 8px 14px;
-    font-size: 15px;
-    font-weight: 700;
-    border-radius: 20px;
-  }
-  .historico_selo_verde {
-    color: #0b4f33;
-    background: #d4f5e2;
-  }
-  .historico_selo_vermelho {
-    color: #b91c1c;
-    background: #fecaca;
-  }
-  .historico_selo_cinza {
-    color: #4b5563;
-    background: #e5e7eb;
-  }
-  
   .historico_botao_detalhe {
-    padding: 14px 20px;
-    font: inherit;
-    font-size: 15px;
-    background: #fff;
-    border: 1px solid #c9d1cc;
-    border-radius: 14px;
-    cursor: pointer;
+    min-height: 44px; /* mais fácil de tocar com o dedo */
   }
-  
-  /* ===== TABLET E CELULAR (telas de até 700px) ===== */
-  @media (max-width: 700px) {
-    .historico_tela {
-      padding: 28px 16px 0;
-    }
-  
-    /* a busca ocupa uma linha inteira; os filtros dividem a linha de baixo */
-    .historico_busca {
-      flex: 1 1 100%;
-    }
-    .historico_select_caixa {
-      flex: 1;
-      min-width: 0;
-    }
-    .historico_select_caixa select {
-      width: 100%;
-      padding: 0 36px 0 14px;
-      font-size: 14px;
-    }
-    /* o botão Filtrar ocupa uma linha inteira */
-    .historico_botao_filtrar {
-      flex: 1 1 100%;
-    }
-  
-    /* linha do histórico: data e nome em cima; selo e botão descem para baixo */
-    .historico_item {
-      padding: 16px;
-    }
-    .historico_data {
-      width: 56px;
-    }
-    .historico_lado {
-      width: 100%;
-      justify-content: space-between;
-      margin-left: 0;
-    }
-    .historico_botao_detalhe {
-      min-height: 44px; /* mais fácil de tocar com o dedo */
-    }
-  }
+}
