@@ -1,19 +1,13 @@
-// Funções que conversam com a API na tela de Cadastro.
-// Cada função é "async": ela espera a resposta da API antes de continuar (await).
 import { rotaBase } from '../../services/api';
 
-// BUSCA O ENDEREÇO PELO CEP -> GET /cep/{cep}
-// Devolve os dados do endereço, ou false se der erro / não encontrar.
 export const getCep = async function (cep) {
   let url = `${rotaBase}/cep/${cep}`;
 
-  // try/catch: se a internet cair ou a API estiver fora, o catch trata o erro
   try {
     let response = await fetch(url);
 
-    // response.ok é true quando a API respondeu com sucesso (status 200 a 299)
     if (response.ok) {
-      let respostaAPI = await response.json(); // converte a resposta para objeto
+      let respostaAPI = await response.json();
       return respostaAPI;
     }
     return false;
@@ -23,8 +17,6 @@ export const getCep = async function (cep) {
   }
 };
 
-// CADASTRA A EMPRESA -> POST /cadastro/empresa-coletora
-// Devolve { ok: true } se deu certo, ou { ok: false, mensagem: '...' } se deu erro.
 export const cadastrarEmpresa = async function (dados) {
   let url = `${rotaBase}/cadastro/empresa-coletora`;
 

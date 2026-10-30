@@ -1,4 +1,3 @@
-/* Fundo da tela. "flex: 1" ocupa o espaço entre o Header e o Footer */
 .home_tela {
   flex: 1;
   padding: 44px 24px 0;
@@ -7,7 +6,6 @@
   font-family: 'Inter', sans-serif;
 }
 
-/* Coluna central: limita a largura e centraliza (margin "auto" nas laterais) */
 .home_conteudo {
   max-width: 750px;
   margin: 0 auto;
@@ -38,7 +36,6 @@
   color: #6b8577;
 }
 
-/* ===== CARD BRANCO (usado no card de boas-vindas) ===== */
 .home_card {
   padding: 24px;
   background: #fff;
@@ -47,14 +44,12 @@
   box-sizing: border-box;
 }
 
-/* ===== PARTE 1: BOAS-VINDAS =====
-   flex coloca o texto à esquerda e o total de kg à direita */
 .home_boasvindas {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  flex-wrap: wrap; /* no celular os itens quebram de linha */
+  flex-wrap: wrap;
 }
 .home_sustentavel {
   margin: 0 0 20px;
@@ -75,7 +70,6 @@
   color: #6b8577;
 }
 
-/* Lado do total de kg, com uma linha vertical à esquerda */
 .home_kg {
   display: flex;
   align-items: center;
@@ -95,8 +89,6 @@
   color: #6b8577;
 }
 
-/* ===== PARTE 2: OS 4 CARDS DE NÚMEROS =====
-   grid com 4 colunas do mesmo tamanho */
 .home_numeros {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -112,15 +104,15 @@
   border: 1px solid #dfe5e1;
   border-radius: 14px;
 }
-/* Card em destaque (fundo verde) */
+
 .home_numero_destaque {
   background: #d1f5df;
   border-color: #a6dfbc;
 }
-/* Quadradinho do ícone */
+
 .home_numero_icone {
   display: grid;
-  place-items: center; /* centraliza o ícone */
+  place-items: center; 
   width: 32px;
   height: 32px;
   flex-shrink: 0; /* não deixa o quadrado encolher */
@@ -137,7 +129,6 @@
   color: #6b8577;
 }
 
-/* ===== PARTE 3: BANNER ESCURO ===== */
 .home_banner {
   display: flex;
   align-items: center;
@@ -179,8 +170,6 @@
   cursor: pointer;
 }
 
-/* ===== PARTE 4: OFERTAS RECENTES ===== */
-/* Linha com o título à esquerda e "VER TODAS" à direita */
 .home_lista_topo {
   display: flex;
   justify-content: space-between;
@@ -258,7 +247,7 @@
   padding: 8px 12px;
   font-size: 10px;
   font-weight: 700;
-  text-transform: uppercase; /* mostra o texto em MAIÚSCULAS */
+  text-transform: uppercase; 
   border-radius: 6px;
 }
 .home_selo_aceita {
@@ -284,7 +273,7 @@
   cursor: pointer;
 }
 
-/* ===== TABLET E CELULAR (telas de até 700px) ===== */
+/*CELULAR */
 @media (max-width: 700px) {
   .home_tela {
     padding: 28px 16px 0;
@@ -303,10 +292,9 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
-  /* o botão do banner ocupa a largura toda */
   .home_banner_botao {
     width: 100%;
-    min-height: 44px; /* mais fácil de tocar com o dedo */
+    min-height: 44px; 
   }
   .home_banner h2 {
     font-size: 22px;

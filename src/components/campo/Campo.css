@@ -13,7 +13,6 @@
   font-size: 15px;
 }
 
-/* "position: relative" permite colocar o botão do olho por cima do input */
 .entrada {
   position: relative;
 }
@@ -22,20 +21,17 @@
   width: 100%;
   height: 34px;
   padding: 0 12px;
-  box-sizing: border-box; /* o padding não aumenta a largura total */
+  box-sizing: border-box; 
   font: inherit;
   background: #f8fafb;
   border: 1px solid #8a8f8c;
   border-radius: 6px;
 }
 
-/* Campos preenchidos automaticamente (cidade e estado) ficam acinzentados */
 .entrada input:read-only {
   background: #eef1ef;
 }
 
-/* Mensagem de erro vermelha. O min-height reserva o espaço dela,
-   assim o formulário não "pula" quando o erro aparece */
 .campo_erro {
   min-height: 20px;
   padding-top: 3px;
@@ -43,7 +39,6 @@
   color: #c00000;
 }
 
-/* Botão do olho, posicionado dentro do input, no canto direito */
 .botao_olho {
   position: absolute;
   right: 8px;

@@ -1,13 +1,7 @@
-// COMPONENTE GLOBAL: o cabeçalho com o menu hambúrguer.
-// Ele aparece em todas as telas que estão dentro do Layout (veja routes/index.jsx).
 import { useState } from 'react';
-// Link e NavLink trocam de tela sem recarregar a página.
-// useNavigate permite trocar de tela pelo código (usado no botão Sair).
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import './Header.css';
 
-// Lista dos itens do menu. Para adicionar uma tela nova ao menu,
-// basta incluir mais uma linha aqui (e a rota em routes/index.jsx).
 const itens = [
   { nome: 'home', rota: '/home', icone: '🍃' },
   { nome: 'Resíduos', rota: '/residuos', icone: '📦' },
@@ -17,11 +11,10 @@ const itens = [
 ];
 
 export function Header() {
-  // 'aberto' diz se o menu está aberto (true) ou fechado (false)
+
   const [aberto, setAberto] = useState(false);
   const navigate = useNavigate();
 
-  // Fecha o menu e volta para a tela inicial do site
   function sair() {
     setAberto(false);
     navigate('/');
@@ -29,17 +22,14 @@ export function Header() {
 
   return (
     <header className="header">
-      {/* Logo: ao clicar, vai para a tela de home */}
       <Link to="/home" className="header_logo">
         <span>♻</span> Ecoleta
       </Link>
 
-      {/* Botão hambúrguer: abre e fecha o menu (inverte o valor de "aberto") */}
       <button className="header_hamburguer" onClick={() => setAberto(!aberto)}>
         ☰
       </button>
 
-      {/* O menu só é desenhado quando "aberto" é true */}
       {aberto && (
         <>
           {/* Área transparente que cobre a tela: clicar fora do menu fecha ele */}

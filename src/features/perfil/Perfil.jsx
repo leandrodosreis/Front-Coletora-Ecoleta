@@ -1,15 +1,7 @@
-// TELA MEU PERFIL da empresa coletora.
-// Como funciona, resumindo:
-//  1. Quando a tela abre, buscamos o perfil na API (useEffect).
-//  2. Guardamos os dados no estado "perfil".
-//  3. Cada card é uma <section> com os dados escritos dentro dos campos.
-// Os cards NÃO são componentes: ficam direto aqui, porque só esta tela usa.
-
 import "./Perfil.css"
 import { useState, useEffect } from 'react';
 import { getPerfil } from './perfilApi';
 
-// Valores iniciais: tudo vazio. Assim os campos já existem antes de a API responder.
 const perfilInicial = {
   nome: '', cnpj: '', telefone: '', email: '',
   cep: '', logradouro: '', numero: '', estado: '', cidade: '', bairro: ''
@@ -50,11 +42,9 @@ export function Perfil(){
         {carregando && <p className="perfil_aviso">Carregando perfil...</p>}
         {erro && <p className="perfil_aviso">Não foi possível carregar o perfil.</p>}
 
-        {/* Os cards só aparecem depois de carregar, e se não deu erro.
-            O <> </> agrupa vários elementos sem criar uma div extra. */}
         {!carregando && !erro && (
           <>
-            {/* ===== CARD 1: RESUMO (ícone, nome, CNPJ e botão) ===== */}
+
             <section className="perfil_card perfil_resumo">
               <div className="perfil_icone">👤</div>
 
@@ -99,7 +89,6 @@ export function Perfil(){
                   </div>
                 </section>
 
-                {/* ===== CARD 3: SEGURANÇA ===== */}
                 <section className="perfil_card perfil_card_seguranca">
                   <h3 className="perfil_secao">SEGURANÇA</h3>
 

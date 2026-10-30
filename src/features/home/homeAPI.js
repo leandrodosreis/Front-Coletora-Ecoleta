@@ -1,9 +1,5 @@
-// Função que conversa com a API na tela de home.
 import { rotaBase, pegarToken } from '../../services/api';
 
-// Converte UMA oferta da API para o formato que a tela usa.
-// A API entrega objetos dentro de objetos (oferta.residuo.tipo_material.material...),
-// aqui deixamos tudo "plano" para ficar fácil de usar na tela.
 function converterOferta(oferta) {
   return {
     id: oferta.id,
@@ -38,9 +34,6 @@ function converterHome(home) {
   };
 }
 
-// BUSCA O RESUMO DA TELA INICIAL -> GET /empresas-coletoras/home
-// O id da empresa não vai na URL: a API descobre pelo token do login.
-// Devolve os dados já convertidos, ou false se der erro.
 export const getHome = async function () {
   let url = `${rotaBase}/empresas-coletoras/home`;
 

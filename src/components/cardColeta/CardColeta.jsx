@@ -1,6 +1,3 @@
-// COMPONENTE GLOBAL: o card de uma coleta.
-// Ele NÃO busca dados: só recebe uma coleta pelas props e desenha na tela.
-// Assim qualquer tela pode usar o mesmo card.
 import './CardColeta.css';
 
 // A API manda números como "5.00". Esta função tira os zeros e troca ponto por vírgula: 5,5
@@ -15,7 +12,6 @@ function formatarValor(valor) {
 
 // "coleta" é uma prop: o objeto com os dados de uma coleta
 export function CardColeta({ coleta }) {
-  // true quando a coleta está aguardando finalização (o texto é o mesmo do banco)
   const aguardando = coleta.status_coleta === 'Aguardando Finalização';
 
   return (
@@ -31,9 +27,7 @@ export function CardColeta({ coleta }) {
         </p>
       </div>
 
-      {/* Esta div agrupa valor, selo e botão (no celular eles descem para a linha de baixo) */}
       <div className="card_lado">
-        {/* O valor acordado só aparece nas coletas agendadas (e se a API enviar) */}
         {!aguardando && coleta.valor_acordado != null && (
           <div className="card_valor">
             <span>Valor acordado</span>
@@ -41,12 +35,10 @@ export function CardColeta({ coleta }) {
           </div>
         )}
 
-        {/* O selo muda de cor e de texto conforme o status */}
         <span className={aguardando ? 'card_status status_aguardando' : 'card_status status_agendado'}>
           {aguardando ? 'Aguardando finalização' : 'Agendada'}
         </span>
 
-        {/* O texto do botão também depende do status */}
         <button className="card_botao">
           {aguardando ? 'Finalizar coleta' : 'Ver mais'}
         </button>

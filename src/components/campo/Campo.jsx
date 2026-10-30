@@ -1,5 +1,3 @@
-// COMPONENTE GLOBAL: um campo do formulário (label + input + mensagem de erro).
-// Como é usado várias vezes, escrevemos uma vez só aqui e reaproveitamos.
 import { useState } from 'react';
 import './Campo.css';
 
@@ -40,13 +38,10 @@ export function Campo({ label, nome, tipo = 'text', grande, somenteLeitura, valo
         {tipo === 'password' && (
           // Ao clicar, inverte o valor de "mostrar" (true vira false e vice-versa)
           <button type="button" className="botao_olho" onClick={() => setMostrar(!mostrar)}>
-            {mostrar ? '🙈' : '👁'}
           </button>
         )}
       </div>
 
-      {/* A mensagem vermelha só tem texto quando existe erro neste campo,
-          então ela "aparece" apenas quando necessário */}
       <span className="campo_erro">{erros[nome]}</span>
     </div>
   );

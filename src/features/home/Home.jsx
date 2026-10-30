@@ -1,15 +1,7 @@
-// TELA DE home da empresa coletora.
-// Como funciona, resumindo:
-//  1. Quando a tela abre, buscamos o resumo na API (useEffect).
-//  2. Guardamos os dados no estado "home".
-//  3. A tela desenha 4 partes: boas-vindas, números, banner e ofertas recentes.
-// Nada aqui é componente separado: tudo fica neste arquivo, porque só esta tela usa.
-// Os botões ainda não têm função.
 import { useState, useEffect } from 'react';
 import { getHome } from './homeApi';
 import './home.css';
 
-// Valores iniciais: tudo zerado, para a tela já ter o que mostrar antes da API responder
 const homeInicial = {
   nome: '',
   kg: 0,
@@ -25,7 +17,6 @@ function doisDigitos(numero) {
   return String(numero).padStart(2, '0');
 }
 
-// A API manda números como "15.00". Tira os zeros e troca o ponto por vírgula: 15,5
 function formatarNumero(valor) {
   return String(Number(valor)).replace('.', ',');
 }
@@ -35,11 +26,8 @@ function formatarValor(valor) {
   return Number(valor).toFixed(2).replace('.', ',');
 }
 
-// A API manda a data assim: "2026-08-27T14:30:00". Aqui viramos "27/08/2026".
-// slice(0, 10) pega só os 10 primeiros caracteres ("2026-08-27")
-// split('-') separa em partes: ["2026", "08", "27"]
 function formatarData(data) {
-  let [ano, mes, dia] = data.slice(0, 10).split('-');
+  let [dia, mes, ano] = data.slice(0, 10).split('-');
   return `${dia}/${mes}/${ano}`;
 }
 
@@ -53,7 +41,7 @@ export function Home() {
   // O [] no final significa: "rode uma vez só, quando a tela abrir".
   useEffect(() => {
     async function carregarDados() {
-      let dados = await getHome(); // espera a resposta da API
+      let dados = await getHome(); 
 
       if (dados) {
         setHome(dados);
@@ -66,9 +54,6 @@ export function Home() {
     carregarDados();
   }, []);
 
-  // Lista dos 4 cards de números. Em vez de escrever 4 cards iguais,
-  // escrevemos uma lista e usamos map para desenhar um card para cada item.
-  // "destaque: true" deixa o card com fundo verde (como no design).
   const numeros = [
     { icone: '📦', valor: home.residuosDisponiveis, texto: 'resíduos disponíveis' },
     { icone: '💲', valor: home.ofertasEnviadas, texto: 'ofertas enviadas', destaque: true },
@@ -79,20 +64,17 @@ export function Home() {
   return (
     <main className="home_tela">
       <div className="home_conteudo">
-        {/* Textos do topo da tela */}
+
         <p className="home_etiqueta">PAINEL DA EMPRESA COLETORA</p>
         <h1 className="home_titulo">Home</h1>
         <p className="home_subtitulo">Encontre novos materiais e acompanhe suas atividades.</p>
 
-        {/* Avisos de carregamento e de erro */}
         {carregando && <p className="home_aviso">Carregando...</p>}
         {erro && <p className="home_aviso">Não foi possível carregar o home.</p>}
 
-        {/* O conteúdo só aparece depois de carregar, e se não deu erro.
-            O <> </> agrupa vários elementos sem criar uma div extra. */}
         {!carregando && !erro && (
           <>
-            {/* ===== PARTE 1: CARD DE BOAS-VINDAS ===== */}
+
             <section className="home_card home_boasvindas">
               <div className="home_boasvindas_texto">
                 <p className="home_sustentavel">🛡 Operação sustentável</p>
@@ -100,7 +82,6 @@ export function Home() {
                 <p>Cada coleta aproxima materiais de um novo ciclo.</p>
               </div>
 
-              {/* Lado direito: folha + total de kg (separado por uma linha vertical) */}
               <div className="home_kg">
                 <span className="home_kg_icone">🍃</span>
                 <div>
@@ -110,7 +91,6 @@ export function Home() {
               </div>
             </section>
 
-            {/* ===== PARTE 2: OS 4 CARDS DE NÚMEROS ===== */}
             <div className="home_numeros">
               {numeros.map((item) => (
                 <div
@@ -127,7 +107,6 @@ export function Home() {
               ))}
             </div>
 
-            {/* ===== PARTE 3: BANNER ESCURO "PRÓXIMO PASSO" ===== */}
             <section className="home_banner">
               <div>
                 <p className="home_banner_etiqueta">PRÓXIMO PASSO</p>
@@ -135,16 +114,13 @@ export function Home() {
                 <p>Encontre materiais disponíveis próximos à sua empresa.</p>
               </div>
 
-              {/* Sem função por enquanto */}
               <button className="home_banner_botao">Encontrar resíduos →</button>
             </section>
 
-            {/* ===== PARTE 4: OFERTAS RECENTES ===== */}
             <p className="home_etiqueta home_etiqueta_secao">MOVIMENTAÇÕES RECENTES</p>
 
             <div className="home_lista_topo">
               <h2>Ofertas recentes</h2>
-              {/* Sem função por enquanto */}
               <button className="home_ver_todas">VER TODAS →</button>
             </div>
 

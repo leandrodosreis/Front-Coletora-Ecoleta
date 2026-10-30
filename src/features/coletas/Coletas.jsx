@@ -1,9 +1,3 @@
-// TELA DE COLETAS da empresa coletora.
-// Como funciona, resumindo:
-//  1. Quando a tela abre, buscamos as coletas na API (useEffect).
-//  2. Guardamos a lista no estado "coletas".
-//  3. Separamos em "aguardando finalização" e "agendadas".
-//  4. As abas escolhem quais seções aparecem.
 import { useState, useEffect } from 'react';
 import { CardColeta } from '../../components/cardColeta/CardColeta';
 import { getColetasEmpresa } from './coletasApi';
@@ -26,7 +20,7 @@ export function Coletas() {
   // O [] no final significa: "rode uma vez só, quando a tela abrir".
   useEffect(() => {
     async function carregarDados() {
-      let dados = await getColetasEmpresa(); // espera a resposta da API
+      let dados = await getColetasEmpresa();
 
       if (dados) {
         setColetas(dados);
@@ -70,7 +64,6 @@ export function Coletas() {
           ))}
         </div>
 
-        {/* Avisos: enquanto carrega e quando não há nada para mostrar */}
         {carregando && <p className="aviso">Carregando coletas...</p>}
 
         {!carregando && !mostrarAguardando && !mostrarAgendadas && (
@@ -82,8 +75,7 @@ export function Coletas() {
           <section className="secao">
             <p className="etiqueta">Atenção necessária</p>
             <h2>Coletas aguardando finalização</h2>
-            {/* Para cada coleta da lista, desenha um card.
-                A prop "coleta" entrega os dados para o CardColeta */}
+            {/* A prop "coleta" entrega os dados para o CardColeta */}
             {aguardando.map((coleta) => (
               <CardColeta key={coleta.id_coleta} coleta={coleta} />
             ))}

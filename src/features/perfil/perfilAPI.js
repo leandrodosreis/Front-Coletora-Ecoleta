@@ -1,9 +1,5 @@
-// Função que conversa com a API na tela de Perfil.
 import { rotaBase, pegarToken } from '../../services/api';
  
-// A API devolve o endereço dentro de um objeto "endereco".
-// Esta função deixa tudo "plano" (um objeto só), mais fácil de usar na tela.
-// Se a API mudar o formato, só precisamos ajustar esta função.
 function converterPerfil(perfil) {
   return {
     nome: perfil.nome,
@@ -20,9 +16,6 @@ function converterPerfil(perfil) {
   };
 }
  
-// BUSCA O PERFIL DA EMPRESA -> GET /empresas-coletoras/perfil
-// O id da empresa não vai na URL: a API descobre pelo token do login.
-// Devolve o perfil, ou false se der erro.
 export const getPerfil = async function () {
   let url = `${rotaBase}/empresas-coletoras/perfil`;
  

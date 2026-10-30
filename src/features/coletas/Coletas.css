@@ -1,4 +1,3 @@
-/* Fundo da tela. "flex: 1" faz ela ocupar o espaço entre o Header e o Footer */
 .tela_coletas {
   flex: 1;
   padding: 44px 24px 0;
@@ -7,7 +6,6 @@
   font-family: 'Inter', sans-serif;
 }
 
-/* Coluna central: limita a largura e centraliza (margin "auto" nas laterais) */
 .conteudo_coletas {
   max-width: 750px;
   margin: 0 auto;
@@ -34,7 +32,6 @@
   color: #6b8577;
 }
 
-/* Barra de abas: Todas | Aguardando finalização | Agendada */
 .abas {
   display: inline-flex;
   gap: 4px;
@@ -54,13 +51,12 @@
   border-radius: 10px;
   cursor: pointer;
 }
-/* A aba escolhida fica com fundo branco */
+
 .aba_ativa {
   background: #fff;
   border: 1px solid #d3ded7;
 }
 
-/* Cada seção de cards (aguardando / agendadas) */
 .secao {
   margin-top: 32px;
 }
@@ -70,15 +66,13 @@
   font-weight: 700;
 }
 
-/* "Carregando..." e "Nenhuma coleta encontrada." */
 .aviso {
   margin-top: 32px;
   font-size: 14px;
   color: #6b8577;
 }
 
-/* CELULAR (telas de até 600px): menos espaço nas laterais
-   e as abas dividem a largura toda */
+/* CELULAR */
 @media (max-width: 600px) {
   .tela_coletas {
     padding: 28px 16px 0;
