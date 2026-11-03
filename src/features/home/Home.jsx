@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getHome } from './homeApi';
+import { getHome } from './homeNewApi';
 import './home.css';
 
 const homeInicial = {

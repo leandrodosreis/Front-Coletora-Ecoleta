@@ -13,7 +13,7 @@ function converterColeta(coleta) {
 }
 
 export const getColetasEmpresa = async function () {
-  let url = `${rotaBase}/empresas-coletoras/coletas`;
+  let url = `${rotaBase}/v1/ecoleta/empresa-coletora/coletas`;
 
   try {
     let response = await fetch(url, {

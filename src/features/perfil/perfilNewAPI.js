@@ -17,7 +17,7 @@ function converterPerfil(perfil) {
 }
  
 export const getPerfil = async function () {
-  let url = `${rotaBase}/empresas-coletoras/perfil`;
+  let url = `${rotaBase}/v1/ecoleta/empresas-coletoras/perfil`;
  
   try {
     let response = await fetch(url, {

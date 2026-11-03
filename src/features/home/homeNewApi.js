@@ -35,7 +35,7 @@ function converterHome(home) {
 }
 
 export const getHome = async function () {
-  let url = `${rotaBase}/empresas-coletoras/home`;
+  let url = `${rotaBase}/v1/ecoleta/empresa-coletora/home`;
 
   try {
     let response = await fetch(url, {

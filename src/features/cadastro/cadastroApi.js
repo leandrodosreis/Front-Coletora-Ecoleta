@@ -18,7 +18,7 @@ export const getCep = async function (cep) {
 };
 
 export const cadastrarEmpresa = async function (dados) {
-  let url = `${rotaBase}/cadastro/empresa-coletora`;
+  let url = `${rotaBase}/v1/ecoleta/cadastro/empresa-coletora`;
 
   try {
     let response = await fetch(url, {

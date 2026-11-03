@@ -1,6 +1,6 @@
 import "./Perfil.css"
 import { useState, useEffect } from 'react';
-import { getPerfil } from './perfilApi';
+import { getPerfil } from './perfilNewAPI';
 
 const perfilInicial = {
   nome: '', cnpj: '', telefone: '', email: '',

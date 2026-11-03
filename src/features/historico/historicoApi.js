@@ -14,7 +14,7 @@ function converterEvento(evento) {
 }
 
 export const getHistorico = async function () {
-  let url = `${rotaBase}/empresas-coletoras/historico`;
+  let url = `${rotaBase}/v1/ecoleta/empresa-coletora/historico`;
 
   try {
     let response = await fetch(url, {
