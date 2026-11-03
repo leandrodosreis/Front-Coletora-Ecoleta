@@ -6,6 +6,8 @@ import { Coletas } from '../features/coletas/Coletas';
 import { Perfil } from '../features/perfil/Perfil';
 import { Home } from '../features/home/Home';
 import { Historico } from '../features/historico/Historico';
+import { Residuos } from '../features/residuos/Residuos';
+
 
 // Layout = "moldura" das telas: Header em cima e Footer embaixo.
 // O <Outlet /> é o lugar onde a tela da rota atual é desenhada.
@@ -28,7 +30,7 @@ export function Rotas() {
       {/* Telas COM Header e Footer (dentro do Layout) */}
       <Route element={<Layout />}>
         <Route path="/home" element={<Home />} />
-        <Route path="/residuos" element={<EmBreve titulo="Resíduos" />} />
+        <Route path="/residuos" element={<Residuos />} />
         <Route path="/coletas" element={<Coletas />} />
         <Route path="/historico" element={<Historico />} />
         <Route path="/perfil" element={<Perfil/>} />
