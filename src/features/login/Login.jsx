@@ -52,7 +52,7 @@ export function Login() {
         // 3. Mostra o resultado
         if (resultado.ok) {
             // Guarda os tokens no navegador e vai para a tela de Início
-            salvarToken(resultado.accessToken, resultado.refreshToken);
+            salvarToken(resultado.token);
             navigate('/home');
         } else {
             setMensagem(resultado.mensagem);

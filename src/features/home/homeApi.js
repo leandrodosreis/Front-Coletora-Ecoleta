@@ -35,6 +35,7 @@ function converterHome(home) {
 }
 
 export const getHome = async function () {
+  console.log("Token enviado:", pegarToken());
   let url = `${rotaBase}/v1/ecoleta/empresa-coletora/home`;
 
   try {
