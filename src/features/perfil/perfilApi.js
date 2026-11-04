@@ -2,17 +2,17 @@ import { rotaBase, pegarToken } from '../../services/API';
  
 function converterPerfil(perfil) {
   return {
-    nome: perfil.nome,
-    cnpj: perfil.cnpj,
-    telefone: perfil.telefone || '',
-    email: perfil.email,
-    cep: perfil.cep,
-    logradouro: perfil.logradouro,
-    numero: String(perfil.numero), // o número vem como inteiro, o input usa texto
-    bairro: perfil.bairro,
+    nome: perfil.response.perfil.nome_empresa,
+    cnpj: perfil.response.cnpj,
+    telefone: perfil.response.telefone || '',
+    email: perfil.response.email,
+    cep: perfil.response.cep,
+    logradouro: perfil.response.logradouro,
+    numero: String(perfil.response.numero), // o número vem como inteiro, o input usa texto
+    bairro: perfil.response.bairro,
     // O "|| ''" evita erro se a API ainda não enviar esses dois campos
-    cidade: perfil.nome_cidade || '',
-    estado: perfil.sigla_estado || ''
+    cidade: perfil.response.nome_cidade || '',
+    estado: perfil.response.sigla_estado || ''
   };
 }
  

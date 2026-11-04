@@ -18,9 +18,9 @@ function converterOferta(oferta) {
 function converterHome(home) {
   return {
     // Estes 3 campos foram combinados, mas os nomes ainda são uma suposição:
-    nome: home.nome_empresa || '',
-    kg: home.kg_encaminhados || 0,
-    residuosDisponiveis: home.residuos_disponiveis || 0,
+    nome: home.response.nome_empresa || '',
+    kg: home.response.kg_encaminhados || 0,
+    residuosDisponiveis: home.response.residuos_disponiveis || 0,
 
     // "Ofertas enviadas" = pendentes + aceitas + recusadas (soma de todas)
     ofertasEnviadas: home.ofertas_pendentes + home.ofertas_aceitas + home.ofertas_recusadas,
@@ -35,7 +35,7 @@ function converterHome(home) {
 }
 
 export const getHome = async function () {
-  console.log("Token enviado:", pegarToken());
+
   let url = `${rotaBase}/v1/ecoleta/empresa-coletora/home`;
 
   try {

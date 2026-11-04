@@ -7,7 +7,7 @@
 }
 
 .historico_conteudo {
-  max-width: 920px;
+  max-width: 750px;
   margin: 0 auto;
 }
 
@@ -18,8 +18,8 @@
   color: #2fa866;
 }
 .historico_titulo {
-  margin: 8px 0;
-  font-size: clamp(32px, 6vw, 48px); /* mínimo 32px, máximo 48px */
+  margin: 6px 0;
+  font-size: clamp(32px, 6vw, 40px);
   font-weight: 500;
   color: #1b3a2d;
 }
@@ -45,7 +45,7 @@
   flex: 1 1 300px;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   height: 52px;
   padding: 0 20px;
   box-sizing: border-box;

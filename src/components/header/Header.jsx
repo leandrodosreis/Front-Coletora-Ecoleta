@@ -20,7 +20,7 @@ export function Header() {
   function sair() {
     removerToken();
     setAberto(false);
-    navigate('/login');
+    navigate('/');
   }
 
   return (
