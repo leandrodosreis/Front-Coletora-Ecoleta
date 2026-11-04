@@ -1,4 +1,4 @@
-import { rotaBase } from '../../services/api';
+import { rotaBase } from '../../services/API';
 
 export const getCep = async function (cep) {
   let url = `${rotaBase}/cep/${cep}`;

@@ -7,11 +7,15 @@ import { Perfil } from '../features/perfil/Perfil';
 import { Home } from '../features/home/Home';
 import { Historico } from '../features/historico/Historico';
 import { Residuos } from '../features/residuos/Residuos';
+import { Login } from '../features/login/Login';
+import { pegarToken } from '../services/API';
 
 
-// Layout = "moldura" das telas: Header em cima e Footer embaixo.
-// O <Outlet /> é o lugar onde a tela da rota atual é desenhada.
 function Layout() {
+  if (!pegarToken()) {
+    return <Navigate to="/" replace />;
+  }
+ 
   return (
     <div className="layout">
       <Header />
@@ -25,7 +29,8 @@ export function Rotas() {
   return (
     <Routes>
       {/* Telas SEM Header e Footer */}
-      <Route path="/" element={<Cadastro />} />
+      <Route path="/" element={<Login />} />
+      <Route path="/cadastro" element={<Cadastro />} />
 
       {/* Telas COM Header e Footer (dentro do Layout) */}
       <Route element={<Layout />}>

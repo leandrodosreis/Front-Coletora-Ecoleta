@@ -6,5 +6,20 @@ export const rotaBase = 'http://localhost:8080';
 // Ele fica guardado no navegador (localStorage) e é enviado nas chamadas
 // que exigem login, para a API saber quem é a empresa.
 export const pegarToken = function () {
-  return localStorage.login('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF9lbXByZXNhX2NvbGV0b3JhIjozLCJpYXQiOjE3OTM3MzU2NjEsImV4cCI6MTc5Mzc2MTIwMH0.HlDra1BSPwb8qB2WqElsx0DmHOGfw13RXTGmQAAtmEQ');
+  return localStorage.getItem('token');
+};
+
+// Guarda os tokens no navegador logo depois do login.
+export const salvarToken = function (token) {
+  localStorage.setItem('token', token);
+};
+
+// Apaga os tokens do navegador (usado no logout).
+export const removerToken = function () {
+  localStorage.removeItem('token');
+};
+
+export const sairDoSistema = function () {
+  removerToken();
+  window.location.href = '/login';
 };

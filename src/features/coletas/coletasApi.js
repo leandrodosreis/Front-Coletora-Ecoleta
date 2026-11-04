@@ -1,4 +1,4 @@
-import { rotaBase, pegarToken } from '../../services/api';
+import { rotaBase, pegarToken, sairDoSistema } from '../../services/API';
 
 function converterColeta(coleta) {
   return {
@@ -20,6 +20,12 @@ export const getColetasEmpresa = async function () {
       // Authorization envia o token para a API saber quem está pedindo
       headers: { Authorization: `Bearer ${pegarToken()}` }
     });
+
+        // 401 = token inválido ou vencido: apaga o token e volta para o login
+    if (response.status === 401) {
+      sairDoSistema();
+      return false;
+    }
 
     if (response.ok) {
       let respostaAPI = await response.json(); // lista de coletas

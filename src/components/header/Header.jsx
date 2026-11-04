@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import './Header.css';
+import { removerToken } from '../../services/API';
 
 const itens = [
   { nome: 'home', rota: '/home', icone: '🍃' },
@@ -15,9 +16,11 @@ export function Header() {
   const [aberto, setAberto] = useState(false);
   const navigate = useNavigate();
 
+  // Faz o logout: apaga o token do navegador e volta para a tela de login
   function sair() {
+    removerToken();
     setAberto(false);
-    navigate('/');
+    navigate('/login');
   }
 
   return (

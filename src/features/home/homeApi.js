@@ -1,4 +1,4 @@
-import { rotaBase, pegarToken } from '../../services/api';
+import { rotaBase, pegarToken } from '../../services/API';
 
 function converterOferta(oferta) {
   return {
