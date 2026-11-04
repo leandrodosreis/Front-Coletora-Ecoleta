@@ -23,8 +23,7 @@ export const loginEmpresa = async function (cnpj, senha) {
       let respostaAPI = await response.json();
       return {
         ok: true,
-        accessToken: respostaAPI.accessToken,
-        refreshToken: respostaAPI.refreshToken
+        token: respostaAPI.response.token
       };
     } else if (response.status === 401) {
       // 401 = credenciais inválidas
