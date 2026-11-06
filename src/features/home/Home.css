@@ -2,12 +2,11 @@
   flex: 1;
   padding: 44px 24px 0;
   box-sizing: border-box;
-  background: #eef8f1;
   font-family: 'Inter', sans-serif;
 }
 
 .home_conteudo {
-  max-width: 750px;
+  max-width: 1800px;
   margin: 0 auto;
 }
 
@@ -15,7 +14,7 @@
   margin: 0;
   font-size: 12px;
   font-weight: 600;
-  color: #2fa866;
+  color: #14B8A6;
 }
 .home_etiqueta_secao {
   margin-top: 40px;
@@ -39,7 +38,7 @@
 .home_card {
   padding: 24px;
   background: #fff;
-  border: 1px solid #dfe5e1;
+  border: 1px solid #a6dfbc;
   border-radius: 18px;
   box-sizing: border-box;
 }
@@ -55,7 +54,7 @@
   margin: 0 0 20px;
   font-size: 12px;
   font-weight: 600;
-  color: #2fa866;
+  color: #14B8A6;
 }
 .home_boasvindas_texto h2 {
   margin: 0 0 8px;
@@ -75,7 +74,7 @@
   align-items: center;
   gap: 14px;
   padding: 8px 24px;
-  border-left: 1px solid #d3ded7;
+  border-left: 1px solid #a6dfbc;
 }
 .home_kg_icone {
   font-size: 30px;
@@ -101,12 +100,11 @@
   gap: 12px;
   padding: 18px 16px;
   background: #fff;
-  border: 1px solid #dfe5e1;
+  border: 1px solid #a6dfbc;
   border-radius: 14px;
 }
 
 .home_numero_destaque {
-  background: #d1f5df;
   border-color: #a6dfbc;
 }
 
@@ -137,14 +135,14 @@
   flex-wrap: wrap;
   margin-top: 24px;
   padding: 28px 24px;
-  background: #062b24;
+  background: #1E3A5F;
   border-radius: 12px;
 }
 .home_banner_etiqueta {
   margin: 0 0 8px;
   font-size: 12px;
   font-weight: 700;
-  color: #2fa866;
+  color: #14B8A6;
 }
 .home_banner h2 {
   margin: 0 0 6px;

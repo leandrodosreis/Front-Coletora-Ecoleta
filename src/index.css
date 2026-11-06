@@ -3,6 +3,7 @@
 /* Tira a margem padrão do navegador ao redor da página */
 body {
   margin: 0;
+  background: #EEF3F9;
 }
 
 /* Layout das telas que têm Header e Footer:

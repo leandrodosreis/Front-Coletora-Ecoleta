@@ -2,12 +2,11 @@
   flex: 1;
   padding: 44px 24px 0;
   box-sizing: border-box;
-  background: #eef8f1;
   font-family: 'Inter', sans-serif;
 }
 
 .historico_conteudo {
-  max-width: 750px;
+  max-width: 1800px;
   margin: 0 auto;
 }
 

@@ -2,28 +2,24 @@
     flex: 1;
     padding: 44px 24px 0;
     box-sizing: border-box;
-    background: #eef8f1;
     font-family: 'Inter', sans-serif;
   }
   
   .conteudo_perfil {
-    max-width: 750px;
+    max-width: 1800px;
     margin: 0 auto;
   }
   
-  .etiqueta {
-    margin: 0;
-    font-size: 12px;
-    font-weight: 600;
-    color: #2fa866;
-  }
+  .tela_perfil .etiqueta {
+    color: #0F766E;
+}
   
   /* "clamp" deixa o tamanho se ajustar: mínimo 32px, máximo 40px */
   .titulo_perfil {
     margin: 6px 0;
     font-size: clamp(32px, 6vw, 40px);
     font-weight: 500;
-    color: #1b3a2d;
+    color: #0F766E;
   }
   
   .subtitulo {
@@ -108,7 +104,7 @@
   margin: 0 0 14px;
   font-size: 14px;
   font-weight: 700;
-  color: #2fa866;
+  color: #0F766E;
 }
  
 /* ===== CAMPOS: grade de 2 colunas dentro do card ===== */
@@ -138,7 +134,7 @@
   font-size: 12px;
   font-weight: 600;
   color: #6b7a72;
-  background: #e8f3ec;
+  background: #E2EAF3;
   border: 1px solid #d3e3d9;
   border-radius: 6px;
 }

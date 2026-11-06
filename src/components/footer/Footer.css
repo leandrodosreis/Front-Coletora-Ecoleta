@@ -1,13 +1,12 @@
 .footer {
   padding: 0 24px 24px;
-  background: #eef8f1;
   font-family: 'Inter', sans-serif;
 }
 
 .footer_conteudo {
   display: flex;
   justify-content: space-between;
-  max-width: 750px; 
+  max-width: 1800px; 
   margin: 24px auto 0; 
   padding-top: 12px;
   font-size: 9px;

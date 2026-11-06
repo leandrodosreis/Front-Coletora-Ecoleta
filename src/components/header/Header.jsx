@@ -26,7 +26,7 @@ export function Header() {
   return (
     <header className="header">
       <Link to="/home" className="header_logo">
-        <span>♻</span> Ecoleta
+        <span>♻ Ecoleta</span>
       </Link>
 
       <button className="header_hamburguer" onClick={() => setAberto(!aberto)}>
