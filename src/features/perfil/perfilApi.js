@@ -1,20 +1,23 @@
 import { rotaBase, pegarToken } from '../../services/API';
  
+
 function converterPerfil(perfil) {
+  let dados = perfil.response.perfil[0];
+
   return {
-    nome: perfil.response.perfil.nome_empresa,
-    cnpj: perfil.response.cnpj,
-    telefone: perfil.response.telefone || '',
-    email: perfil.response.email,
-    cep: perfil.response.cep,
-    logradouro: perfil.response.logradouro,
-    numero: String(perfil.response.numero), // o número vem como inteiro, o input usa texto
-    bairro: perfil.response.bairro,
-    // O "|| ''" evita erro se a API ainda não enviar esses dois campos
-    cidade: perfil.response.nome_cidade || '',
-    estado: perfil.response.sigla_estado || ''
+    nome: dados.nome_empresa || '',
+    cnpj: dados.cnpj || '',
+    telefone: dados.telefone || '',
+    email: dados.email || '',
+    cep: dados.cep || '',
+    logradouro: dados.logradouro || '',
+    numero: String(dados.numero ?? ''),
+    bairro: dados.bairro || '',
+    cidade: dados.nome_cidade || '',
+    estado: dados.sigla || ''
   };
 }
+
  
 export const getPerfil = async function () {
   let url = `${rotaBase}/v1/ecoleta/empresa-coletora/perfil`;

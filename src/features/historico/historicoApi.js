@@ -2,17 +2,15 @@ import { rotaBase, pegarToken } from '../../services/API';
 
 function converterEvento(evento) {
   return {
-    // A "chave" identifica cada linha da lista (o React pede um valor único)
-    chave: `${evento.tipo}-${evento.id_referencia}-${evento.data_hora_status}`,
+    chave: `${evento.tipo_registro}-${evento.id_coleta ?? evento.id_oferta_inicial}-${evento.data_disponivel}`,
     estabelecimento: evento.nome_estabelecimento || '',
     material: evento.material || '',
     quantidade: evento.quantidade,
-    valor: evento.valor,
-    status: evento.status, // Concluída, Recusada...
-    data: evento.data_hora_status
+    valor: evento.valor_historico,
+    status: evento.status_historico,
+    data: evento.data_disponivel
   };
 }
-
 export const getHistorico = async function () {
   let url = `${rotaBase}/v1/ecoleta/empresa-coletora/historico`;
 
@@ -23,17 +21,16 @@ export const getHistorico = async function () {
     });
 
     if (response.ok) {
-      let respostaAPI = await response.json(); 
+      let respostaAPI = await response.json();
 
-      if (respostaAPI.length > 0) {
+      let historico = respostaAPI.response.historico || [];
         // map aplica "converterEvento" em cada evento da lista
-        return respostaAPI.map(converterEvento);
-      } else {
-        console.warn('A API não retornou nada');
-        return false;
-      }
+
+      return historico.map(converterEvento);
     }
+
     return false;
+
   } catch (error) {
     console.error(error);
     return false;

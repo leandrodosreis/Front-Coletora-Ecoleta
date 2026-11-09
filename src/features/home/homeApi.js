@@ -2,13 +2,13 @@ import { rotaBase, pegarToken } from '../../services/API';
 
 function converterOferta(oferta) {
   return {
-    id: oferta.id,
-    estabelecimento: oferta.residuo.estabelecimento.nome,
-    material: oferta.residuo.tipo_material.material,
-    quantidade: oferta.residuo.quantidade,
-    data: oferta.data_hora_oferta,
+    id: oferta.id_oferta_inicial,
+    estabelecimento: oferta.nome_estabelecimento,
+    material: oferta.material,
+    quantidade: oferta.quantidade,
+    data: oferta.data_disponivel,
     valor: oferta.valor_ofertado,
-    status: oferta.status_atual // Pendente, Aceita ou Recusada
+    status: oferta.status_oferta
   };
 }
 
@@ -16,21 +16,16 @@ function converterOferta(oferta) {
 // ATENÇÃO: o time da API ainda está finalizando o /home.
 // Se o nome de algum campo mudar, é SÓ AQUI que precisamos ajustar.
 function converterHome(home) {
+  let resumo = home.response.resumo;
+
   return {
-    // Estes 3 campos foram combinados, mas os nomes ainda são uma suposição:
-    nome: home.response.nome_empresa || '',
-    kg: home.response.kg_encaminhados || 0,
-    residuosDisponiveis: home.response.residuos_disponiveis || 0,
-
-    // "Ofertas enviadas" = pendentes + aceitas + recusadas (soma de todas)
-    ofertasEnviadas: home.ofertas_pendentes + home.ofertas_aceitas + home.ofertas_recusadas,
-
-    // Estes dois já existem no swagger
-    coletasAgendadas: home.coletas_agendadas,
-    coletasConcluidas: home.coletas_concluidas,
-
-    // map aplica "converterOferta" em cada oferta da lista
-    ofertasRecentes: (home.ofertas_recentes || []).map(converterOferta)
+    nome: resumo.nome_empresa || '',
+    kg: Number(resumo.soma_total_quantidade) || 0,
+    residuosDisponiveis: resumo.residuos_disponiveis || 0,
+    ofertasEnviadas: resumo.ofertas_enviadas || 0,
+    coletasAgendadas: resumo.coletas_agendadas || 0,
+    coletasConcluidas: resumo.coletas_concluidas || 0,
+    ofertasRecentes: (home.response.ofertas || []).map(converterOferta)
   };
 }
 
@@ -48,6 +43,7 @@ export const getHome = async function () {
       let respostaAPI = await response.json();
       return converterHome(respostaAPI);
     }
+
     return false;
   } catch (error) {
     console.error(error);

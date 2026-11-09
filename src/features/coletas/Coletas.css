@@ -14,7 +14,7 @@
   margin: 0;
   font-size: 12px;
   font-weight: 600;
-  color: #2fa866;
+  color: #0F766E;
 }
 
 /* "clamp" deixa o tamanho se ajustar: mínimo 32px, máximo 40px */
@@ -22,13 +22,13 @@
   margin: 6px 0;
   font-size: clamp(32px, 6vw, 40px);
   font-weight: 500;
-  color: #1b3a2d;
+  color: #0F766E;
 }
 
 .subtitulo {
   margin: 0 0 24px;
   font-size: 12px;
-  color: #6b8577;
+  color: #0F766E;
 }
 
 .abas {
@@ -44,7 +44,7 @@
   padding: 10px 16px;
   font: inherit;
   font-size: 12px;
-  color: #1b3a2d;
+  color: #0F766E;
   background: none;
   border: 0;
   border-radius: 10px;

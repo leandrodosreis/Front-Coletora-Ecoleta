@@ -2,12 +2,12 @@ import { rotaBase, pegarToken, sairDoSistema } from '../../services/API';
 
 function converterColeta(coleta) {
   return {
-    id_coleta: coleta.id,
-    status_coleta: coleta.status_atual,
-    nome_estabelecimento: coleta.residuo.estabelecimento.nome,
-    material: coleta.residuo.tipo_material.material,
-    quantidade: coleta.residuo.quantidade,
-    distancia: coleta.residuo.distancia_km,
+    id_coleta: coleta.id_coleta,
+    status_coleta: coleta.status_coleta,
+    nome_estabelecimento: coleta.nome_estabelecimento || '',
+    material: coleta.material || '',
+    quantidade: coleta.quantidade,
+    distancia: coleta.distancia,
     valor_acordado: coleta.valor_acordado
   };
 }
@@ -30,13 +30,12 @@ export const getColetasEmpresa = async function () {
     if (response.ok) {
       let respostaAPI = await response.json(); // lista de coletas
 
-      if (respostaAPI.length > 0) {
+      let coletas = respostaAPI.response.coletas || [];
+
         // map aplica a função "converterColeta" em cada coleta da lista
-        return respostaAPI.map(converterColeta);
-      } else {
-        console.warn('A API não retornou nada');
-        return false;
-      }
+        return coletas.map(converterColeta);
+
+    
     }
     return false;
   } catch (error) {

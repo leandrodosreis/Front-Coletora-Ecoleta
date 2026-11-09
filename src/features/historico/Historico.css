@@ -14,13 +14,13 @@
   margin: 0;
   font-size: 13px;
   font-weight: 600;
-  color: #2fa866;
+  color: #0F766E;
 }
 .historico_titulo {
   margin: 6px 0;
   font-size: clamp(32px, 6vw, 40px);
   font-weight: 500;
-  color: #1b3a2d;
+  color: #0F766E;
 }
 .historico_subtitulo {
   margin: 0 0 32px;
