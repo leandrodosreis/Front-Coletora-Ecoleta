@@ -4,8 +4,9 @@ import './Header.css';
 import { removerToken } from '../../services/API';
 
 const itens = [
-  { nome: 'home', rota: '/home', icone: '🍃' },
+  { nome: 'Início', rota: '/home', icone: '🍃' },
   { nome: 'Resíduos', rota: '/residuos', icone: '📦' },
+  { nome: 'Estabelecimentos', rota: '/estabelecimento', icone: '🏭' },
   { nome: 'Coletas', rota: '/coletas', icone: '🚚' },
   { nome: 'Histórico', rota: '/historico', icone: '📅' },
   { nome: 'Perfil', rota: '/perfil', icone: '👤' }

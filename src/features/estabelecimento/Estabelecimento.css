@@ -1,0 +1,320 @@
+
+/* ===== ESTRUTURA PRINCIPAL ===== */
+
+.estabelecimentos_tela {
+  flex: 1;
+  padding: 44px 24px 32px;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+.estabelecimentos_conteudo {
+  max-width: 1800px;
+  margin: 0 auto;
+}
+
+.estabelecimentos_etiqueta {
+  margin: 0;
+  color: #2563EB;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.estabelecimentos_titulo {
+  margin: 6px 0;
+  color: #1E40AF;
+  font-size: clamp(32px, 6vw, 40px);
+  font-weight: 500;
+}
+
+.estabelecimentos_subtitulo {
+  margin: 0 0 24px;
+  color: #64748B;
+  font-size: 12px;
+}
+
+/* ===== BUSCA E FILTROS ===== */
+
+.estabelecimentos_filtros {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+
+.estabelecimentos_busca {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  min-width: 220px;
+  height: 42px;
+  padding: 0 12px;
+  box-sizing: border-box;
+  background: #fff;
+  border: 1px solid #CBD5E1;
+  border-radius: 9px;
+}
+
+.estabelecimentos_busca span {
+  font-size: 15px;
+  color: #64748B;
+}
+
+.estabelecimentos_busca input {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  font: inherit;
+  font-size: 12px;
+  color: #334155;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+.estabelecimentos_busca input::placeholder {
+  color: #94A3B8;
+}
+
+.estabelecimentos_select_caixa {
+  min-width: 180px;
+}
+
+.estabelecimentos_select_caixa select {
+  width: 100%;
+  height: 42px;
+  padding: 0 12px;
+  font: inherit;
+  font-size: 12px;
+  color: #475569;
+  background: #fff;
+  border: 1px solid #CBD5E1;
+  border-radius: 9px;
+  outline: none;
+  cursor: pointer;
+}
+
+.estabelecimentos_botao_filtrar {
+  height: 42px;
+  padding: 0 22px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  background: #2563EB;
+  border: 1px solid #2563EB;
+  border-radius: 9px;
+  cursor: pointer;
+}
+
+/* ===== GRADE DE ESTABELECIMENTOS ===== */
+
+.estabelecimentos_grade {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  align-items: stretch;
+}
+
+/* ===== CARD ===== */
+
+.estabelecimentos_card {
+  min-width: 0;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid #DFE5EC;
+  border-radius: 16px;
+  box-sizing: border-box;
+}
+
+/* Área visual que representa o mapa */
+
+.estabelecimentos_mapa {
+  position: relative;
+  display: grid;
+  place-items: center;
+  height: 145px;
+  overflow: hidden;
+
+  background-color: #E8F0FC;
+  background-image:
+    linear-gradient(35deg, transparent 46%, #D1DFF3 47%, #D1DFF3 49%, transparent 50%),
+    linear-gradient(120deg, transparent 44%, #D1DFF3 45%, #D1DFF3 47%, transparent 48%),
+    linear-gradient(90deg, transparent 48%, #D7E4F6 49%, #D7E4F6 51%, transparent 52%);
+
+  background-size: 180px 130px, 220px 160px, 100px 100%;
+}
+
+/* Marcador de localização */
+
+.estabelecimentos_pin {
+  position: relative;
+  display: block;
+  width: 30px;
+  height: 30px;
+  background: #2563EB;
+  border: 4px solid #fff;
+  border-radius: 50% 50% 50% 0;
+  box-shadow: 0 2px 8px rgba(30, 64, 175, 0.2);
+  transform: rotate(-45deg);
+}
+
+.estabelecimentos_pin::after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  top: 7px;
+  left: 7px;
+  background: #fff;
+  border-radius: 50%;
+}
+
+/* ===== INFORMAÇÕES DO CARD ===== */
+
+.estabelecimentos_corpo {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.estabelecimentos_topo {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.estabelecimentos_topo h2 {
+  margin: 0;
+  color: #26354A;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.estabelecimentos_topo span {
+  color: #2563EB;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.estabelecimentos_endereco {
+  margin: 7px 0 0;
+  color: #64748B;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* Separador */
+
+.estabelecimentos_linha {
+  width: 100%;
+  margin: 17px 0;
+  border: none;
+  border-top: 1px solid #E2E8F0;
+}
+
+/* Resíduos */
+
+.estabelecimentos_label {
+  margin: 0 0 8px;
+  color: #1E40AF;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.estabelecimentos_residuos {
+  min-height: 40px;
+  margin: 0;
+  color: #475569;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+/* Botão */
+
+.estabelecimentos_botao {
+  align-self: flex-start;
+  margin-top: 18px;
+  padding: 11px 17px;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  color: #2563EB;
+  background: #EFF6FF;
+  border: 1px solid #BFDBFE;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* ===== AVISOS ===== */
+
+.estabelecimentos_aviso {
+  margin: 0;
+  padding: 20px;
+  color: #64748B;
+  font-size: 14px;
+  background: #fff;
+  border: 1px solid #DFE5EC;
+  border-radius: 12px;
+}
+
+/* ===== RESPONSIVIDADE ===== */
+
+@media (max-width: 1100px) {
+  .estabelecimentos_grade {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .estabelecimentos_tela {
+    padding: 28px 16px 24px;
+  }
+
+  .estabelecimentos_filtros {
+    align-items: stretch;
+  }
+
+  .estabelecimentos_busca {
+    flex-basis: 100%;
+  }
+
+  .estabelecimentos_select_caixa {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .estabelecimentos_botao_filtrar {
+    flex: 1;
+  }
+
+  .estabelecimentos_grade {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .estabelecimentos_corpo {
+    padding: 18px;
+  }
+
+  .estabelecimentos_botao {
+    width: 100%;
+    min-height: 44px;
+  }
+}
+
+@media (max-width: 400px) {
+  .estabelecimentos_topo {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .estabelecimentos_mapa {
+    height: 120px;
+  }
+}

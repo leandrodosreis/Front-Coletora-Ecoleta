@@ -1,41 +1,7 @@
-import { useState } from "react";
-import "./Residuos.css";
 
-const RESIDUOS_INICIAIS = [
-  {
-    id: 1,
-    material: "Vidro",
-    estabelecimento: "Restaurante X - 2.4 km",
-    tipo: "vidro",
-    status: "disponivel",
-    quantidade: "35 kg",
-    data: "27/08/2026",
-    horario: "08:00 às 12:00",
-    observacao: "Material separado e embalado.",
-  },
-  {
-    id: 2,
-    material: "Papelão",
-    estabelecimento: "Restaurante X - 2.4 km",
-    tipo: "papel",
-    status: "agendado",
-    quantidade: "18 kg",
-    data: "28/08/2026",
-    horario: "08:00 às 12:00",
-    observacao: "Próximo ao local indicado.",
-  },
-  {
-    id: 3,
-    material: "Plástico",
-    estabelecimento: "Mini Mercado - 5.0 km",
-    tipo: "plastico",
-    status: "disponivel",
-    quantidade: "12 kg",
-    data: "29/08/2026",
-    horario: "08:00 às 17:00",
-    observacao: "Material leve, porém grande.",
-  },
-];
+import { useState, useEffect } from "react";
+import { getResiduos } from "./residuosApi";
+import "./Residuos.css";
 
 const ROTULO_STATUS = {
   disponivel: "DISPONÍVEL",
@@ -43,21 +9,53 @@ const ROTULO_STATUS = {
 };
 
 export function Residuos() {
-  const [residuos] = useState(RESIDUOS_INICIAIS);
+  // ESTADOS DA TELA
+  const [residuos, setResiduos] = useState([]); // Dados recebidos da API
+  const [carregando, setCarregando] = useState(true); // Controla o carregamento
+  const [erro, setErro] = useState(false); // Controla erros da API
+
   const [busca, setBusca] = useState("");
   const [tipo, setTipo] = useState("todos");
   const [status, setStatus] = useState("todos");
-  const [filtros, setFiltros] = useState({ busca: "", tipo: "todos", status: "todos" });
 
+  // Guarda os filtros somente quando o botão Filtrar for clicado
+  const [filtros, setFiltros] = useState({
+    busca: "",
+    tipo: "todos",
+    status: "todos"
+  });
+
+  // BUSCA OS RESÍDUOS NA API QUANDO A TELA É ABERTA
+  useEffect(() => {
+    async function carregarResiduos() {
+      let dados = await getResiduos();
+
+      if (dados !== false) {
+        setResiduos(dados);
+      } else {
+        setErro(true);
+      }
+
+      setCarregando(false);
+    }
+
+    carregarResiduos();
+  }, []);
+
+  // APLICA OS FILTROS INFORMADOS PELO USUÁRIO
   function aplicarFiltros() {
     setFiltros({ busca, tipo, status });
   }
 
+  // FILTRA OS RESÍDUOS RECEBIDOS DA API
   const residuosFiltrados = residuos.filter((r) => {
-    const bateBusca = r.material.toLowerCase().includes(filtros.busca.toLowerCase()) || 
-                      r.estabelecimento.toLowerCase().includes(filtros.busca.toLowerCase());
+    const bateBusca =
+      r.material.toLowerCase().includes(filtros.busca.toLowerCase()) ||
+      r.estabelecimento.toLowerCase().includes(filtros.busca.toLowerCase());
+
     const bateTipo = filtros.tipo === "todos" || r.tipo === filtros.tipo;
     const bateStatus = filtros.status === "todos" || r.status === filtros.status;
+
     return bateBusca && bateTipo && bateStatus;
   });
 
@@ -79,14 +77,23 @@ export function Residuos() {
             />
           </div>
 
-          <select className="select_filtro" value={tipo} onChange={(e) => setTipo(e.target.value)}>
+          <select
+            className="select_filtro"
+            value={tipo}
+            onChange={(e) => setTipo(e.target.value)}
+          >
             <option value="todos">Todos os tipos</option>
             <option value="vidro">Vidro</option>
             <option value="papel">Papel</option>
             <option value="plastico">Plástico</option>
+            <option value="outros">Outros</option>
           </select>
 
-          <select className="select_filtro" value={status} onChange={(e) => setStatus(e.target.value)}>
+          <select
+            className="select_filtro"
+            value={status}
+            onChange={(e) => setStatus(e.target.value)}
+          >
             <option value="todos">Todos os status</option>
             <option value="disponivel">Disponível</option>
             <option value="agendado">Agendado</option>
@@ -98,19 +105,39 @@ export function Residuos() {
         </div>
 
         <section className="lista_residuos">
-          {residuosFiltrados.length === 0 && (
-            <p className="residuos_aviso">Nenhum resíduo encontrado. Ajuste os filtros e tente de novo.</p>
+
+          {/* AVISOS DE CARREGAMENTO E ERRO */}
+          {carregando && (
+            <p className="residuos_aviso">Carregando resíduos...</p>
           )}
 
-          {residuosFiltrados.map((r) => (
+          {erro && (
+            <p className="residuos_aviso">
+              Não foi possível carregar os resíduos.
+            </p>
+          )}
+
+          {/* MENSAGEM QUANDO NÃO EXISTEM RESÍDUOS */}
+          {!carregando && !erro && residuosFiltrados.length === 0 && (
+            <p className="residuos_aviso">
+              Nenhum resíduo encontrado. Ajuste os filtros e tente de novo.
+            </p>
+          )}
+
+          {/* LISTA OS RESÍDUOS RECEBIDOS DA API */}
+          {!carregando && !erro && residuosFiltrados.map((r) => (
             <article className="residuos_card" key={r.id}>
               <div className="card_topo">
                 <div className="card_icone">📦</div>
+
                 <div className="card_titulo_texto">
                   <h2>{r.material}</h2>
                   <p>{r.estabelecimento}</p>
                 </div>
-                <span className={`selo selo_${r.status}`}>{ROTULO_STATUS[r.status]}</span>
+
+                <span className={`selo selo_${r.status}`}>
+                  {ROTULO_STATUS[r.status] || r.status}
+                </span>
               </div>
 
               <div className="card_info_grade">
@@ -118,10 +145,12 @@ export function Residuos() {
                   <strong>Quantidade</strong>
                   <p>{r.quantidade}</p>
                 </div>
+
                 <div className="info_centro">
                   <strong>Data disponível</strong>
                   <p>{r.data}</p>
                 </div>
+
                 <div className="info_direita">
                   <strong>Horário</strong>
                   <p>{r.horario}</p>
@@ -130,16 +159,22 @@ export function Residuos() {
 
               <div className="card_rodape">
                 <p className="observacao">{r.observacao}</p>
+
                 <div className="acoes">
                   {r.status === "disponivel" ? (
-                    <button className="botao_oferta">Fazer oferta →</button>
+                    <button className="botao_oferta">
+                      Fazer oferta →
+                    </button>
                   ) : (
-                    <button className="botao_ver_coleta">Ver Coleta</button>
+                    <button className="botao_ver_coleta">
+                      Ver Coleta
+                    </button>
                   )}
                 </div>
               </div>
             </article>
           ))}
+
         </section>
       </div>
     </main>

@@ -9,7 +9,7 @@ import { Historico } from '../features/historico/Historico';
 import { Residuos } from '../features/residuos/Residuos';
 import { Login } from '../features/login/Login';
 import { pegarToken } from '../services/API';
-
+import { Estabelecimentos } from '../features/estabelecimento/Estabelecimento';
 
 function Layout() {
   if (!pegarToken()) {
@@ -36,6 +36,7 @@ export function Rotas() {
       <Route element={<Layout />}>
         <Route path="/home" element={<Home />} />
         <Route path="/residuos" element={<Residuos />} />
+        <Route path="/estabelecimento" element={<Estabelecimentos />} />
         <Route path="/coletas" element={<Coletas />} />
         <Route path="/historico" element={<Historico />} />
         <Route path="/perfil" element={<Perfil/>} />

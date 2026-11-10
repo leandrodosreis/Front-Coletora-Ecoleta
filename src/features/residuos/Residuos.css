@@ -1,292 +1,294 @@
 .tela_residuos {
-    display: flex;
-    justify-content: center;
-    min-height: calc(100vh - 70px);
-    padding: 60px 20px 20px;
-    box-sizing: border-box;
-    width: 100%;
-    font-family: 'Inter', sans-serif;
+  flex: 1;
+  padding: 44px 24px 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+.conteudo_residuos {
+  max-width: 1800px;
+  margin: 0 auto;
+}
+
+.tela_residuos .etiqueta {
+  color: #0F766E;
+}
+
+.titulo_residuos {
+  margin: 6px 0;
+  font-size: clamp(32px, 6vw, 40px);
+  font-weight: 500;
+  color: #0F766E;
+}
+
+.tela_residuos .subtitulo {
+  margin: 0 0 24px;
+  font-size: 12px;
+  color: #6b8577;
+}
+
+/* ===== FILTROS ===== */
+
+.barra_filtros {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.busca_campo {
+  flex: 1;
+  min-width: 220px;
+}
+
+.barra_pesquisa,
+.select_filtro {
+  height: 40px;
+  padding: 0 12px;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 12px;
+  color: #4b5a52;
+  background: #fff;
+  border: 1px solid #d3e3d9;
+  border-radius: 8px;
+}
+
+.barra_pesquisa {
+  width: 100%;
+}
+
+.select_filtro {
+  min-width: 150px;
+}
+
+.botao_filtrar {
+  height: 40px;
+  padding: 0 20px;
+  font: inherit;
+  font-size: 13px;
+  color: #fff;
+  background: #0F766E;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* ===== LISTA DE RESÍDUOS ===== */
+
+.lista_residuos {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.residuos_card {
+  padding: 24px;
+  background: #fff;
+  border: 1px solid #dfe5e1;
+  border-radius: 18px;
+  box-sizing: border-box;
+}
+
+/* Cabeçalho do card */
+
+.card_topo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.card_icone {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  font-size: 22px;
+  background: #e6f4ec;
+  border-radius: 10px;
+}
+
+.card_titulo_texto {
+  flex: 1;
+  min-width: 160px;
+}
+
+.card_titulo_texto h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 500;
+  color: #26352d;
+}
+
+.card_titulo_texto p {
+  margin: 4px 0 0;
+  font-size: 14px;
+  color: #5f6f66;
+}
+
+/* Etiquetas de status */
+
+.selo {
+  padding: 7px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 20px;
+}
+
+.selo_disponivel {
+  color: #0F766E;
+  background: #e6f4ec;
+}
+
+.selo_agendado {
+  color: #47617a;
+  background: #E2EAF3;
+}
+
+/* Informações do resíduo */
+
+.card_info_grade {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+  margin-top: 24px;
+  padding: 16px 0;
+  border-top: 1px solid #edf0ed;
+  border-bottom: 1px solid #edf0ed;
+}
+
+.card_info_grade strong {
+  font-size: 12px;
+  font-weight: 600;
+  color: #4b5a52;
+}
+
+.card_info_grade p {
+  margin: 6px 0 0;
+  font-size: 14px;
+  color: #26352d;
+}
+
+/* Rodapé do card */
+
+.card_rodape {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+.observacao {
+  flex: 1;
+  min-width: 180px;
+  margin: 0;
+  font-size: 12px;
+  color: #6b8577;
+}
+
+.acoes {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.botao_oferta,
+.botao_ver_coleta {
+  padding: 11px 18px;
+  font: inherit;
+  font-size: 13px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.botao_oferta {
+  color: #fff;
+  background: #0F766E;
+  border: 1px solid #0F766E;
+}
+
+.botao_ver_coleta {
+  color: #47617a;
+  background: #fff;
+  border: 1px solid #c9d1cc;
+}
+
+/* Avisos */
+
+.residuos_aviso {
+  margin: 0;
+  padding: 20px;
+  font-size: 14px;
+  color: #6b8577;
+  background: #fff;
+  border: 1px solid #dfe5e1;
+  border-radius: 12px;
+}
+
+/* ===== CELULAR ===== */
+
+@media (max-width: 700px) {
+  .tela_residuos {
+    padding: 28px 16px 0;
   }
-  
-  .conteudo_residuos {
-    max-width: 1800px;
-    margin: 0 auto;
-  }
-  
-  .etiqueta {
-    font-size: 14px;
-    font-weight: 700;
-    color: #30AC74;
-    margin: 0 0 10px 0;
-    letter-spacing: 0.5px;
-  }
-  
-  .titulo_residuos {
-    margin: 6px 0;
-    font-size: clamp(32px, 6vw, 40px);
-    font-weight: 500;
-    color: #1b3a2d;
-  }
-  
-  .subtitulo {
-    font-size: 16px;
-    color: #76928F;
-    margin: 0 0 40px 0;
-  }
-  
-  /* Barra de Filtros Alinhada */
+
   .barra_filtros {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    margin-bottom: 30px;
-    width: 100%;
+    align-items: stretch;
   }
-  
+
   .busca_campo {
-    display: flex;
-    align-items: center;
-    flex: 1;
-    height: 54px;
-    padding: 0 16px;
-    border: 1px solid #DFECE9;
-    border-radius: 12px;
-    background-color: #fff;
-    box-sizing: border-box;
+    flex-basis: 100%;
   }
-  
-  .barra_pesquisa {
-    border: none;
-    outline: none;
-    background: transparent;
-    width: 100%;
-    font-size: 15px;
-    color: #12332E;
-  }
-  
-  .select_filtro,
-  .botao_filtrar {
-    height: 54px;
-    padding: 0 16px;
-    font-size: 15px;
-    color: #2F4A47;
-    background-color: #fff;
-    border: 1px solid #DFECE9;
-    border-radius: 12px;
-    cursor: pointer;
-    box-sizing: border-box;
-    outline: none;
-  }
-  
+
   .select_filtro {
-    min-width: 150px;
+    flex: 1;
+    min-width: 0;
   }
-  
+
   .botao_filtrar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 24px;
-    font-weight: 500;
-    transition: background-color 0.2s;
+    flex: 1;
   }
-  
-  .botao_filtrar:hover {
-    background-color: #F0F7F4;
-  }
-  
-  /* Listagem de Cards */
-  .lista_residuos {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    width: 100%;
-  }
-  
-  .residuos_aviso {
-    color: #76928F;
-    font-size: 16px;
-    text-align: center;
-    margin-top: 20px;
-  }
-  
-  /* Design dos Cards em proporção ao Perfil */
+
   .residuos_card {
-    background-color: #fff;
-    border: 1px solid #DFECE9;
-    border-radius: 16px;
-    padding: 24px;
-    box-sizing: border-box;
-    width: 100%;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+    padding: 18px;
   }
-  
-  .card_topo {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    width: 100%;
-  }
-  
-  .card_icone {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    width: 44px;
-    height: 44px;
-    border-radius: 12px;
-    background-color: #F0F7F4;
-  }
-  
-  .card_titulo_texto {
-    flex: 1;
-  }
-  
-  .card_titulo_texto h2 {
-    margin: 0 0 2px 0;
-    font-size: 18px;
-    font-weight: 600;
-    color: #12332E;
-  }
-  
-  .card_titulo_texto p {
-    margin: 0;
-    font-size: 13px;
-    color: #76928F;
-  }
-  
-  .selo {
-    padding: 6px 12px;
-    border-radius: 8px;
-    font-size: 12px;
-    font-weight: 700;
-  }
-  
-  .selo_disponivel {
-    background-color: #E3EEEA;
-    color: #30AC74;
-  }
-  
-  .selo_agendado {
-    background-color: #E2F0FE;
-    color: #0066CC;
-  }
-  
-  /* Informações do Resíduo */
+
   .card_info_grade {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-    padding: 16px 0;
-    border-top: 1px solid #F0F7F4;
-    border-bottom: 1px solid #F0F7F4;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 12px;
   }
-  
-  .card_info_grade div {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    flex: 1;
-  }
-  
-  .card_info_grade strong {
-    font-size: 12px;
-    font-weight: 600;
-    color: #30AC74;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-  
-  .card_info_grade p {
-    margin: 0;
-    font-size: 15px;
-    color: #12332E;
-  }
-  
-  .info_centro {
-    align-items: center;
-    text-align: center;
-  }
-  
-  .info_direita {
-    align-items: flex-end;
-    text-align: right;
-  }
-  
-  /* Rodapé Interno do Card */
+
   .card_rodape {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 16px;
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .acoes {
     width: 100%;
   }
-  
-  .observacao {
-    margin: 0;
-    font-size: 13px;
-    font-style: inherit;
-    color: #76928F;
-  }
-  
-  .acoes {
-    display: flex;
-  }
-  
-  .botao_oferta {
-    padding: 10px 20px;
-    font-size: 14px;
-    font-weight: 600;
-    color: #fff;
-    background-color: #30AC74;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.2s;
-  }
-  
-  .botao_oferta:hover {
-    background-color: #258A5C;
-  }
-  
+
+  .botao_oferta,
   .botao_ver_coleta {
-    padding: 10px 20px;
-    font-size: 14px;
-    color: #12332E;
-    background-color: #fff;
-    border: 1px solid #DFECE9;
-    border-radius: 10px;
-    cursor: pointer;
-    font-weight: 500;
+    width: 100%;
+    min-height: 44px;
   }
-  
-  .botao_ver_coleta:hover {
-    background-color: #F0F7F4;
+}
+
+@media (max-width: 400px) {
+  .card_topo {
+    gap: 10px;
   }
-  
-  /* Responsivo para celulares */
-  @media (max-width: 768px) {
-    .barra_filtros {
-      flex-direction: column;
-      align-items: stretch;
-    }
-    .card_info_grade {
-      flex-direction: column;
-      gap: 12px;
-    }
-    .info_centro, .info_direita {
-      align-items: flex-start;
-      text-align: left;
-    }
-    .card_rodape {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 16px;
-    }
-    .acoes {
-      width: 100%;
-      justify-content: flex-end;
-    }
+
+  .selo {
+    margin-left: auto;
   }
-  
+
+  .card_info_grade {
+    grid-template-columns: 1fr;
+  }
+}
