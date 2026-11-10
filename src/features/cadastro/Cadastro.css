@@ -1,8 +1,9 @@
+
 .tela_cadastro {
   position: relative;
-  min-height: 100vh; 
+  min-height: 100vh;
   display: flex;
-  justify-content: center; 
+  justify-content: center;
   padding: 75px 16px 80px;
   font-family: 'Inter', sans-serif;
   box-sizing: border-box;
@@ -16,12 +17,14 @@
   top: 0;
   bottom: 0;
   width: 75px;
-  background: #416a53;
+  background: #0F766E;
 }
+
 .tela_cadastro::before {
   left: 0;
   border-radius: 0 60px 60px 0;
 }
+
 .tela_cadastro::after {
   right: 0;
   border-radius: 60px 0 0 60px;
@@ -40,15 +43,18 @@
   border: 1px solid #8a8f8c;
   border-radius: 20px;
 }
+
 .card_titulo h1 {
   margin: 0 0 14px;
   font-size: 28px;
   font-weight: 500;
+  color: #26354A;
 }
+
 .card_titulo p {
   margin: 0;
   font-size: 22px;
-  color: #263d31;
+  color: #334155;
 }
 
 .formulario {
@@ -65,13 +71,15 @@
   border-radius: 8px;
   font-size: 14px;
 }
+
 .mensagem_erro {
   color: #c00000;
   background: #fdecec;
 }
+
 .mensagem_sucesso {
-  color: #416a53;
-  background: #dff2e6;
+  color: #0F766E;
+  background: #E6F4F1;
 }
 
 .botoes {
@@ -81,6 +89,7 @@
   column-gap: 17px;
   margin-top: 24px;
 }
+
 .botao {
   height: 47px;
   font: inherit;
@@ -89,11 +98,15 @@
   border-radius: 14px;
   cursor: pointer;
 }
+
 .botao_sair {
   background: #f8fafb;
 }
+
 .botao_cadastrar {
-  background: #6fb48c;
+  color: #fff;
+  background: #0F766E;
+  border-color: #0F766E;
 }
 
 .botao:disabled {
@@ -101,17 +114,22 @@
   cursor: not-allowed;
 }
 
+/* CELULAR */
+
 @media (max-width: 700px) {
   .tela_cadastro {
     padding: 32px 24px 48px;
   }
+
   .tela_cadastro::before,
   .tela_cadastro::after {
     width: 12px;
   }
+
   .tela_cadastro::before {
     border-radius: 0 12px 12px 0;
   }
+
   .tela_cadastro::after {
     border-radius: 12px 0 0 12px;
   }
@@ -119,17 +137,20 @@
   .card_titulo {
     padding: 16px;
   }
+
   .card_titulo h1 {
     font-size: 22px;
   }
+
   .card_titulo p {
     font-size: 16px;
   }
 
   .formulario {
-    grid-template-columns: 1fr; /* uma coluna só */
+    grid-template-columns: 1fr;
     margin-top: 24px;
   }
+
   .botao {
     font-size: 18px;
   }

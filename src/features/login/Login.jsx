@@ -4,7 +4,7 @@
 //  2. Ao clicar em Entrar, conferimos se os campos estão preenchidos corretamente.
 //  3. Se estiver tudo certo, enviamos para a API (loginApi.js).
 //  4. Se a API aceitar, guardamos o token no navegador e vamos para a tela de Início.
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 // Link troca de tela sem recarregar a página. useNavigate troca de tela pelo código.
 import { Link, useNavigate } from 'react-router-dom';
 import "./Login.css";
@@ -89,14 +89,12 @@ export function Login() {
 
 
                             {/* Link leva para o Cadastro (rota "/") sem recarregar a página */}
-                            <h2 className="cadastro ">Não possui conta? <Link to="/">Cadastre-se</Link></h2>
+                            <h2 className="cadastro ">Não possui conta? <Link to="/cadastro">Cadastre-se</Link></h2>
 
-                            <div className="botao">
                                 {/* onClick: roda a função "entrar". disabled: desliga o botão enquanto envia */}
                                 <button className="botao-entrar" type="button" onClick={entrar} disabled={enviando}>
                                     <h2 className="login-entrar">{enviando ? 'Entrando...' : 'Entrar'}</h2>
                                 </button>
-                            </div>
 
                             {/* A mensagem de erro só aparece quando existe texto nela */}
                             {mensagem && <p className="login-erro">{mensagem}</p>}

@@ -1,93 +1,153 @@
+.main-login,
+.main-login * {
+    box-sizing: border-box;
+}
+
 .main-login {
     background-image: url("../../assets/background-tela.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background-size:cover;
-    background-position: center;
-    background-repeat: no-repeat;
     width: 100%;
-
+    min-height: 100vh;
+    padding: 24px 16px;
 }
 
-.card {
+.main-login .card {
+    width: 706px;
+    max-width: 473px;
+    min-height: 600px;
+    padding: 48px 56px 40px;
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(6px);
+    border: 1px solid #1a1a1a;
+    border-radius: 8px;
     display: flex;
-    width: 473px;
-    height: 706px;
-    background-color: white;
-    justify-content: center;
-    flex-direction: row;
-
-
-}
-
-.entrar {
-    display: flex;
-    font-size: 48px;
     justify-content: center;
 }
 
-.card-login {
-    height: 45px;
-    margin-top: 120px;
-    margin-left: 50px;
-    font-size: 7px;
-}
-
-.cnpj {
-    display: flex;
-    position: absolute;
-    margin-top: -30px;
-}
-
-.campo-login {
-    display: flex;
-    width: 250px;
-    height: 45px;
-}
-
-
-.senha {
+.main-login .login-container {
+    width: 100%;
     display: flex;
     flex-direction: column;
-    margin-top: 60px;
-    margin-left: 50px;
-    font-size: 7px;
+    align-items: stretch;
+    gap: 20px;
 }
 
-.campo-senha {
+.main-login h1,
+.main-login h2 {
+    margin: 0;
+    font-weight: 500;
+}
+
+.main-login .entrar {
+    font-size: 36px;
+    font-weight: 600;
+    text-align: center;
+    justify-content: center;
+}
+
+.main-login .logo {
+    display: block;
+    width: 220px;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto 8px;
+}
+
+.main-login .card-login,
+.main-login .senha {
     display: flex;
-    width: 250px;
+    flex-direction: column;
+    gap: 9px;
+    height: auto;
+    margin: 0;
+    font-size: inherit;
+}
+
+/* labels (antes eram absolute com margin negativa) */
+.main-login .cnpj,
+.main-login .sua-senha {
+    position: static;
+    margin: 0;
+    font-size: 13px;
+    font-weight: 500;
+    color: #222;
+}
+
+.main-login .campo-login,
+.main-login .campo-senha {
+    display: block;
+    width: 100%;
     height: 45px;
-
+    padding: 0 12px;
+    font-size: 16px;
+    background: #fff;
+    border: 1px solid #1a1a1a;
+    border-radius: 4px;
 }
 
-.sua-senha {
-    display: flex;
-    margin-top: -30px;
-    position: absolute;
+.main-login .campo-login:focus,
+.main-login .campo-senha:focus {
+    outline: 2px solid #52B788;
+    outline-offset: 1px;
 }
 
-.cadastro { 
-    display: flex;
-    margin-top: 39px;
-}
-
-.login-entrar {
-    display: flex;
+/* links */
+.main-login .esqueceu-senha {
+    font-size: 12px;
     margin-top: 2px;
-    margin-left: 70px;
-    font-size: 32px;
-    color: white;
 }
 
-.botao-entrar {
+.main-login .esqueceu-senha a {
+    color: #1a4fd6;
+    text-decoration: none;
+}
+
+.main-login .cadastro {
+    display: block;
+    margin: 16px 0 0;
+    font-size: 13px;
+    font-weight: 400;
+}
+
+.main-login .cadastro a {
+    color: #1a4fd6;
+    text-decoration: none;
+}
+
+.main-login .esqueceu-senha a:hover,
+.main-login .cadastro a:hover {
+    text-decoration: underline;
+}
+
+/* botão */
+.main-login .botao-entrar {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 45px;
+    margin-top: 28px;
+    padding: 0;
     background-color: #52B788;
     border: none;
-    width: 250px;
-    height: 45px;
-    margin-top: 45px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.15s;
+}
 
+.main-login .botao-entrar:hover {
+    background-color: #40a074;
+}
+
+.main-login .login-entrar {
+    display: block;
+    margin: 0;
+    font-size: 20px;
+    font-weight: 500;
+    color: #fff;
 }

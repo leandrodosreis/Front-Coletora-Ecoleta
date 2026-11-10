@@ -154,14 +154,18 @@ export function Cadastro() {
     setEnviando(false);
 
     // 4. Mostra o resultado na tela
-    if (resultado.ok) {
-      setSucesso(true);
-      setMensagem('Cadastro realizado com sucesso!');
-      setValores(valoresIniciais); // limpa o formulário
-    } else {
-      setSucesso(false);
-      setMensagem(resultado.mensagem);
-    }
+if (resultado.ok) {
+  setSucesso(true);
+  setMensagem('Cadastro realizado com sucesso! Redirecionando para o login...');
+  setValores(valoresIniciais); // limpa o formulário
+
+  // setTimeout espera 2000 ms (2 s) e só então roda a função.
+  // Esse tempo dá para o usuário LER a mensagem antes da troca de tela.
+  setTimeout(() => navigate('/'), 2000);
+} else {
+  setSucesso(false);
+  setMensagem(resultado.mensagem);
+}
   }
 
   // Props que todos os Campos recebem. Em vez de repetir em cada um,

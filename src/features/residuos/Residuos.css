@@ -1,3 +1,6 @@
+
+/* ===== ESTRUTURA PRINCIPAL ===== */
+
 .tela_residuos {
   flex: 1;
   padding: 44px 24px 0;
@@ -11,20 +14,20 @@
 }
 
 .tela_residuos .etiqueta {
-  color: #0F766E;
+  color: #2563EB;
 }
 
 .titulo_residuos {
   margin: 6px 0;
   font-size: clamp(32px, 6vw, 40px);
   font-weight: 500;
-  color: #0F766E;
+  color: #26354A;
 }
 
 .tela_residuos .subtitulo {
   margin: 0 0 24px;
   font-size: 12px;
-  color: #6b8577;
+  color: #64748B;
 }
 
 /* ===== FILTROS ===== */
@@ -49,14 +52,24 @@
   box-sizing: border-box;
   font: inherit;
   font-size: 12px;
-  color: #4b5a52;
+  color: #334155;
   background: #fff;
-  border: 1px solid #d3e3d9;
+  border: 1px solid #CBD5E1;
   border-radius: 8px;
 }
 
 .barra_pesquisa {
   width: 100%;
+}
+
+.barra_pesquisa::placeholder {
+  color: #94A3B8;
+}
+
+.barra_pesquisa:focus,
+.select_filtro:focus {
+  outline: none;
+  border-color: #2563EB;
 }
 
 .select_filtro {
@@ -68,9 +81,10 @@
   padding: 0 20px;
   font: inherit;
   font-size: 13px;
+  font-weight: 600;
   color: #fff;
   background: #0F766E;
-  border: none;
+  border: 1px solid #0F766E;
   border-radius: 8px;
   cursor: pointer;
 }
@@ -86,7 +100,7 @@
 .residuos_card {
   padding: 24px;
   background: #fff;
-  border: 1px solid #dfe5e1;
+  border: 1px solid #DFE5EC;
   border-radius: 18px;
   box-sizing: border-box;
 }
@@ -107,7 +121,8 @@
   height: 48px;
   flex-shrink: 0;
   font-size: 22px;
-  background: #e6f4ec;
+  color: #2563EB;
+  background: #EFF6FF;
   border-radius: 10px;
 }
 
@@ -120,13 +135,13 @@
   margin: 0;
   font-size: 20px;
   font-weight: 500;
-  color: #26352d;
+  color: #26354A;
 }
 
 .card_titulo_texto p {
   margin: 4px 0 0;
   font-size: 14px;
-  color: #5f6f66;
+  color: #64748B;
 }
 
 /* Etiquetas de status */
@@ -139,12 +154,12 @@
 }
 
 .selo_disponivel {
-  color: #0F766E;
-  background: #e6f4ec;
+  color: #1E40AF;
+  background: #EFF6FF;
 }
 
 .selo_agendado {
-  color: #47617a;
+  color: #475569;
   background: #E2EAF3;
 }
 
@@ -156,20 +171,20 @@
   gap: 16px;
   margin-top: 24px;
   padding: 16px 0;
-  border-top: 1px solid #edf0ed;
-  border-bottom: 1px solid #edf0ed;
+  border-top: 1px solid #E2E8F0;
+  border-bottom: 1px solid #E2E8F0;
 }
 
 .card_info_grade strong {
   font-size: 12px;
   font-weight: 600;
-  color: #4b5a52;
+  color: #475569;
 }
 
 .card_info_grade p {
   margin: 6px 0 0;
   font-size: 14px;
-  color: #26352d;
+  color: #26354A;
 }
 
 /* Rodapé do card */
@@ -188,7 +203,7 @@
   min-width: 180px;
   margin: 0;
   font-size: 12px;
-  color: #6b8577;
+  color: #64748B;
 }
 
 .acoes {
@@ -207,15 +222,16 @@
 }
 
 .botao_oferta {
+  font-weight: 600;
   color: #fff;
   background: #0F766E;
   border: 1px solid #0F766E;
 }
 
 .botao_ver_coleta {
-  color: #47617a;
+  color: #1E40AF;
   background: #fff;
-  border: 1px solid #c9d1cc;
+  border: 1px solid #CBD5E1;
 }
 
 /* Avisos */
@@ -224,9 +240,9 @@
   margin: 0;
   padding: 20px;
   font-size: 14px;
-  color: #6b8577;
+  color: #64748B;
   background: #fff;
-  border: 1px solid #dfe5e1;
+  border: 1px solid #DFE5EC;
   border-radius: 12px;
 }
 

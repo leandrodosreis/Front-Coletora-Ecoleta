@@ -1,3 +1,4 @@
+
 .tela_coletas {
   flex: 1;
   padding: 44px 24px 0;
@@ -17,34 +18,38 @@
   color: #0F766E;
 }
 
-/* "clamp" deixa o tamanho se ajustar: mínimo 32px, máximo 40px */
+/* Título principal */
+
 .titulo_coletas {
   margin: 6px 0;
   font-size: clamp(32px, 6vw, 40px);
   font-weight: 500;
-  color: #0F766E;
+  color: #26354A;
 }
 
 .subtitulo {
   margin: 0 0 24px;
   font-size: 12px;
-  color: #0F766E;
+  color: #64748B;
 }
+
+/* ===== ABAS ===== */
 
 .abas {
   display: inline-flex;
   gap: 4px;
   padding: 3px;
-  background: #e6f0ea;
-  border: 1px solid #d3ded7;
+  background: #E2EAF3;
+  border: 1px solid #CBD5E1;
   border-radius: 12px;
 }
+
 .aba {
   min-width: 80px;
   padding: 10px 16px;
   font: inherit;
   font-size: 12px;
-  color: #0F766E;
+  color: #475569;
   background: none;
   border: 0;
   border-radius: 10px;
@@ -52,40 +57,49 @@
 }
 
 .aba_ativa {
+  color: #0F766E;
   background: #fff;
-  border: 1px solid #d3ded7;
+  border: 1px solid #CBD5E1;
 }
+
+/* ===== SEÇÕES ===== */
 
 .secao {
   margin-top: 32px;
 }
+
 .secao h2 {
   margin: 4px 0 20px;
   font-size: 22px;
   font-weight: 700;
+  color: #26354A;
 }
 
 .aviso {
   margin-top: 32px;
   font-size: 14px;
-  color: #6b8577;
+  color: #64748B;
 }
 
-/* CELULAR */
+/* ===== CELULAR ===== */
+
 @media (max-width: 600px) {
   .tela_coletas {
     padding: 28px 16px 0;
   }
+
   .abas {
     display: flex;
     width: 100%;
     box-sizing: border-box;
   }
+
   .aba {
-    flex: 1; /* cada aba ocupa a mesma largura */
+    flex: 1;
     min-width: 0;
     padding: 10px 6px;
   }
+
   .secao h2 {
     font-size: 18px;
   }
