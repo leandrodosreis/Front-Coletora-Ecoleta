@@ -1,41 +1,45 @@
-import { useState, useEffect } from "react";
-import { getResiduos } from "./residuosApi";
-import "./Residuos.css";
-import { ModalOferta } from "../../components/ofertaInicial/OfertaInicial";
 
+import { useState, useEffect } from 'react';
+import { buscarResiduos } from './residuosApi';
+import './Residuos.css';
+import { ModalOferta } from '../../components/ofertaInicial/OfertaInicial';
+
+// Define os textos exibidos de acordo com o status do resíduo.
 const ROTULO_STATUS = {
-  disponivel: "DISPONÍVEL",
-  agendado: "AGENDADO",
+  disponivel: 'DISPONÍVEL',
+  agendado: 'AGENDADO'
 };
 
 export function Residuos() {
-  // ESTADOS DA TELA
-  const [residuos, setResiduos] = useState([]); // Dados recebidos da API
-  const [carregando, setCarregando] = useState(true); // Controla o carregamento
-  const [erro, setErro] = useState(false); // Controla erros da API
+  // Estados responsáveis pelos dados recebidos da API.
+  const [residuos, setResiduos] = useState([]);
+  const [carregando, setCarregando] = useState(true);
+  const [erro, setErro] = useState(false);
 
-  // ESTADO DO MODAL DE OFERTA
+  // Guarda o resíduo selecionado para abrir o modal de oferta.
   const [residuoSelecionado, setResiduoSelecionado] = useState(null);
 
-  const [busca, setBusca] = useState("");
-  const [tipo, setTipo] = useState("todos");
-  const [status, setStatus] = useState("todos");
+  // Guarda os valores digitados nos filtros.
+  const [busca, setBusca] = useState('');
+  const [tipo, setTipo] = useState('todos');
+  const [status, setStatus] = useState('todos');
 
-  // Guarda os filtros somente quando o botão Filtrar for clicado
+  // Os filtros só são aplicados quando o usuário clica no botão Filtrar.
   const [filtros, setFiltros] = useState({
-    busca: "",
-    tipo: "todos",
-    status: "todos"
+    busca: '',
+    tipo: 'todos',
+    status: 'todos'
   });
 
-  // FUNÇÃO REUTILIZÁVEL PARA CARREGAR/RECARREGAR OS RESÍDUOS
+  // Busca os resíduos na API e atualiza os estados da tela.
   async function carregarResiduos() {
     setCarregando(true);
     setErro(false);
-    let dados = await getResiduos();
 
-    if (dados !== false) {
-      setResiduos(dados);
+    let dadosResiduos = await buscarResiduos();
+
+    if (dadosResiduos !== false) {
+      setResiduos(dadosResiduos);
     } else {
       setErro(true);
     }
@@ -43,35 +47,51 @@ export function Residuos() {
     setCarregando(false);
   }
 
-  // BUSCA OS RESÍDUOS NA API QUANDO A TELA É ABERTA
+  // Carrega os resíduos quando a tela é aberta.
   useEffect(() => {
     carregarResiduos();
   }, []);
 
-  // APLICA OS FILTROS INFORMADOS PELO USUÁRIO
+  // Aplica os valores selecionados nos filtros.
   function aplicarFiltros() {
-    setFiltros({ busca, tipo, status });
+    setFiltros({
+      busca,
+      tipo,
+      status
+    });
   }
 
-  // FILTRA OS RESÍDUOS RECEBIDOS DA API
-  const residuosFiltrados = residuos.filter((r) => {
-    const bateBusca =
-      r.material.toLowerCase().includes(filtros.busca.toLowerCase()) ||
-      r.estabelecimento.toLowerCase().includes(filtros.busca.toLowerCase());
+  // Filtra os resíduos de acordo com os critérios selecionados.
+  const residuosFiltrados = residuos.filter((residuo) => {
+    let buscaMinuscula = filtros.busca.toLowerCase();
 
-    const bateTipo = filtros.tipo === "todos" || r.tipo === filtros.tipo;
-    const bateStatus = filtros.status === "todos" || r.status === filtros.status;
+    let correspondeBusca =
+      residuo.material.toLowerCase().includes(buscaMinuscula) ||
+      residuo.estabelecimento.toLowerCase().includes(buscaMinuscula);
 
-    return bateBusca && bateTipo && bateStatus;
+    let correspondeTipo =
+      filtros.tipo === 'todos' || residuo.tipo === filtros.tipo;
+
+    let correspondeStatus =
+      filtros.status === 'todos' || residuo.status === filtros.status;
+
+    return correspondeBusca && correspondeTipo && correspondeStatus;
   });
 
   return (
     <main className="tela_residuos">
       <div className="conteudo_residuos">
         <p className="etiqueta">PAINEL DA EMPRESA COLETORA</p>
-        <h1 className="titulo_residuos">Resíduos disponíveis</h1>
-        <p className="subtitulo">Gerencie e acompanhe suas operações na Ecoleta.</p>
 
+        <h1 className="titulo_residuos">
+          Resíduos disponíveis
+        </h1>
+
+        <p className="subtitulo">
+          Gerencie e acompanhe suas operações na Ecoleta.
+        </p>
+
+        {/* Campos utilizados para filtrar os resíduos. */}
         <div className="barra_filtros">
           <div className="busca_campo">
             <input
@@ -79,14 +99,14 @@ export function Residuos() {
               type="text"
               placeholder="Buscar por material ou estabelecimento"
               value={busca}
-              onChange={(e) => setBusca(e.target.value)}
+              onChange={(evento) => setBusca(evento.target.value)}
             />
           </div>
 
           <select
             className="select_filtro"
             value={tipo}
-            onChange={(e) => setTipo(e.target.value)}
+            onChange={(evento) => setTipo(evento.target.value)}
           >
             <option value="todos">Todos os tipos</option>
             <option value="vidro">Vidro</option>
@@ -98,23 +118,27 @@ export function Residuos() {
           <select
             className="select_filtro"
             value={status}
-            onChange={(e) => setStatus(e.target.value)}
+            onChange={(evento) => setStatus(evento.target.value)}
           >
             <option value="todos">Todos os status</option>
             <option value="disponivel">Disponível</option>
             <option value="agendado">Agendado</option>
           </select>
 
-          <button className="botao_filtrar" onClick={aplicarFiltros}>
+          <button
+            className="botao_filtrar"
+            onClick={aplicarFiltros}
+          >
             Filtrar
           </button>
         </div>
 
+        {/* Lista de resíduos e mensagens da tela. */}
         <section className="lista_residuos">
-
-          {/* AVISOS DE CARREGAMENTO E ERRO */}
           {carregando && (
-            <p className="residuos_aviso">Carregando resíduos...</p>
+            <p className="residuos_aviso">
+              Carregando resíduos...
+            </p>
           )}
 
           {erro && (
@@ -123,54 +147,59 @@ export function Residuos() {
             </p>
           )}
 
-          {/* MENSAGEM QUANDO NÃO EXISTEM RESÍDUOS */}
           {!carregando && !erro && residuosFiltrados.length === 0 && (
             <p className="residuos_aviso">
               Nenhum resíduo encontrado. Ajuste os filtros e tente de novo.
             </p>
           )}
 
-          {/* LISTA OS RESÍDUOS RECEBIDOS DA API */}
-          {!carregando && !erro && residuosFiltrados.map((r) => (
-            <article className="residuos_card" key={r.id}>
+          {!carregando && !erro && residuosFiltrados.map((residuo) => (
+            <article className="residuos_card" key={residuo.id}>
               <div className="card_topo">
                 <div className="card_icone">📦</div>
 
                 <div className="card_titulo_texto">
-                  <h2>{r.material}</h2>
-                  <p>{r.estabelecimento}</p>
+                  <h2>{residuo.material}</h2>
+
+                  <p>
+                    {residuo.estabelecimento}
+                    {residuo.distancia !== null &&
+                      ` - ${residuo.distancia} km`}
+                  </p>
                 </div>
 
-                <span className={`selo selo_${r.status}`}>
-                  {ROTULO_STATUS[r.status] || r.status}
+                <span className={`selo selo_${residuo.status}`}>
+                  {ROTULO_STATUS[residuo.status] || residuo.status}
                 </span>
               </div>
 
               <div className="card_info_grade">
                 <div>
                   <strong>Quantidade</strong>
-                  <p>{r.quantidade}</p>
+                  <p>{residuo.quantidade}</p>
                 </div>
 
                 <div className="info_centro">
                   <strong>Data disponível</strong>
-                  <p>{r.data}</p>
+                  <p>{residuo.data}</p>
                 </div>
 
                 <div className="info_direita">
                   <strong>Horário</strong>
-                  <p>{r.horario}</p>
+                  <p>{residuo.horario}</p>
                 </div>
               </div>
 
               <div className="card_rodape">
-                <p className="observacao">{r.observacao}</p>
+                <p className="observacao">
+                  {residuo.observacao}
+                </p>
 
                 <div className="acoes">
-                  {r.status === "disponivel" ? (
-                    <button 
-                      className="botao_oferta" 
-                      onClick={() => setResiduoSelecionado(r)}
+                  {residuo.status === 'disponivel' ? (
+                    <button
+                      className="botao_oferta"
+                      onClick={() => setResiduoSelecionado(residuo)}
                     >
                       Fazer oferta →
                     </button>
@@ -183,17 +212,16 @@ export function Residuos() {
               </div>
             </article>
           ))}
-
         </section>
       </div>
 
-      {/* JANELA MODAL DE FAZER OFERTA */}
+      {/* Modal utilizado para enviar uma oferta ao estabelecimento. */}
       <ModalOferta
         isOpen={Boolean(residuoSelecionado)}
         residuo={residuoSelecionado}
         onClose={() => setResiduoSelecionado(null)}
         onSucesso={() => {
-          alert("Oferta enviada com sucesso!");
+          alert('Oferta enviada com sucesso!');
           carregarResiduos();
         }}
       />

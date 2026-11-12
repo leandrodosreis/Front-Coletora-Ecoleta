@@ -1,102 +1,115 @@
+
 import { rotaBase, pegarToken, sairDoSistema } from '../../services/API';
 
-// Converte os dados da API para o formato utilizado pelo JSX
-function converterResiduo(residuo) {
-  let material = residuo.material || '';
+// Converte o material para uma categoria utilizada nos filtros.
+function identificarTipoMaterial(material) {
+  let materialMinusculo = material.toLowerCase();
 
-  // Identifica a categoria para os filtros da tela
-  let materialNormalizado = material.toLowerCase();
+  if (materialMinusculo.includes('vidro')) {
+    return 'vidro';
+  }
 
-  let tipo = 'outros';
-
-  if (materialNormalizado.includes('vidro')) {
-    tipo = 'vidro';
-  } else if (
-    materialNormalizado.includes('papel') ||
-    materialNormalizado.includes('papelão')
+  if (
+    materialMinusculo.includes('papel') ||
+    materialMinusculo.includes('papelao')
   ) {
-    tipo = 'papel';
-  } else if (materialNormalizado.includes('plástico') ||
-             materialNormalizado.includes('plastico')) {
-    tipo = 'plastico';
+    return 'papel';
   }
 
-  // Converte o status retornado pela API
-  let statusNormalizado = (residuo.status_residuo || '').toLowerCase();
-
-  let status = statusNormalizado.includes('agendado')
-    ? 'agendado'
-    : statusNormalizado.includes('disponível') ||
-      statusNormalizado.includes('disponivel')
-      ? 'disponivel'
-      : statusNormalizado;
-
-  // Monta o horário de disponibilidade
-  let horario = `${residuo.horario_inicial || ''} às ${residuo.horario_final || ''}`;
-
-  // Monta o nome do estabelecimento e a distância
-  let estabelecimento = residuo.nome_estabelecimento || '';
-
-  if (residuo.distancia !== null && residuo.distancia !== undefined) {
-    estabelecimento += ` - ${residuo.distancia} km`;
+  if (materialMinusculo.includes('plast')) {
+    return 'plastico';
   }
+
+  return 'outros';
+}
+
+// Converte o status recebido pela API para o formato utilizado na tela.
+function identificarStatusResiduo(status) {
+  let statusMinusculo = status
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '');
+
+  if (statusMinusculo.includes('agendado')) {
+    return 'agendado';
+  }
+
+  if (statusMinusculo.includes('disponivel')) {
+    return 'disponivel';
+  }
+
+  return statusMinusculo;
+}
+
+// Organiza os dados da API para facilitar sua utilização no JSX.
+function formatarResiduo(residuo) {
+  let material = String(residuo.material || '');
 
   return {
     id: residuo.id_residuo,
     material: material,
-    estabelecimento: estabelecimento,
-    tipo: tipo,
-    status: status,
+    estabelecimento: residuo.nome_estabelecimento || '',
+    distancia: residuo.distancia ?? null,
+    tipo: identificarTipoMaterial(material),
+    status: identificarStatusResiduo(residuo.status_residuo || ''),
     quantidade: `${residuo.quantidade} kg`,
-    data: residuo.data_disponivel,
-    horario: horario,
+    data: residuo.data_disponivel || '',
+    horario: `${residuo.horario_inicial || ''} às ${residuo.horario_final || ''}`,
     observacao: residuo.observacao || ''
   };
 }
 
-export const getResiduos = async function () {
+// Busca os resíduos disponíveis para a empresa coletora.
+export const buscarResiduos = async function () {
   let url = `${rotaBase}/v1/ecoleta/empresa-coletora/residuos-disponiveis`;
 
   try {
-    let response = await fetch(url, {
+    let resposta = await fetch(url, {
       headers: {
         Authorization: `Bearer ${pegarToken()}`
       }
     });
 
-    // 401 = token inválido ou vencido
-    if (response.status === 401) {
+    // Encerra a sessão caso o token esteja inválido ou vencido.
+    if (resposta.status === 401) {
       sairDoSistema();
       return false;
     }
 
-    if (response.ok) {
-      let respostaAPI = await response.json();
-
-      console.log('RESÍDUOS COMPLETOS:', respostaAPI);
-
-      // A API retorna o array diretamente dentro de response
-      let residuos = respostaAPI.response || [];
-
-      return residuos.map(converterResiduo);
+    if (!resposta.ok) {
+      return false;
     }
 
-    return false;
+    let dadosResposta = await resposta.json();
 
-  } catch (error) {
-    console.error(error);
+    // A API retorna os resíduos dentro da propriedade response.
+    let residuos = dadosResposta.response || [];
+
+    if (!Array.isArray(residuos)) {
+      return false;
+    }
+
+    return residuos.map(formatarResiduo);
+
+  } catch (erro) {
+    console.error('Erro ao buscar resíduos:', erro);
     return false;
   }
 };
 
+// Envia a oferta inicial para um resíduo específico.
+export const enviarOfertaInicial = async function (idResiduo, dadosOferta) {
+  if (!idResiduo) {
+    throw new Error('Não foi possível identificar o resíduo selecionado.');
+  }
 
-export async function enviarOfertaInicial(idResiduo, dadosOferta) {
+  let url = `${rotaBase}/v1/ecoleta/empresa-coletora/residuos-disponiveis/oferta/${idResiduo}`;
 
-  const response = await fetch(`${rotaBase}/empresa-coletora/residuos-disponiveis/oferta/${idResiduo}`, {
+  let resposta = await fetch(url, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${pegarToken()}`
+      Authorization: `Bearer ${pegarToken()}`
     },
     body: JSON.stringify({
       nome_ofertante: dadosOferta.nome_ofertante,
@@ -104,11 +117,18 @@ export async function enviarOfertaInicial(idResiduo, dadosOferta) {
     })
   });
 
-  const data = await response.json();
+  // Trata o retorno da API, inclusive quando não houver JSON na resposta.
+  let dadosResposta = await resposta.json().catch(() => ({}));
 
-  if (!response.ok) {
-    throw new Error(data.message || 'Erro ao enviar oferta.');
+  // Encerra a sessão caso o token esteja inválido ou vencido.
+  if (resposta.status === 401) {
+    sairDoSistema();
+    throw new Error('Sua sessão expirou. Faça login novamente.');
   }
 
-  return data;
-}
+  if (!resposta.ok) {
+    throw new Error(dadosResposta.message || 'Erro ao enviar oferta.');
+  }
+
+  return dadosResposta;
+};

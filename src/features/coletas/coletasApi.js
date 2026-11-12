@@ -1,6 +1,8 @@
+
 import { rotaBase, pegarToken, sairDoSistema } from '../../services/API';
 
-function converterColeta(coleta) {
+// Organiza os dados recebidos da API para utilização na tela.
+function formatarColeta(coleta) {
   return {
     id_coleta: coleta.id_coleta,
     status_coleta: coleta.status_coleta,
@@ -8,38 +10,80 @@ function converterColeta(coleta) {
     material: coleta.material || '',
     quantidade: coleta.quantidade,
     distancia: coleta.distancia,
-    valor_acordado: coleta.valor_acordado
+    valor_acordado: coleta.valor_acordado,
+    data_disponivel: coleta.data_disponivel || ''
   };
 }
 
+// Busca as coletas da empresa coletora autenticada.
 export const getColetasEmpresa = async function () {
   let url = `${rotaBase}/v1/ecoleta/empresa-coletora/coletas`;
 
   try {
-    let response = await fetch(url, {
-      // Authorization envia o token para a API saber quem está pedindo
-      headers: { Authorization: `Bearer ${pegarToken()}` }
+    let resposta = await fetch(url, {
+      headers: {
+        Authorization: `Bearer ${pegarToken()}`
+      }
     });
 
-        // 401 = token inválido ou vencido: apaga o token e volta para o login
-    if (response.status === 401) {
+    if (resposta.status === 401) {
       sairDoSistema();
       return false;
     }
 
-    if (response.ok) {
-      let respostaAPI = await response.json(); // lista de coletas
-
-      let coletas = respostaAPI.response.coletas || [];
-
-        // map aplica a função "converterColeta" em cada coleta da lista
-        return coletas.map(converterColeta);
-
-    
+    if (!resposta.ok) {
+      return false;
     }
-    return false;
-  } catch (error) {
-    console.error(error);
+
+    let dadosResposta = await resposta.json();
+    let coletas = dadosResposta.response?.coletas || [];
+
+    if (!Array.isArray(coletas)) {
+      return false;
+    }
+
+    return coletas.map(formatarColeta);
+
+  } catch (erro) {
+    console.error('Erro ao buscar coletas:', erro);
     return false;
   }
+};
+
+// Registra os dados de execução e finaliza uma coleta.
+export const finalizarColeta = async function (idColeta, dadosColeta) {
+  if (!idColeta) {
+    throw new Error('Não foi possível identificar a coleta.');
+  }
+
+  let url = `${rotaBase}/v1/ecoleta/empresa-coletora/coleta/finalizar/${idColeta}`;
+
+  let resposta = await fetch(url, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${pegarToken()}`
+    },
+    body: JSON.stringify({
+      nome_coletor: dadosColeta.nome_coletor,
+      placa_veiculo: dadosColeta.placa_veiculo,
+      data_coleta: dadosColeta.data_coleta,
+      hora_coleta: dadosColeta.hora_coleta
+    })
+  });
+
+  let dadosResposta = await resposta.json().catch(() => ({}));
+
+  if (resposta.status === 401) {
+    sairDoSistema();
+    throw new Error('Sua sessão expirou. Faça login novamente.');
+  }
+
+  if (!resposta.ok) {
+    throw new Error(
+      dadosResposta.message || 'Não foi possível finalizar a coleta.'
+    );
+  }
+
+  return dadosResposta;
 };

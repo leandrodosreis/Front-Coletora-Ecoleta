@@ -1,3 +1,5 @@
+
+/* Fundo que cobre a tela enquanto o modal está aberto. */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -12,39 +14,45 @@
   padding: 16px;
 }
 
+/* Estrutura principal do modal. */
 .modal-container {
   background-color: #ffffff;
   width: 100%;
   max-width: 680px;
+  max-height: 90vh;
+  overflow-y: auto;
   border-radius: 16px;
   padding: 32px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
+/* Identificação da marca. */
 .modal-brand {
   display: block;
-  color: #21966B;
+  color: #0F766E;
   font-weight: 700;
   font-size: 14px;
   letter-spacing: 0.5px;
   margin-bottom: 8px;
 }
 
+/* Título do modal. */
 .modal-title {
-  color: #111827;
+  color: #26354A;
   font-size: 28px;
   font-weight: 600;
-  margin: 0 0 24px 0;
+  margin: 0 0 24px;
 }
 
+/* Grade com as informações do resíduo selecionado. */
 .resumo-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 12px 16px;
   padding: 16px;
-  background-color: #F9FAFB;
-  border: 1px solid #E5E7EB;
+  background-color: #F0FDFA;
+  border: 1px solid #CBD5E1;
   border-radius: 10px;
   margin-bottom: 24px;
 }
@@ -53,6 +61,11 @@
   grid-column: span 2;
 }
 
+.span-3 {
+  grid-column: span 3;
+}
+
+/* Organização dos campos de informação. */
 .info-group {
   display: flex;
   flex-direction: column;
@@ -62,24 +75,26 @@
 .info-group label {
   font-size: 12px;
   font-weight: 600;
-  color: #6B7280;
+  color: #64748B;
   text-transform: uppercase;
   letter-spacing: 0.3px;
 }
 
 .info-group input {
-  background-color: #F3F4F6;
-  border: 1px solid #E5E7EB;
+  background-color: #F1F5F9;
+  border: 1px solid #CBD5E1;
   border-radius: 6px;
   height: 38px;
   padding: 0 12px;
   font-size: 14px;
   font-weight: 500;
-  color: #1F2937;
+  color: #26354A;
   cursor: default;
   outline: none;
+  min-width: 0;
 }
 
+/* Organização do formulário de oferta. */
 .modal-form {
   display: flex;
   flex-direction: column;
@@ -94,42 +109,42 @@
 
 .form-group label {
   font-size: 15px;
-  color: #374151;
+  color: #26354A;
   font-weight: 500;
 }
 
 .form-group input {
-  background-color: #EEF5F1;
-  border: 1px solid #D5E3DC;
+  background-color: #F0FDFA;
+  border: 1px solid #CBD5E1;
   border-radius: 8px;
   height: 46px;
   padding: 0 14px;
   font-size: 16px;
-  color: #111827;
+  color: #26354A;
   outline: none;
   transition: border-color 0.2s;
 }
 
 .form-group input:focus {
-  border-color: #21966B;
+  border-color: #0F766E;
 }
 
+/* Mensagem de erro do formulário. */
 .modal-erro {
   color: #DC2626;
   font-size: 14px;
   margin: 0;
 }
 
+/* Botões de ação do modal. */
 .modal-actions {
   display: flex;
   gap: 16px;
   margin-top: 8px;
 }
 
-.btn-cancelar {
-  flex: 1;
-  background-color: #E02D2D;
-  color: #ffffff;
+.btn-cancelar,
+.btn-enviar {
   border: none;
   border-radius: 8px;
   height: 48px;
@@ -139,48 +154,59 @@
   transition: background-color 0.2s;
 }
 
+.btn-cancelar {
+  flex: 1;
+  background-color: #64748B;
+  color: #ffffff;
+}
+
 .btn-cancelar:hover {
-  background-color: #C52222;
+  background-color: #475569;
 }
 
 .btn-enviar {
   flex: 2;
-  background-color: #239B6D;
+  background-color: #0F766E;
   color: #ffffff;
-  border: none;
-  border-radius: 8px;
-  height: 48px;
-  font-size: 16px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background-color 0.2s;
 }
 
 .btn-enviar:hover {
-  background-color: #1C825B;
+  background-color: #115E59;
 }
 
+/* Indica quando os botões estão desabilitados. */
 .btn-cancelar:disabled,
 .btn-enviar:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
 
-.span-2 {
-  grid-column: span 2;
-}
-
-.span-3 {
-  grid-column: span 3;
-}
-
-/* No @media (max-width: 600px), atualize para resetar ambas: */
+/* Ajustes para telas menores. */
 @media (max-width: 600px) {
+  .modal-container {
+    padding: 24px 18px;
+  }
+
+  .modal-title {
+    font-size: 24px;
+  }
+
   .resumo-grid {
     grid-template-columns: 1fr;
   }
+
   .span-2,
   .span-3 {
     grid-column: span 1;
+  }
+
+  .modal-actions {
+    flex-direction: column;
+  }
+
+  .btn-cancelar,
+  .btn-enviar {
+    flex: none;
+    width: 100%;
   }
 }
