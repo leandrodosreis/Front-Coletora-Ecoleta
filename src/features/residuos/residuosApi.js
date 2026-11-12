@@ -88,3 +88,27 @@ export const getResiduos = async function () {
     return false;
   }
 };
+
+
+export async function enviarOfertaInicial(idResiduo, dadosOferta) {
+
+  const response = await fetch(`${rotaBase}/empresa-coletora/residuos-disponiveis/oferta/${idResiduo}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${pegarToken()}`
+    },
+    body: JSON.stringify({
+      nome_ofertante: dadosOferta.nome_ofertante,
+      valor_ofertado: Number(dadosOferta.valor_ofertado)
+    })
+  });
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data.message || 'Erro ao enviar oferta.');
+  }
+
+  return data;
+}

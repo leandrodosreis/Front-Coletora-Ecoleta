@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getHome } from './homeApi';
 import './home.css';
+import { useNavigate } from 'react-router-dom';
 
 const homeInicial = {
   nome: '',
@@ -61,6 +62,8 @@ export function Home() {
     { icone: '✔', valor: home.coletasConcluidas, texto: 'coletas concluídas' }
   ];
 
+  const navigate = useNavigate();
+
   return (
     <main className="home_tela">
       <div className="home_conteudo">
@@ -114,7 +117,7 @@ export function Home() {
                 <p>Encontre materiais disponíveis próximos à sua empresa.</p>
               </div>
 
-              <button className="home_banner_botao">Encontrar resíduos →</button>
+              <button className="home_banner_botao" onClick={ () => navigate('/residuos')}>Encontrar resíduos →</button>
             </section>
 
             <p className="home_etiqueta home_etiqueta_secao">MOVIMENTAÇÕES RECENTES</p>

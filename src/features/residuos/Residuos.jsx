@@ -1,7 +1,7 @@
-
 import { useState, useEffect } from "react";
 import { getResiduos } from "./residuosApi";
 import "./Residuos.css";
+import { ModalOferta } from "../../components/ofertaInicial/OfertaInicial";
 
 const ROTULO_STATUS = {
   disponivel: "DISPONÍVEL",
@@ -14,6 +14,9 @@ export function Residuos() {
   const [carregando, setCarregando] = useState(true); // Controla o carregamento
   const [erro, setErro] = useState(false); // Controla erros da API
 
+  // ESTADO DO MODAL DE OFERTA
+  const [residuoSelecionado, setResiduoSelecionado] = useState(null);
+
   const [busca, setBusca] = useState("");
   const [tipo, setTipo] = useState("todos");
   const [status, setStatus] = useState("todos");
@@ -25,20 +28,23 @@ export function Residuos() {
     status: "todos"
   });
 
-  // BUSCA OS RESÍDUOS NA API QUANDO A TELA É ABERTA
-  useEffect(() => {
-    async function carregarResiduos() {
-      let dados = await getResiduos();
+  // FUNÇÃO REUTILIZÁVEL PARA CARREGAR/RECARREGAR OS RESÍDUOS
+  async function carregarResiduos() {
+    setCarregando(true);
+    setErro(false);
+    let dados = await getResiduos();
 
-      if (dados !== false) {
-        setResiduos(dados);
-      } else {
-        setErro(true);
-      }
-
-      setCarregando(false);
+    if (dados !== false) {
+      setResiduos(dados);
+    } else {
+      setErro(true);
     }
 
+    setCarregando(false);
+  }
+
+  // BUSCA OS RESÍDUOS NA API QUANDO A TELA É ABERTA
+  useEffect(() => {
     carregarResiduos();
   }, []);
 
@@ -162,7 +168,10 @@ export function Residuos() {
 
                 <div className="acoes">
                   {r.status === "disponivel" ? (
-                    <button className="botao_oferta">
+                    <button 
+                      className="botao_oferta" 
+                      onClick={() => setResiduoSelecionado(r)}
+                    >
                       Fazer oferta →
                     </button>
                   ) : (
@@ -177,6 +186,17 @@ export function Residuos() {
 
         </section>
       </div>
+
+      {/* JANELA MODAL DE FAZER OFERTA */}
+      <ModalOferta
+        isOpen={Boolean(residuoSelecionado)}
+        residuo={residuoSelecionado}
+        onClose={() => setResiduoSelecionado(null)}
+        onSucesso={() => {
+          alert("Oferta enviada com sucesso!");
+          carregarResiduos();
+        }}
+      />
     </main>
   );
 }
