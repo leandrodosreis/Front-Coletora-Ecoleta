@@ -132,3 +132,39 @@ export const enviarOfertaInicial = async function (idResiduo, dadosOferta) {
 
   return dadosResposta;
 };
+
+// Busca os detalhes de uma coleta agendada pelo ID do resíduo.
+export async function buscarDetalhesColeta(idResiduo) {
+  if (!idResiduo) {
+    throw new Error('Não foi possível identificar o resíduo.');
+  }
+
+  let url = `${rotaBase}/v1/ecoleta/empresa-coletora/residuos-disponiveis/coleta/${idResiduo}`;
+
+  try {
+    let resposta = await fetch(url, {
+      headers: {
+        Authorization: `Bearer ${pegarToken()}`
+      }
+    });
+
+    if (resposta.status === 401) {
+      sairDoSistema();
+      throw new Error('Sua sessão expirou. Faça login novamente.');
+    }
+
+    let dadosResposta = await resposta.json();
+
+    if (!resposta.ok) {
+      throw new Error(
+        dadosResposta.message || 'Não foi possível buscar os detalhes da coleta.'
+      );
+    }
+
+    return dadosResposta.response;
+
+  } catch (erro) {
+    console.error('Erro ao buscar detalhes da coleta:', erro);
+    throw erro;
+  }
+}

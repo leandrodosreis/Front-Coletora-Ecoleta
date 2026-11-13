@@ -1,8 +1,8 @@
-
 import { useState, useEffect } from 'react';
-import { buscarResiduos } from './residuosApi';
 import './Residuos.css';
 import { ModalOferta } from '../../components/ofertaInicial/OfertaInicial';
+import { buscarResiduos, buscarDetalhesColeta } from './residuosApi';
+import { ModalDetalhesResiduo } from '../../components/detalhesResiduos/DetalhesResiduo';
 
 // Define os textos exibidos de acordo com o status do resíduo.
 const ROTULO_STATUS = {
@@ -15,6 +15,7 @@ export function Residuos() {
   const [residuos, setResiduos] = useState([]);
   const [carregando, setCarregando] = useState(true);
   const [erro, setErro] = useState(false);
+  const [residuoDetalhes, setResiduoDetalhes] = useState(null);
 
   // Guarda o resíduo selecionado para abrir o modal de oferta.
   const [residuoSelecionado, setResiduoSelecionado] = useState(null);
@@ -204,7 +205,10 @@ export function Residuos() {
                       Fazer oferta →
                     </button>
                   ) : (
-                    <button className="botao_ver_coleta">
+                    <button
+                      className="botao_ver_coleta"
+                      onClick={() => setResiduoDetalhes(residuo)}
+                    >
                       Ver Coleta
                     </button>
                   )}
@@ -224,6 +228,13 @@ export function Residuos() {
           alert('Oferta enviada com sucesso!');
           carregarResiduos();
         }}
+      />
+
+      <ModalDetalhesResiduo
+        isOpen={Boolean(residuoDetalhes)}
+        residuo={residuoDetalhes}
+        buscarDetalhes={buscarDetalhesColeta}
+        onClose={() => setResiduoDetalhes(null)}
       />
     </main>
   );
