@@ -150,6 +150,38 @@
   display: block;
   margin: 0 auto; 
 }
+
+.perfil_acoes {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.perfil_acoes button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Campos bloqueados */
+.perfil_campo input:read-only {
+  background-color: #f1f5f9;
+  cursor: default;
+}
+
+/* Campos liberados para edição */
+.perfil_campo input:not(:read-only) {
+  background-color: #ffffff;
+  border: 1px solid #14B8A6;
+  cursor: text;
+}
+
+/* Destaque ao selecionar um campo editável */
+.perfil_campo input:not(:read-only):focus {
+  outline: none;
+  border-color: #0F766E;
+  box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.15);
+}
  
 /*CELULAR*/
 @media (max-width: 700px) {
