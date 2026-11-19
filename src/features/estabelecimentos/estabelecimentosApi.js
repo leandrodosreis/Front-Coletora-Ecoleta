@@ -1,5 +1,5 @@
 // Função que conversa com a API na tela de Estabelecimentos próximos.
-import { rotaBase, pegarToken } from '../../services/API';
+import { rotaBase, pegarToken, sairDoSistema } from '../../services/API';
 
 // A API manda UM item por resíduo (dois resíduos de vidro = dois itens).
 // O design mostra os resíduos somados por material: "Vidro - 35 kg".
@@ -61,8 +61,7 @@ export const getEstabelecimentosProximos = async function (idTipoMaterial) {
 
     // 401 = token inválido ou vencido: apaga o token e volta para o login
     if (response.status === 401) {
-      localStorage.removeItem('accessToken');
-      window.location.href = '/login';
+      sairDoSistema();
       return false;
     }
 
