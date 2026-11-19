@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getHome } from './homeApi';
-import './home.css';
+import './Home.css';
 import { useNavigate } from 'react-router-dom';
 
 const homeInicial = {
