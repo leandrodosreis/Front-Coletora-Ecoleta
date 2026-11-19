@@ -21,5 +21,5 @@ export const removerToken = function () {
 
 export const sairDoSistema = function () {
   removerToken();
-  window.location.href = '/login';
+  window.location.href = '/';
 };
