@@ -9,7 +9,7 @@ import { Historico } from '../features/historico/Historico';
 import { Residuos } from '../features/residuos/Residuos';
 import { Login } from '../features/login/Login';
 import { pegarToken } from '../services/API';
-import { Estabelecimentos } from '../features/estabelecimento/Estabelecimento';
+import { Estabelecimentos } from '../features/estabelecimentos/Estabelecimentos';
 
 function Layout() {
   if (!pegarToken()) {

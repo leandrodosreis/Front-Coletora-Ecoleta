@@ -7,8 +7,8 @@
 //  5. Para cada estabelecimento da lista, desenhamos um card (map).
 // O botão "Ver resíduos" ainda NÃO tem função.
 import { useState, useEffect } from 'react';
-import { getEstabelecimentosProximos } from './estabelecimentoApi';
-import './Estabelecimento.css';
+import { getEstabelecimentosProximos } from './estabelecimentosApi';
+import './Estabelecimentos.css';
 
 // A API manda números como "35.00". Tira os zeros e troca o ponto por vírgula: 35
 function formatarNumero(valor) {
