@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getHistorico } from './historicoApi';
 import './Historico.css';
+import { CabecalhoPagina } from '../../components/cabecalhoPagina/CabecalhoPagina';
 
 function formatarNumero(valor) {
   return String(Number(valor)).replace('.', ',');
@@ -73,9 +74,7 @@ export function Historico() {
     <main className="historico_tela">
       <div className="historico_conteudo">
 
-        <p className="historico_etiqueta">PAINEL DA EMPRESA COLETORA</p>
-        <h1 className="historico_titulo">Histórico de coletas</h1>
-        <p className="historico_subtitulo">Gerencie e acompanhe suas operações na Ecoleta.</p>
+        <CabecalhoPagina etiqueta="PAINEL DA EMPRESA COLETORA" titulo="Histórico de coletas" descricao="Consulte as coletas realizadas e acompanhe seus registros." />
 
         {/*BARRA DE BUSCA E FILTROS*/}
         <div className="historico_filtros">

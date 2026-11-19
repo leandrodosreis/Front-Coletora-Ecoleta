@@ -2,7 +2,7 @@
     flex: 1;
     padding: 44px 24px 0;
     box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
   }
   
   .conteudo_perfil {
@@ -10,34 +10,18 @@
     margin: 0 auto;
   }
   
-  .tela_perfil .etiqueta {
-    color: #0F766E;
-}
-  
   /* "clamp" deixa o tamanho se ajustar: mínimo 32px, máximo 40px */
-  .titulo_perfil {
-    margin: 6px 0;
-    font-size: clamp(32px, 6vw, 40px);
-    font-weight: 500;
-    color: #0F766E;
-  }
-  
-  .subtitulo {
-    margin: 0 0 24px;
-    font-size: 12px;
-    color: #6b8577;
-  }
 
   
 .perfil_aviso {
   font-size: 14px;
-  color: #6b8577;
+  color: var(--cor-texto-secundario);
 }
 
 .perfil_card {
   padding: 24px;
-  background: #fff;
-  border: 1px solid #dfe5e1;
+  background: var(--cor-branco);
+  border: 1px solid var(--cor-borda);
   border-radius: 18px;
   box-sizing: border-box;
 }
@@ -55,7 +39,7 @@
   width: 48px;
   height: 48px;
   font-size: 22px;
-  background: #e6f4ec;
+  background: var(--cor-primaria-clara);
   border-radius: 10px;
 }
  
@@ -72,15 +56,15 @@
 .perfil_resumo_texto p {
   margin: 4px 0 0;
   font-size: 14px;
-  color: #5f6f66;
+  color: var(--cor-texto-secundario);
 }
  
 .perfil_botao {
   padding: 12px 20px;
   font: inherit;
   font-size: 13px;
-  background: #fff;
-  border: 1px solid #c9d1cc;
+  background: var(--cor-branco);
+  border: 1px solid var(--cor-borda);
   border-radius: 10px;
   cursor: pointer;
 }
@@ -104,7 +88,7 @@
   margin: 0 0 14px;
   font-size: 14px;
   font-weight: 700;
-  color: #0F766E;
+  color: var(--cor-primaria);
 }
  
 /* ===== CAMPOS: grade de 2 colunas dentro do card ===== */
@@ -122,7 +106,7 @@
 .perfil_label {
   margin: 0 0 4px;
   font-size: 12px;
-  color: #4b5a52;
+  color: var(--cor-texto-secundario);
 }
  
 .perfil_campo input {
@@ -133,9 +117,9 @@
   font: inherit;
   font-size: 12px;
   font-weight: 600;
-  color: #6b7a72;
-  background: #E2EAF3;
-  border: 1px solid #d3e3d9;
+  color: var(--cor-texto-secundario);
+  background: var(--cor-superficie-secundaria);
+  border: 1px solid var(--cor-borda);
   border-radius: 6px;
 }
  
@@ -165,21 +149,21 @@
 
 /* Campos bloqueados */
 .perfil_campo input:read-only {
-  background-color: #f1f5f9;
+  background-color: var(--cor-superficie-secundaria);
   cursor: default;
 }
 
 /* Campos liberados para edição */
 .perfil_campo input:not(:read-only) {
-  background-color: #ffffff;
-  border: 1px solid #14B8A6;
+  background-color: var(--cor-branco);
+  border: 1px solid var(--cor-primaria-secundaria);
   cursor: text;
 }
 
 /* Destaque ao selecionar um campo editável */
 .perfil_campo input:not(:read-only):focus {
   outline: none;
-  border-color: #0F766E;
+  border-color: var(--cor-primaria);
   box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.15);
 }
  

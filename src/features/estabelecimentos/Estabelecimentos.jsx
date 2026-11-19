@@ -9,6 +9,7 @@
 import { useState, useEffect } from 'react';
 import { getEstabelecimentosProximos } from './estabelecimentosApi';
 import './Estabelecimentos.css';
+import { CabecalhoPagina } from '../../components/cabecalhoPagina/CabecalhoPagina';
 
 // A API manda números como "35.00". Tira os zeros e troca o ponto por vírgula: 35
 function formatarNumero(valor) {
@@ -107,9 +108,7 @@ export function Estabelecimentos() {
     <main className="estabelecimentos_tela">
       <div className="estabelecimentos_conteudo">
         {/* Textos do topo da tela */}
-        <p className="estabelecimentos_etiqueta">PAINEL DA EMPRESA COLETORA</p>
-        <h1 className="estabelecimentos_titulo">Estabelecimentos próximos</h1>
-        <p className="estabelecimentos_subtitulo">Gerencie e acompanhe suas operações na Ecoleta.</p>
+        <CabecalhoPagina etiqueta="PAINEL DA EMPRESA COLETORA" titulo="Estabelecimentos próximos" descricao="Localize empresas e consulte os resíduos disponíveis para coleta." />
 
         {/* ===== BARRA DE BUSCA E FILTRO ===== */}
         <div className="estabelecimentos_filtros">

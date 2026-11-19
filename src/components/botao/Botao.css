@@ -1,0 +1,12 @@
+.botao_padrao { display: inline-flex; min-height: 40px; align-items: center; justify-content: center; gap: 8px; padding: 0 16px; border: 1px solid transparent; border-radius: 6px; font: inherit; font-size: 14px; font-weight: 600; line-height: 1.2; cursor: pointer; transition: background-color 0.15s ease, border-color 0.15s ease; }
+.botao_primario { color: var(--cor-branco); background: var(--cor-primaria); }
+.botao_primario:hover:not(:disabled) { background: var(--cor-primaria-hover); }
+.botao_secundario { color: var(--cor-texto); background: var(--cor-branco); border-color: var(--cor-borda-forte); }
+.botao_secundario:hover:not(:disabled) { background: var(--cor-superficie-secundaria); }
+.botao_perigo { color: var(--cor-branco); background: var(--cor-erro); }
+.botao_perigo:hover:not(:disabled) { background: var(--cor-erro-hover); }
+.botao_padrao:focus-visible { outline: 3px solid var(--cor-borda-destaque); outline-offset: 2px; }
+.botao_padrao:active:not(:disabled) { transform: translateY(1px); }
+.botao_padrao:disabled { opacity: 0.55; cursor: not-allowed; }
+
+@media (prefers-reduced-motion: reduce) { .botao_padrao { transition: none; } }

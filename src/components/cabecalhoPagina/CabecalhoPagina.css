@@ -1,0 +1,39 @@
+/* Cabeçalho compartilhado das páginas administrativas. */
+.cabecalho_pagina {
+  margin: 0 0 24px;
+}
+
+.cabecalho_pagina_etiqueta {
+  margin: 0 0 7px;
+  color: var(--cor-primaria);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.4;
+}
+
+.cabecalho_pagina_titulo {
+  margin: 0;
+  color: var(--cor-texto);
+  font-size: clamp(28px, 3vw, 34px);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.cabecalho_pagina_descricao {
+  margin: 8px 0 0;
+  color: var(--cor-texto-secundario);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+@media (max-width: 600px) {
+  .cabecalho_pagina {
+    margin-bottom: 20px;
+  }
+
+  .cabecalho_pagina_titulo {
+    font-size: 27px;
+  }
+}

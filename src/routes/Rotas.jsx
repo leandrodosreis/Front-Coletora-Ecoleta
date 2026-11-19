@@ -1,6 +1,5 @@
 import { Routes, Route, Outlet, Navigate } from 'react-router-dom';
-import { Header } from '../components/header/Header';
-import { Footer } from '../components/footer/Footer';
+import { Sidebar } from '../components/sidebar/Sidebar';
 import { Cadastro } from '../features/cadastro/Cadastro';
 import { Coletas } from '../features/coletas/Coletas';
 import { Perfil } from '../features/perfil/Perfil';
@@ -15,12 +14,13 @@ function Layout() {
   if (!pegarToken()) {
     return <Navigate to="/" replace />;
   }
- 
+
   return (
-    <div className="layout">
-      <Header />
-      <Outlet />
-      <Footer />
+    <div className="app_layout">
+      <Sidebar />
+      <div className="app_area">
+        <Outlet />
+      </div>
     </div>
   );
 }
@@ -28,18 +28,18 @@ function Layout() {
 export function Rotas() {
   return (
     <Routes>
-      {/* Telas SEM Header e Footer */}
+      {/* Telas públicas: não exibem a navegação administrativa. */}
       <Route path="/" element={<Login />} />
       <Route path="/cadastro" element={<Cadastro />} />
 
-      {/* Telas COM Header e Footer (dentro do Layout) */}
+      {/* Telas autenticadas: compartilham a mesma sidebar. */}
       <Route element={<Layout />}>
         <Route path="/home" element={<Home />} />
         <Route path="/residuos" element={<Residuos />} />
         <Route path="/estabelecimento" element={<Estabelecimentos />} />
         <Route path="/coletas" element={<Coletas />} />
         <Route path="/historico" element={<Historico />} />
-        <Route path="/perfil" element={<Perfil/>} />
+        <Route path="/perfil" element={<Perfil />} />
       </Route>
     </Routes>
   );

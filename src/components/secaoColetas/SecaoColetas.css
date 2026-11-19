@@ -4,22 +4,22 @@
 
 .secao_etiqueta {
   margin: 0;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 600;
-  color: #0F766E;
+  color: var(--cor-primaria);
 }
 
 .secao h2 {
   margin: 4px 0 20px;
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 700;
-  color: #26354A;
+  color: var(--cor-texto);
 }
 
 /* ===== CELULAR ===== */
 
 @media (max-width: 600px) {
   .secao h2 {
-    font-size: 18px;
+    font-size: 20px;
   }
 }

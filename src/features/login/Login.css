@@ -23,7 +23,7 @@
     padding: 48px 56px 40px;
     background-color: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(6px);
-    border: 1px solid #1a1a1a;
+    border: 1px solid var(--cor-borda-forte);
     border-radius: 8px;
     display: flex;
     justify-content: center;
@@ -75,7 +75,7 @@
     margin: 0;
     font-size: 13px;
     font-weight: 500;
-    color: #222;
+    color: var(--cor-texto);
 }
 
 .main-login .campo-login,
@@ -85,14 +85,14 @@
     height: 45px;
     padding: 0 12px;
     font-size: 16px;
-    background: #fff;
-    border: 1px solid #1a1a1a;
+    background: var(--cor-branco);
+    border: 1px solid var(--cor-borda-forte);
     border-radius: 4px;
 }
 
 .main-login .campo-login:focus,
 .main-login .campo-senha:focus {
-    outline: 2px solid #52B788;
+    outline: 2px solid var(--cor-primaria);
     outline-offset: 1px;
 }
 
@@ -103,7 +103,7 @@
 }
 
 .main-login .esqueceu-senha a {
-    color: #1a4fd6;
+    color: var(--cor-primaria-secundaria);
     text-decoration: none;
 }
 
@@ -115,7 +115,7 @@
 }
 
 .main-login .cadastro a {
-    color: #1a4fd6;
+    color: var(--cor-primaria-secundaria);
     text-decoration: none;
 }
 
@@ -133,7 +133,7 @@
     height: 45px;
     margin-top: 28px;
     padding: 0;
-    background-color: #52B788;
+    background-color: var(--cor-primaria);
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -141,7 +141,7 @@
 }
 
 .main-login .botao-entrar:hover {
-    background-color: #40a074;
+    background-color: var(--cor-primaria-hover);
 }
 
 .main-login .login-entrar {
@@ -149,5 +149,5 @@
     margin: 0;
     font-size: 20px;
     font-weight: 500;
-    color: #fff;
+    color: var(--cor-branco);
 }

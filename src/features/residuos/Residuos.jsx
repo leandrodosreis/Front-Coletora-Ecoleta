@@ -3,6 +3,7 @@ import './Residuos.css';
 import { OfertaInicialModal } from '../../components/ofertaInicialModal/OfertaInicialModal';
 import { buscarResiduos, buscarDetalhesColeta } from './residuosApi';
 import { DetalhesResiduoModal } from '../../components/detalhesResiduoModal/DetalhesResiduoModal';
+import { CabecalhoPagina } from '../../components/cabecalhoPagina/CabecalhoPagina';
 
 // Define os textos exibidos de acordo com o status do resíduo.
 const ROTULO_STATUS = {
@@ -82,15 +83,7 @@ export function Residuos() {
   return (
     <main className="tela_residuos">
       <div className="conteudo_residuos">
-        <p className="etiqueta">PAINEL DA EMPRESA COLETORA</p>
-
-        <h1 className="titulo_residuos">
-          Resíduos disponíveis
-        </h1>
-
-        <p className="subtitulo">
-          Gerencie e acompanhe suas operações na Ecoleta.
-        </p>
+        <CabecalhoPagina etiqueta="PAINEL DA EMPRESA COLETORA" titulo="Resíduos disponíveis" descricao="Gerencie e acompanhe suas operações na Ecoleta." />
 
         {/* Campos utilizados para filtrar os resíduos. */}
         <div className="barra_filtros">

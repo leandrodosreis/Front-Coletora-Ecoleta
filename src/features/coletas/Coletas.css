@@ -2,7 +2,7 @@
   flex: 1;
   padding: 44px 24px 0;
   box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .conteudo_coletas {
@@ -10,33 +10,10 @@
   margin: 0 auto;
 }
 
-/* Atenção: .etiqueta e .subtitulo também são usadas pelas telas Perfil e Resíduos */
-.etiqueta {
-  margin: 0;
-  font-size: 12px;
-  font-weight: 600;
-  color: #0F766E;
-}
-
-/* Título principal */
-
-.titulo_coletas {
-  margin: 6px 0;
-  font-size: clamp(32px, 6vw, 40px);
-  font-weight: 500;
-  color: #26354A;
-}
-
-.subtitulo {
-  margin: 0 0 24px;
-  font-size: 12px;
-  color: #64748B;
-}
-
 .aviso {
   margin-top: 32px;
   font-size: 14px;
-  color: #64748B;
+  color: var(--cor-texto-secundario);
 }
 
 /* ===== CELULAR ===== */

@@ -1,15 +1,31 @@
+/* Rodapé discreto, mas com leitura confortável. */
 .footer {
-  padding: 0 24px 24px;
-  font-family: 'Inter', sans-serif;
+  padding: 0 24px 20px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .footer_conteudo {
   display: flex;
   justify-content: space-between;
-  max-width: 1800px; 
-  margin: 24px auto 0; 
-  padding-top: 12px;
-  font-size: 9px;
-  color: #9aa8a0;
-  border-top: 1px solid #d3ded7;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  max-width: 1800px;
+  margin: 24px auto 0;
+  padding-top: 14px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--cor-texto-secundario);
+  border-top: 1px solid var(--cor-borda);
+}
+
+@media (max-width: 600px) {
+  .footer {
+    padding: 0 16px 16px;
+  }
+
+  .footer_conteudo {
+    margin-top: 18px;
+    font-size: 12px;
+  }
 }

@@ -4,6 +4,7 @@ import { SecaoColetas } from '../../components/secaoColetas/SecaoColetas';
 import { FinalizarColetaModal } from '../../components/finalizarColetaModal/FinalizarColetaModal';
 import { getColetasEmpresa } from './coletasApi';
 import './Coletas.css';
+import { CabecalhoPagina } from '../../components/cabecalhoPagina/CabecalhoPagina';
 
 // Abas disponíveis na tela.
 const ABAS = [
@@ -65,13 +66,7 @@ export function Coletas() {
   return (
     <main className="tela_coletas">
       <div className="conteudo_coletas">
-        <p className="etiqueta">PAINEL DA EMPRESA COLETORA</p>
-
-        <h1 className="titulo_coletas">Coletas</h1>
-
-        <p className="subtitulo">
-          Gerencie e acompanhe suas operações na Ecoleta.
-        </p>
+        <CabecalhoPagina etiqueta="PAINEL DA EMPRESA COLETORA" titulo="Coletas" descricao="Gerencie e acompanhe suas operações na Ecoleta." />
 
         {/* Abas para filtrar as coletas por status. */}
         <Abas abas={ABAS} ativa={filtro} onChange={setFiltro} />

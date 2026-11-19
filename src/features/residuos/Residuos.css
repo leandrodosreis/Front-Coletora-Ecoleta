@@ -5,7 +5,7 @@
   flex: 1;
   padding: 44px 24px 0;
   box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .conteudo_residuos {
@@ -13,22 +13,11 @@
   margin: 0 auto;
 }
 
-.tela_residuos .etiqueta {
-  color: #2563EB;
-}
 
-.titulo_residuos {
-  margin: 6px 0;
-  font-size: clamp(32px, 6vw, 40px);
-  font-weight: 500;
-  color: #26354A;
-}
 
-.tela_residuos .subtitulo {
-  margin: 0 0 24px;
-  font-size: 12px;
-  color: #64748B;
-}
+
+
+
 
 /* ===== FILTROS ===== */
 
@@ -52,9 +41,9 @@
   box-sizing: border-box;
   font: inherit;
   font-size: 12px;
-  color: #334155;
-  background: #fff;
-  border: 1px solid #CBD5E1;
+  color: var(--cor-texto);
+  background: var(--cor-branco);
+  border: 1px solid var(--cor-borda);
   border-radius: 8px;
 }
 
@@ -63,13 +52,13 @@
 }
 
 .barra_pesquisa::placeholder {
-  color: #94A3B8;
+  color: var(--cor-texto-terciario);
 }
 
 .barra_pesquisa:focus,
 .select_filtro:focus {
   outline: none;
-  border-color: #2563EB;
+  border-color: var(--cor-primaria-secundaria);
 }
 
 .select_filtro {
@@ -82,9 +71,9 @@
   font: inherit;
   font-size: 13px;
   font-weight: 600;
-  color: #fff;
-  background: #0F766E;
-  border: 1px solid #0F766E;
+  color: var(--cor-branco);
+  background: var(--cor-primaria);
+  border: 1px solid var(--cor-primaria);
   border-radius: 8px;
   cursor: pointer;
 }
@@ -99,8 +88,8 @@
 
 .residuos_card {
   padding: 24px;
-  background: #fff;
-  border: 1px solid #DFE5EC;
+  background: var(--cor-branco);
+  border: 1px solid var(--cor-borda);
   border-radius: 18px;
   box-sizing: border-box;
 }
@@ -121,8 +110,8 @@
   height: 48px;
   flex-shrink: 0;
   font-size: 22px;
-  color: #2563EB;
-  background: #EFF6FF;
+  color: var(--cor-primaria-secundaria);
+  background: var(--cor-primaria-clara);
   border-radius: 10px;
 }
 
@@ -135,32 +124,32 @@
   margin: 0;
   font-size: 20px;
   font-weight: 500;
-  color: #26354A;
+  color: var(--cor-texto);
 }
 
 .card_titulo_texto p {
   margin: 4px 0 0;
   font-size: 14px;
-  color: #64748B;
+  color: var(--cor-texto-secundario);
 }
 
 /* Etiquetas de status */
 
 .selo {
   padding: 7px 12px;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
   border-radius: 20px;
 }
 
 .selo_disponivel {
-  color: #1E40AF;
-  background: #EFF6FF;
+  color: var(--cor-primaria-secundaria);
+  background: var(--cor-primaria-clara);
 }
 
 .selo_agendado {
-  color: #475569;
-  background: #E2EAF3;
+  color: var(--cor-texto-secundario);
+  background: var(--cor-superficie-secundaria);
 }
 
 /* Informações do resíduo */
@@ -171,20 +160,20 @@
   gap: 16px;
   margin-top: 24px;
   padding: 16px 0;
-  border-top: 1px solid #E2E8F0;
-  border-bottom: 1px solid #E2E8F0;
+  border-top: 1px solid var(--cor-borda);
+  border-bottom: 1px solid var(--cor-borda);
 }
 
 .card_info_grade strong {
   font-size: 12px;
   font-weight: 600;
-  color: #475569;
+  color: var(--cor-texto-secundario);
 }
 
 .card_info_grade p {
   margin: 6px 0 0;
   font-size: 14px;
-  color: #26354A;
+  color: var(--cor-texto);
 }
 
 /* Rodapé do card */
@@ -203,7 +192,7 @@
   min-width: 180px;
   margin: 0;
   font-size: 12px;
-  color: #64748B;
+  color: var(--cor-texto-secundario);
 }
 
 .acoes {
@@ -223,15 +212,15 @@
 
 .botao_oferta {
   font-weight: 600;
-  color: #fff;
-  background: #0F766E;
-  border: 1px solid #0F766E;
+  color: var(--cor-branco);
+  background: var(--cor-primaria);
+  border: 1px solid var(--cor-primaria);
 }
 
 .botao_ver_coleta {
-  color: #1E40AF;
-  background: #fff;
-  border: 1px solid #CBD5E1;
+  color: var(--cor-primaria-secundaria);
+  background: var(--cor-branco);
+  border: 1px solid var(--cor-borda);
 }
 
 /* Avisos */
@@ -240,9 +229,9 @@
   margin: 0;
   padding: 20px;
   font-size: 14px;
-  color: #64748B;
-  background: #fff;
-  border: 1px solid #DFE5EC;
+  color: var(--cor-texto-secundario);
+  background: var(--cor-branco);
+  border: 1px solid var(--cor-borda);
   border-radius: 12px;
 }
 

@@ -17,7 +17,7 @@
   top: 0;
   bottom: 0;
   width: 75px;
-  background: #0F766E;
+  background: var(--cor-primaria);
 }
 
 .tela_cadastro::before {
@@ -39,8 +39,8 @@
 .card_titulo {
   padding: 22px 32px;
   text-align: center;
-  background: #f8fafb;
-  border: 1px solid #8a8f8c;
+  background: var(--cor-superficie-secundaria);
+  border: 1px solid var(--cor-borda);
   border-radius: 20px;
 }
 
@@ -48,13 +48,13 @@
   margin: 0 0 14px;
   font-size: 28px;
   font-weight: 500;
-  color: #26354A;
+  color: var(--cor-texto);
 }
 
 .card_titulo p {
   margin: 0;
   font-size: 22px;
-  color: #334155;
+  color: var(--cor-texto);
 }
 
 .formulario {
@@ -73,13 +73,13 @@
 }
 
 .mensagem_erro {
-  color: #c00000;
-  background: #fdecec;
+  color: var(--cor-erro-texto);
+  background: var(--cor-erro-fundo);
 }
 
 .mensagem_sucesso {
-  color: #0F766E;
-  background: #E6F4F1;
+  color: var(--cor-primaria);
+  background: var(--cor-sucesso-fundo);
 }
 
 .botoes {
@@ -94,19 +94,19 @@
   height: 47px;
   font: inherit;
   font-size: 24px;
-  border: 1px solid #8a8f8c;
+  border: 1px solid var(--cor-borda);
   border-radius: 14px;
   cursor: pointer;
 }
 
 .botao_sair {
-  background: #f8fafb;
+  background: var(--cor-superficie-secundaria);
 }
 
 .botao_cadastrar {
-  color: #fff;
-  background: #0F766E;
-  border-color: #0F766E;
+  color: var(--cor-branco);
+  background: var(--cor-primaria);
+  border-color: var(--cor-primaria);
 }
 
 .botao:disabled {

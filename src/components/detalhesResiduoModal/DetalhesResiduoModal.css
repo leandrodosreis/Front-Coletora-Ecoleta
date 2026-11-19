@@ -17,37 +17,37 @@
     overflow-y: auto;
     padding: 32px 36px;
     box-sizing: border-box;
-    background: #ffffff;
-    border: 1px solid #CBD5E1;
-    border-radius: 20px;
-    font-family: 'Inter', sans-serif;
+    background: var(--cor-branco);
+    border: 1px solid var(--cor-borda);
+    border-radius: 8px;
+    font-family: inherit;
   }
   
   .detalhes-brand {
     display: block;
     margin-bottom: 20px;
-    color: #20A878;
+    color: var(--cor-primaria);
     font-size: 18px;
     font-weight: 700;
   }
   
   .detalhes-container h2 {
     margin: 0 0 20px;
-    color: #26354A;
-    font-size: 32px;
-    font-weight: 500;
+    color: var(--cor-texto);
+    font-size: 24px;
+    font-weight: 600;
   }
   
   .detalhes-status {
     display: inline-block;
     margin-bottom: 24px;
     padding: 8px 12px;
-    color: #0F766E;
-    background: #CCFBF1;
+    color: var(--cor-primaria);
+    background: var(--cor-sucesso-fundo);
     border-radius: 6px;
-    font-size: 11px;
+    font-size: 14px;
     font-weight: 700;
-    letter-spacing: 0.4px;
+    letter-spacing: 0;
   }
   
   .detalhes-grade {
@@ -62,21 +62,21 @@
     gap: 7px;
     min-width: 0;
     padding: 14px;
-    background: #F0F8F4;
-    border: 1px solid #C5D5CF;
-    border-radius: 9px;
+    background: var(--cor-superficie-secundaria);
+    border: 1px solid var(--cor-borda);
+    border-radius: 6px;
   }
   
   .detalhes-campo label {
-    color: #64748B;
-    font-size: 12px;
+    color: var(--cor-texto-secundario);
+    font-size: 15px;
     font-weight: 600;
   }
   
   .detalhes-campo p {
     margin: 0;
-    color: #26354A;
-    font-size: 16px;
+    color: var(--cor-texto);
+    font-size: 14px;
     font-weight: 500;
     overflow-wrap: anywhere;
   }
@@ -99,18 +99,18 @@
     min-width: 150px;
     height: 48px;
     padding: 0 24px;
-    color: #ffffff;
-    background: #0F766E;
+    color: var(--cor-branco);
+    background: var(--cor-primaria);
     border: none;
     border-radius: 8px;
     font: inherit;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 500;
     cursor: pointer;
   }
   
   .detalhes-fechar:hover {
-    background: #115E59;
+    background: var(--cor-primaria-hover);
   }
   
   @media (max-width: 600px) {

@@ -1,15 +1,118 @@
-/* CSS GLOBAL: vale para o projeto inteiro */
+/* Design tokens: identidade visual centralizada do Ecoleta. */
+:root {
+  /* Marca e acoes principais */
+  --cor-primaria: #1E3A5F;
+  --cor-primaria-hover: #162D49;
+  --cor-primaria-secundaria: #2563A6;
+  --cor-primaria-clara: #E8F0FC;
 
-/* Tira a margem padrão do navegador ao redor da página */
-body {
-  margin: 0;
-  background: #EEF3F9;
+  /* Superficies e bordas */
+  --cor-fundo: #F4F7FB;
+  --cor-branco: #FFFFFF;
+  --cor-superficie-secundaria: #F1F5F9;
+  --cor-borda: #DCE4EF;
+  --cor-borda-destaque: #B8CBE3;
+  --cor-borda-forte: #94A3B8;
+  --cor-mapa-linha: #D1DFF3;
+
+  /* Tipografia */
+  --cor-texto: #26354A;
+  --cor-texto-secundario: #64748B;
+  --cor-texto-terciario: #94A3B8;
+  --cor-texto-claro: #D6E5F2;
+  --cor-texto-claro-secundario: #A9C5DC;
+
+  /* Estados semanticos: sucesso, alerta e erro */
+  --cor-sucesso: #16A34A;
+  --cor-sucesso-texto: #166534;
+  --cor-sucesso-fundo: #DCFCE7;
+  --cor-alerta: #D97706;
+  --cor-alerta-texto: #92400E;
+  --cor-alerta-fundo: #FEF3C7;
+  --cor-erro: #DC2626;
+  --cor-erro-hover: #B91C1C;
+  --cor-erro-texto: #991B1B;
+  --cor-erro-fundo: #FEE2E2;
+
+  /* Profundidade discreta para menus e elementos sobrepostos. */
+  --sombra-menu: 0 8px 20px rgba(15, 23, 42, 0.12);
+  --sombra-modal: 0 16px 40px rgba(15, 23, 42, 0.18);
 }
 
-/* Layout das telas que têm Header e Footer:
-   a coluna ocupa a altura toda da tela, assim o Footer fica sempre embaixo */
-.layout {
-  min-height: 100vh;
+/* Base global */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-width: 320px;
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+.app_layout {
   display: flex;
-  flex-direction: column;
+  min-height: 100vh;
+  background: var(--cor-fundo);
+}
+
+.app_area {
+  flex: 1;
+  min-width: 0;
+  min-height: 100vh;
+  background: var(--cor-fundo);
+}
+
+@media (max-width: 760px) {
+  .app_layout {
+    display: block;
+  }
+
+  .app_area {
+    min-height: calc(100vh - 68px);
+  }
+}
+
+
+/* Destaque de foco para navegação por teclado. */
+:where(button, a, input, select, textarea):focus-visible {
+  outline: 3px solid var(--cor-primaria-secundaria);
+  outline-offset: 2px;
+}
+
+/* Evita que textos longos estourem os limites dos componentes. */
+img,
+svg {
+  max-width: 100%;
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

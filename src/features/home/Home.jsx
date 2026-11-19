@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { getHome } from './homeApi';
 import './Home.css';
 import { useNavigate } from 'react-router-dom';
+import { CabecalhoPagina } from '../../components/cabecalhoPagina/CabecalhoPagina';
 
 const homeInicial = {
   nome: '',
@@ -68,9 +69,7 @@ export function Home() {
     <main className="home_tela">
       <div className="home_conteudo">
 
-        <p className="home_etiqueta">PAINEL DA EMPRESA COLETORA</p>
-        <h1 className="home_titulo">Home</h1>
-        <p className="home_subtitulo">Encontre novos materiais e acompanhe suas atividades.</p>
+        <CabecalhoPagina etiqueta="PAINEL DA EMPRESA COLETORA" titulo="Visão geral" descricao="Encontre novos materiais e acompanhe suas atividades." />
 
         {carregando && <p className="home_aviso">Carregando...</p>}
         {erro && <p className="home_aviso">Não foi possível carregar o home.</p>}

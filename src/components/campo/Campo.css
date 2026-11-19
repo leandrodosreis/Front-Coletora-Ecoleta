@@ -23,20 +23,20 @@
   padding: 0 12px;
   box-sizing: border-box; 
   font: inherit;
-  background: #f8fafb;
-  border: 1px solid #8a8f8c;
+  background: var(--cor-superficie-secundaria);
+  border: 1px solid var(--cor-borda);
   border-radius: 6px;
 }
 
 .entrada input:read-only {
-  background: #eef1ef;
+  background: var(--cor-superficie-secundaria);
 }
 
 .campo_erro {
   min-height: 20px;
   padding-top: 3px;
   font-size: 10px;
-  color: #c00000;
+  color: var(--cor-erro-texto);
 }
 
 .botao_olho {

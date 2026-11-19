@@ -15,25 +15,25 @@
   max-width: 720px;
   padding: 32px 36px 40px;
   box-sizing: border-box;
-  background: #ffffff;
-  border: 1px solid #CBD5E1;
-  border-radius: 20px;
-  font-family: 'Inter', sans-serif;
+  background: var(--cor-branco);
+  border: 1px solid var(--cor-borda);
+  border-radius: 8px;
+  font-family: inherit;
 }
 
 .finalizar-brand {
   display: block;
   margin-bottom: 26px;
-  color: #20A878;
+  color: var(--cor-primaria);
   font-size: 20px;
   font-weight: 700;
 }
 
 .finalizar-container h2 {
   margin: 0 0 30px;
-  color: #111111;
-  font-size: 36px;
-  font-weight: 400;
+  color: var(--cor-texto);
+  font-size: 24px;
+  font-weight: 600;
 }
 
 .finalizar-container form {
@@ -51,41 +51,41 @@
 }
 
 .finalizar-campo label {
-  color: #244F4B;
-  font-size: 18px;
-  font-weight: 400;
+  color: var(--cor-texto);
+  font-size: 15px;
+  font-weight: 600;
 }
 
 .finalizar-campo input {
   width: 100%;
-  height: 64px;
+  height: 44px;
   padding: 0 12px;
   box-sizing: border-box;
-  color: #26354A;
-  background: #F0F8F4;
-  border: 1px solid #C5D5CF;
-  border-radius: 10px;
+  color: var(--cor-texto);
+  background: var(--cor-superficie-secundaria);
+  border: 1px solid var(--cor-borda);
+  border-radius: 6px;
   outline: none;
   font: inherit;
-  font-size: 17px;
+  font-size: 14px;
 }
 
 .finalizar-campo input:focus {
-  border-color: #20A878;
+  border-color: var(--cor-primaria);
 }
 
 .finalizar-campo input::placeholder {
-  color: #64748B;
+  color: var(--cor-texto-secundario);
 }
 
 .finalizar-campos-linha {
   display: flex;
-  gap: 4px;
+  gap: 12px;
 }
 
 .finalizar-erro {
   margin: -12px 0 0;
-  color: #DC2626;
+  color: var(--cor-erro-texto);
   font-size: 14px;
 }
 
@@ -97,31 +97,31 @@
 
 .finalizar-cancelar,
 .finalizar-confirmar {
-  height: 60px;
-  border: 1px solid #CBD5E1;
-  border-radius: 10px;
-  color: #ffffff;
+  height: 42px;
+  border: 1px solid var(--cor-borda);
+  border-radius: 6px;
+  color: var(--cor-branco);
   font: inherit;
-  font-size: 22px;
+  font-size: 14px;
   cursor: pointer;
 }
 
 .finalizar-cancelar {
   flex: 0.9;
-  background: #E3262E;
+  background: var(--cor-erro);
 }
 
 .finalizar-cancelar:hover {
-  background: #C91F27;
+  background: var(--cor-erro-hover);
 }
 
 .finalizar-confirmar {
   flex: 1.6;
-  background: #20A878;
+  background: var(--cor-primaria);
 }
 
 .finalizar-confirmar:hover {
-  background: #168D63;
+  background: var(--cor-primaria-hover);
 }
 
 .finalizar-cancelar:disabled,
@@ -177,3 +177,4 @@
     font-size: 18px;
   }
 }
+

@@ -2,34 +2,16 @@
   flex: 1;
   padding: 44px 24px 0;
   box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .historico_conteudo {
   max-width: 1800px;
   margin: 0 auto;
 }
-
-.historico_etiqueta {
-  margin: 0;
-  font-size: 13px;
-  font-weight: 600;
-  color: #0F766E;
-}
-.historico_titulo {
-  margin: 6px 0;
-  font-size: clamp(32px, 6vw, 40px);
-  font-weight: 500;
-  color: #0F766E;
-}
-.historico_subtitulo {
-  margin: 0 0 32px;
-  font-size: 14px;
-  color: #6b8577;
-}
 .historico_aviso {
   font-size: 14px;
-  color: #6b8577;
+  color: var(--cor-texto-secundario);
 }
 
 .historico_filtros {
@@ -48,22 +30,22 @@
   height: 52px;
   padding: 0 20px;
   box-sizing: border-box;
-  background: #fff;
-  border: 1px solid #dfe5e1;
-  border-radius: 16px;
+  background: var(--cor-branco);
+  border: 1px solid var(--cor-borda);
+  border-radius: 8px;
 }
 .historico_busca input {
   flex: 1;
   min-width: 0;
   font: inherit;
-  font-size: 15px;
+  font-size: 14px;
   background: transparent;
   border: 0;
   outline: none; 
 }
 
 .historico_busca:focus-within {
-  border-color: #6fb48c;
+  border-color: var(--cor-primaria-secundaria);
 }
 
 /* Caixa que envolve o select. "position: relative" permite desenhar a setinha por cima */
@@ -76,11 +58,11 @@
   height: 52px;
   padding: 0 44px 0 20px;
   font: inherit;
-  font-size: 15px;
-  color: #2d4a3c;
-  background: #fff;
-  border: 1px solid #dfe5e1;
-  border-radius: 16px;
+  font-size: 14px;
+  color: var(--cor-texto);
+  background: var(--cor-branco);
+  border: 1px solid var(--cor-borda);
+  border-radius: 8px;
   cursor: pointer;
 }
 /* Setinha: um quadradinho com 2 bordas, girado em 45 graus */
@@ -91,8 +73,8 @@
   top: 50%;
   width: 7px;
   height: 7px;
-  border-right: 2px solid #5f6f66;
-  border-bottom: 2px solid #5f6f66;
+  border-right: 2px solid var(--cor-texto-secundario);
+  border-bottom: 2px solid var(--cor-texto-secundario);
   transform: translateY(-70%) rotate(45deg);
   pointer-events: none; /* o clique passa direto para o select */
 }
@@ -101,12 +83,12 @@
   height: 52px;
   padding: 0 22px;
   font: inherit;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 600;
-  color: #fff;
-  background: #0F766E;
-  border: 1px solid #0F766E;
-  border-radius: 16px;
+  color: var(--cor-branco);
+  background: var(--cor-primaria);
+  border: 1px solid var(--cor-primaria);
+  border-radius: 8px;
   cursor: pointer;
 }
 
@@ -116,10 +98,10 @@
   align-items: center;
   gap: 16px;
   margin-bottom: 16px;
-  padding: 20px 24px;
-  background: #fff;
-  border: 1px solid #dfe5e1;
-  border-radius: 18px;
+  padding: 20px 22px;
+  background: var(--cor-branco);
+  border: 1px solid var(--cor-borda);
+  border-radius: 8px;
 }
 
 .historico_data {
@@ -130,11 +112,11 @@
   text-align: center;
 }
 .historico_data strong {
-  font-size: 26px;
+  font-size: 28px;
   font-weight: 400;
 }
 .historico_data span {
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .historico_info {
@@ -147,8 +129,8 @@
 }
 .historico_detalhes {
   margin: 10px 0 0;
-  font-size: 12px;
-  color: #3d4f46;
+  font-size: 14px;
+  color: var(--cor-texto-secundario);
 }
 
 /* Grupo selo + botão, alinhado à direita */
@@ -162,29 +144,31 @@
 /* Selo de status: a cor muda nas três classes abaixo */
 .historico_selo {
   padding: 8px 14px;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 700;
-  border-radius: 20px;
+  border-radius: 6px;
 }
 .historico_selo_verde {
-  color: #0b4f33;
-  background: #d4f5e2;
+  color: var(--cor-sucesso-texto);
+  background: var(--cor-sucesso-fundo);
 }
 .historico_selo_vermelho {
-  color: #b91c1c;
-  background: #fecaca;
+  color: var(--cor-erro-texto);
+  background: var(--cor-erro-fundo);
 }
 .historico_selo_cinza {
-  color: #4b5563;
-  background: #e5e7eb;
+  color: var(--cor-texto-secundario);
+  background: var(--cor-superficie-secundaria);
 }
 
 .historico_botao_detalhe {
   padding: 14px 20px;
   font: inherit;
-  font-size: 15px;
-  background: #fff;
-  border: 1px solid #c9d1cc;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--cor-primaria);
+  background: var(--cor-branco);
+  border: 1px solid var(--cor-borda);
   border-radius: 14px;
   cursor: pointer;
 }
