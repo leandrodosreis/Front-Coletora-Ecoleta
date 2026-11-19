@@ -114,7 +114,7 @@
   flex-wrap: wrap;
 }
 
-.card_icone {
+.card_residuo_icone {
   display: grid;
   place-items: center;
   width: 48px;

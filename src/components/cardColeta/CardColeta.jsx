@@ -16,7 +16,7 @@ export function CardColeta({ coleta, onFinalizar }) {
 
   return (
     <div className="card_coleta">
-      <span className="card_icone">🏢</span>
+      <span className="card_coleta_icone">🏢</span>
 
       <div className="card_info">
         <p className="card_nome">{coleta.nome_estabelecimento}</p>

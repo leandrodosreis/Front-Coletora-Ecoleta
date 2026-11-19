@@ -157,7 +157,7 @@ export function Residuos() {
           {!carregando && !erro && residuosFiltrados.map((residuo) => (
             <article className="residuos_card" key={residuo.id}>
               <div className="card_topo">
-                <div className="card_icone">📦</div>
+                <div className="card_residuo_icone">📦</div>
 
                 <div className="card_titulo_texto">
                   <h2>{residuo.material}</h2>
