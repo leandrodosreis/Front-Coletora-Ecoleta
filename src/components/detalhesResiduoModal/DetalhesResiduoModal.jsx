@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import './DetalhesResiduo.css';
+import './DetalhesResiduoModal.css';
 
-export function ModalDetalhesResiduo({
+export function DetalhesResiduoModal({
   isOpen,
   residuo,
   buscarDetalhes,

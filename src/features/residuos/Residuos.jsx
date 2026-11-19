@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import './Residuos.css';
 import { OfertaInicialModal } from '../../components/ofertaInicialModal/OfertaInicialModal';
 import { buscarResiduos, buscarDetalhesColeta } from './residuosApi';
-import { ModalDetalhesResiduo } from '../../components/detalhesResiduos/DetalhesResiduo';
+import { DetalhesResiduoModal } from '../../components/detalhesResiduoModal/DetalhesResiduoModal';
 
 // Define os textos exibidos de acordo com o status do resíduo.
 const ROTULO_STATUS = {
@@ -230,7 +230,7 @@ export function Residuos() {
         }}
       />
 
-      <ModalDetalhesResiduo
+      <DetalhesResiduoModal
         isOpen={Boolean(residuoDetalhes)}
         residuo={residuoDetalhes}
         buscarDetalhes={buscarDetalhesColeta}
