@@ -1,9 +1,9 @@
 
 import { useState } from 'react';
-import './OfertaInicial.css';
+import './OfertaInicialModal.css';
 import { enviarOfertaInicial } from '../../features/residuos/residuosApi';
 
-export function ModalOferta({ isOpen, onClose, residuo, onSucesso }) {
+export function OfertaInicialModal({ isOpen, onClose, residuo, onSucesso }) {
   // Estados utilizados pelo formulário.
   const [nomeFuncionario, setNomeFuncionario] = useState('');
   const [valorOferta, setValorOferta] = useState('');

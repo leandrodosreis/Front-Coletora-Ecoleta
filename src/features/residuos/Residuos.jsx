@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import './Residuos.css';
-import { ModalOferta } from '../../components/ofertaInicial/OfertaInicial';
+import { OfertaInicialModal } from '../../components/ofertaInicialModal/OfertaInicialModal';
 import { buscarResiduos, buscarDetalhesColeta } from './residuosApi';
 import { ModalDetalhesResiduo } from '../../components/detalhesResiduos/DetalhesResiduo';
 
@@ -220,7 +220,7 @@ export function Residuos() {
       </div>
 
       {/* Modal utilizado para enviar uma oferta ao estabelecimento. */}
-      <ModalOferta
+      <OfertaInicialModal
         isOpen={Boolean(residuoSelecionado)}
         residuo={residuoSelecionado}
         onClose={() => setResiduoSelecionado(null)}
