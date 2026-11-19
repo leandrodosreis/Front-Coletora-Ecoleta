@@ -3,7 +3,7 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 // BrowserRouter permite usar rotas (trocar de tela pela URL sem recarregar a página)
 import { BrowserRouter } from 'react-router-dom';
-import { Rotas } from './routes';
+import { Rotas } from './routes/Rotas';
 import './index.css';
 
 // Procura a <div id="root"> do index.html e desenha o app dentro dela
