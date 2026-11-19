@@ -1,6 +1,6 @@
-
 import { useState, useEffect } from 'react';
-import { CardColeta } from '../../components/cardColeta/CardColeta';
+import { Abas } from '../../components/abas/Abas';
+import { SecaoColetas } from '../../components/secaoColetas/SecaoColetas';
 import { FinalizarColetaModal } from '../../components/finalizarColetaModal/FinalizarColetaModal';
 import { getColetasEmpresa } from './coletasApi';
 import './Coletas.css';
@@ -74,17 +74,7 @@ export function Coletas() {
         </p>
 
         {/* Abas para filtrar as coletas por status. */}
-        <div className="abas">
-          {ABAS.map((aba) => (
-            <button
-              key={aba.valor}
-              className={filtro === aba.valor ? 'aba aba_ativa' : 'aba'}
-              onClick={() => setFiltro(aba.valor)}
-            >
-              {aba.nome}
-            </button>
-          ))}
-        </div>
+        <Abas abas={ABAS} ativa={filtro} onChange={setFiltro} />
 
         {carregando && (
           <p className="aviso">Carregando coletas...</p>
@@ -96,35 +86,21 @@ export function Coletas() {
 
         {/* Coletas que precisam ser finalizadas. */}
         {mostrarAguardando && (
-          <section className="secao">
-            <p className="etiqueta">Atenção necessária</p>
-
-            <h2>Coletas aguardando finalização</h2>
-
-            {coletasAguardando.map((coleta) => (
-              <CardColeta
-                key={coleta.id_coleta}
-                coleta={coleta}
-                onFinalizar={setColetaSelecionada}
-              />
-            ))}
-          </section>
+          <SecaoColetas
+            etiqueta="Atenção necessária"
+            titulo="Coletas aguardando finalização"
+            coletas={coletasAguardando}
+            onFinalizar={setColetaSelecionada}
+          />
         )}
 
         {/* Coletas que ainda estão agendadas. */}
         {mostrarAgendadas && (
-          <section className="secao">
-            <p className="etiqueta">Agendadas</p>
-
-            <h2>Coletas agendadas</h2>
-
-            {coletasAgendadas.map((coleta) => (
-              <CardColeta
-                key={coleta.id_coleta}
-                coleta={coleta}
-              />
-            ))}
-          </section>
+          <SecaoColetas
+            etiqueta="Agendadas"
+            titulo="Coletas agendadas"
+            coletas={coletasAgendadas}
+          />
         )}
       </div>
 

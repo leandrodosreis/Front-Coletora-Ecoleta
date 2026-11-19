@@ -1,4 +1,3 @@
-
 .tela_coletas {
   flex: 1;
   padding: 44px 24px 0;
@@ -11,6 +10,7 @@
   margin: 0 auto;
 }
 
+/* Atenção: .etiqueta e .subtitulo também são usadas pelas telas Perfil e Resíduos */
 .etiqueta {
   margin: 0;
   font-size: 12px;
@@ -33,48 +33,6 @@
   color: #64748B;
 }
 
-/* ===== ABAS ===== */
-
-.abas {
-  display: inline-flex;
-  gap: 4px;
-  padding: 3px;
-  background: #E2EAF3;
-  border: 1px solid #CBD5E1;
-  border-radius: 12px;
-}
-
-.aba {
-  min-width: 80px;
-  padding: 10px 16px;
-  font: inherit;
-  font-size: 12px;
-  color: #475569;
-  background: none;
-  border: 0;
-  border-radius: 10px;
-  cursor: pointer;
-}
-
-.aba_ativa {
-  color: #0F766E;
-  background: #fff;
-  border: 1px solid #CBD5E1;
-}
-
-/* ===== SEÇÕES ===== */
-
-.secao {
-  margin-top: 32px;
-}
-
-.secao h2 {
-  margin: 4px 0 20px;
-  font-size: 22px;
-  font-weight: 700;
-  color: #26354A;
-}
-
 .aviso {
   margin-top: 32px;
   font-size: 14px;
@@ -86,21 +44,5 @@
 @media (max-width: 600px) {
   .tela_coletas {
     padding: 28px 16px 0;
-  }
-
-  .abas {
-    display: flex;
-    width: 100%;
-    box-sizing: border-box;
-  }
-
-  .aba {
-    flex: 1;
-    min-width: 0;
-    padding: 10px 6px;
-  }
-
-  .secao h2 {
-    font-size: 18px;
   }
 }

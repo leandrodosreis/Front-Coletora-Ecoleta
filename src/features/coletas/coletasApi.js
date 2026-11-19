@@ -1,5 +1,4 @@
-
-import { rotaBase, pegarToken, sairDoSistema } from '../../services/API';
+import { requisicao, mensagemDeErro } from '../../services/API';
 
 // Organiza os dados recebidos da API para utilização na tela.
 function formatarColeta(coleta) {
@@ -17,33 +16,20 @@ function formatarColeta(coleta) {
 
 // Busca as coletas da empresa coletora autenticada.
 export const getColetasEmpresa = async function () {
-  let url = `${rotaBase}/v1/ecoleta/empresa-coletora/coletas`;
+  let resultado = await requisicao('/v1/ecoleta/empresa-coletora/coletas');
+
+  if (!resultado.ok || resultado.dados === null) {
+    return false;
+  }
+
+  let coletas = resultado.dados.response?.coletas || [];
+
+  if (!Array.isArray(coletas)) {
+    return false;
+  }
 
   try {
-    let resposta = await fetch(url, {
-      headers: {
-        Authorization: `Bearer ${pegarToken()}`
-      }
-    });
-
-    if (resposta.status === 401) {
-      sairDoSistema();
-      return false;
-    }
-
-    if (!resposta.ok) {
-      return false;
-    }
-
-    let dadosResposta = await resposta.json();
-    let coletas = dadosResposta.response?.coletas || [];
-
-    if (!Array.isArray(coletas)) {
-      return false;
-    }
-
     return coletas.map(formatarColeta);
-
   } catch (erro) {
     console.error('Erro ao buscar coletas:', erro);
     return false;
@@ -56,34 +42,19 @@ export const finalizarColeta = async function (idColeta, dadosColeta) {
     throw new Error('Não foi possível identificar a coleta.');
   }
 
-  let url = `${rotaBase}/v1/ecoleta/empresa-coletora/coleta/finalizar/${idColeta}`;
-
-  let resposta = await fetch(url, {
-    method: 'PATCH',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${pegarToken()}`
-    },
-    body: JSON.stringify({
+  let resultado = await requisicao(`/v1/ecoleta/empresa-coletora/coleta/finalizar/${idColeta}`, {
+    metodo: 'PATCH',
+    corpo: {
       nome_coletor: dadosColeta.nome_coletor,
       placa_veiculo: dadosColeta.placa_veiculo,
       data_coleta: dadosColeta.data_coleta,
       hora_coleta: dadosColeta.hora_coleta
-    })
+    }
   });
 
-  let dadosResposta = await resposta.json().catch(() => ({}));
-
-  if (resposta.status === 401) {
-    sairDoSistema();
-    throw new Error('Sua sessão expirou. Faça login novamente.');
+  if (!resultado.ok) {
+    throw new Error(mensagemDeErro(resultado, 'Não foi possível finalizar a coleta.'));
   }
 
-  if (!resposta.ok) {
-    throw new Error(
-      dadosResposta.message || 'Não foi possível finalizar a coleta.'
-    );
-  }
-
-  return dadosResposta;
+  return resultado.dados ?? {};
 };

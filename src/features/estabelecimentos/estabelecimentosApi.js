@@ -1,5 +1,5 @@
 // Função que conversa com a API na tela de Estabelecimentos próximos.
-import { rotaBase, pegarToken, sairDoSistema } from '../../services/API';
+import { requisicao } from '../../services/API';
 
 // A API manda UM item por resíduo (dois resíduos de vidro = dois itens).
 // O design mostra os resíduos somados por material: "Vidro - 35 kg".
@@ -46,41 +46,32 @@ function converterEstabelecimento(estabelecimento) {
 // O id da empresa não vai na URL: a API descobre pelo token do login.
 // Devolve uma lista de estabelecimentos, ou false se der erro ou vier vazia.
 export const getEstabelecimentosProximos = async function (idTipoMaterial) {
-  let url = `${rotaBase}/v1/ecoleta/empresa-coletora/estabelecimentos`;
+  let caminho = '/v1/ecoleta/empresa-coletora/estabelecimentos';
 
   // Se foi escolhido um tipo de material, acrescenta o id dele no final do endereço
   if (idTipoMaterial) {
-    url = `${url}/${idTipoMaterial}`;
+    caminho = `${caminho}/${idTipoMaterial}`;
+  }
+
+  let resultado = await requisicao(caminho);
+
+  if (!resultado.ok) {
+    return false;
+  }
+
+  // A lista fica em response.estabelecimentos
+  let lista = resultado.dados?.response?.estabelecimentos || [];
+
+  if (lista.length === 0) {
+    console.warn('A API não retornou nada');
+    return false;
   }
 
   try {
-    let response = await fetch(url, {
-      // Authorization envia o token para a API saber quem está pedindo
-      headers: { Authorization: `Bearer ${pegarToken()}` }
-    });
-
-    // 401 = token inválido ou vencido: apaga o token e volta para o login
-    if (response.status === 401) {
-      sairDoSistema();
-      return false;
-    }
-
-    if (response.ok) {
-      let respostaAPI = await response.json();
-      // A lista fica em response.estabelecimentos
-      let lista = respostaAPI.response.estabelecimentos;
-
-      if (lista.length > 0) {
-        // map aplica "converterEstabelecimento" em cada item da lista
-        return lista.map(converterEstabelecimento);
-      } else {
-        console.warn('A API não retornou nada');
-        return false;
-      }
-    }
-    return false;
-  } catch (error) {
-    console.error(error);
+    // map aplica "converterEstabelecimento" em cada item da lista
+    return lista.map(converterEstabelecimento);
+  } catch (erro) {
+    console.error(erro);
     return false;
   }
 };

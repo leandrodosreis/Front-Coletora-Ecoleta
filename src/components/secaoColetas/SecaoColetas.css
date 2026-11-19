@@ -1,0 +1,25 @@
+.secao {
+  margin-top: 32px;
+}
+
+.secao_etiqueta {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: #0F766E;
+}
+
+.secao h2 {
+  margin: 4px 0 20px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #26354A;
+}
+
+/* ===== CELULAR ===== */
+
+@media (max-width: 600px) {
+  .secao h2 {
+    font-size: 18px;
+  }
+}

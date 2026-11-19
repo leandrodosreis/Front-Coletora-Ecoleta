@@ -1,4 +1,4 @@
-import { rotaBase, pegarToken } from '../../services/API';
+import { requisicao } from '../../services/API';
 
 function converterOferta(oferta) {
   return {
@@ -30,23 +30,18 @@ function converterHome(home) {
 }
 
 export const getHome = async function () {
+  let resultado = await requisicao('/v1/ecoleta/empresa-coletora/home');
 
-  let url = `${rotaBase}/v1/ecoleta/empresa-coletora/home`;
-
-  try {
-    let response = await fetch(url, {
-      // Authorization envia o token para a API saber quem está pedindo
-      headers: { Authorization: `Bearer ${pegarToken()}` }
-    });
-
-    if (response.ok) {
-      let respostaAPI = await response.json();
-      return converterHome(respostaAPI);
-    }
-
+  // Sem sucesso, ou sem o resumo que a tela precisa: devolve false
+  if (!resultado.ok || !resultado.dados?.response?.resumo) {
     return false;
-  } catch (error) {
-    console.error(error);
+  }
+
+  // try/catch: se a API mudar algum campo, a tela recebe false em vez de quebrar
+  try {
+    return converterHome(resultado.dados);
+  } catch (erro) {
+    console.error(erro);
     return false;
   }
 };

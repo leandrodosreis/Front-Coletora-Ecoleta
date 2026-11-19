@@ -1,0 +1,42 @@
+.abas {
+  display: inline-flex;
+  gap: 4px;
+  padding: 3px;
+  background: #E2EAF3;
+  border: 1px solid #CBD5E1;
+  border-radius: 12px;
+}
+
+.aba {
+  min-width: 80px;
+  padding: 10px 16px;
+  font: inherit;
+  font-size: 12px;
+  color: #475569;
+  background: none;
+  border: 0;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.aba_ativa {
+  color: #0F766E;
+  background: #fff;
+  border: 1px solid #CBD5E1;
+}
+
+/* ===== CELULAR ===== */
+
+@media (max-width: 600px) {
+  .abas {
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .aba {
+    flex: 1;
+    min-width: 0;
+    padding: 10px 6px;
+  }
+}
