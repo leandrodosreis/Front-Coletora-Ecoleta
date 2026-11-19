@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { CardColeta } from '../../components/cardColeta/CardColeta';
-import { FinalizarColetaModal } from '../../components/finalizarColeta/FinalizarColeta';
+import { FinalizarColetaModal } from '../../components/finalizarColetaModal/FinalizarColetaModal';
 import { getColetasEmpresa } from './coletasApi';
 import './Coletas.css';
 

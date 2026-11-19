@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from 'react';
 import { finalizarColeta } from '../../features/coletas/coletasApi';
-import './FinalizarColeta.css';
+import './FinalizarColetaModal.css';
 
 // Converte DD/MM/AAAA para AAAA-MM-DD, formato utilizado pelo input date.
 function converterDataParaInput(data) {
