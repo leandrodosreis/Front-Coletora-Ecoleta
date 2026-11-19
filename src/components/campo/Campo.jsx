@@ -9,9 +9,9 @@ import './Campo.css';
 //  somenteLeitura -> true = o usuário não consegue digitar (campo preenchido sozinho)
 //  valores        -> objeto com o valor de todos os campos
 //  erros          -> objeto com a mensagem de erro de cada campo
-//  aoMudar        -> função chamada a cada letra digitada
-//  aoPerderFoco   -> função chamada quando o usuário sai do campo
-export function Campo({ label, nome, tipo = 'text', grande, somenteLeitura, valores, erros, aoMudar, aoPerderFoco }) {
+//  onChange        -> função chamada a cada letra digitada
+//  onBlur   -> função chamada quando o usuário sai do campo
+export function Campo({ label, nome, tipo = 'text', grande, somenteLeitura, valores, erros, onChange, onBlur }) {
   // useState guarda uma informação que, ao mudar, atualiza a tela.
   // 'mostrar' diz se a senha está visível (true) ou escondida (false).
   const [mostrar, setMostrar] = useState(false);
@@ -29,8 +29,8 @@ export function Campo({ label, nome, tipo = 'text', grande, somenteLeitura, valo
           type={tipo === 'password' && mostrar ? 'text' : tipo}
           // valores[nome] pega o valor deste campo dentro do objeto "valores"
           value={valores[nome]}
-          onChange={aoMudar}
-          onBlur={aoPerderFoco}
+          onChange={onChange}
+          onBlur={onBlur}
           readOnly={somenteLeitura}
         />
 

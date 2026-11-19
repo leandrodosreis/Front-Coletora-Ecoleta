@@ -170,7 +170,7 @@ if (resultado.ok) {
 
   // Props que todos os Campos recebem. Em vez de repetir em cada um,
   // guardamos aqui e usamos {...props}, que espalha esses três itens no componente.
-  const props = { valores, erros, aoMudar: mudar };
+  const props = { valores, erros, onChange: mudar };
 
   return (
     <main className="tela_cadastro">
@@ -185,8 +185,8 @@ if (resultado.ok) {
         <form className="formulario" onSubmit={enviar}>
           <Campo label="Nome da empresa" nome="nome" grande {...props} />
           <Campo label="CNPJ" nome="cnpj" {...props} />
-          {/* aoPerderFoco: quando sai do CEP, busca o endereço */}
-          <Campo label="CEP" nome="cep" aoPerderFoco={buscarCep} {...props} />
+          {/* onBlur: quando sai do CEP, busca o endereço */}
+          <Campo label="CEP" nome="cep" onBlur={buscarCep} {...props} />
           <Campo label="Logradouro" nome="logradouro" grande {...props} />
           <Campo label="Bairro" nome="bairro" {...props} />
           {/* somenteLeitura: preenchidos pelo CEP, o usuário não digita */}
