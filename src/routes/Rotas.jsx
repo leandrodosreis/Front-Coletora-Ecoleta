@@ -1,4 +1,4 @@
-import { Routes, Route, Outlet } from 'react-router-dom';
+import { Routes, Route, Outlet, Navigate } from 'react-router-dom';
 import { Header } from '../components/header/Header';
 import { Footer } from '../components/footer/Footer';
 import { Cadastro } from '../features/cadastro/Cadastro';
