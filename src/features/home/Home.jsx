@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
-import { getHome } from './homeApi';
 import './Home.css';
 import { useNavigate } from 'react-router-dom';
 import { CabecalhoPagina } from '../../components/cabecalhoPagina/CabecalhoPagina';
+import { OfertaDetalhesModal } from '../../components/ofertaDetalhesModal/OfertaDetalhesModal';
+import { getHome } from './homeApi';
 
 const homeInicial = {
   nome: '',
@@ -38,6 +39,7 @@ export function Home() {
   const [home, setHome] = useState(homeInicial); // dados do resumo
   const [carregando, setCarregando] = useState(true); // true = ainda buscando na API
   const [erro, setErro] = useState(false); // true = a API falhou
+  const [ofertaSelecionada, setOfertaSelecionada] = useState(null);
 
   // useEffect roda código quando a tela aparece.
   // O [] no final significa: "rode uma vez só, quando a tela abrir".
@@ -68,6 +70,10 @@ export function Home() {
   return (
     <main className="home_tela">
       <div className="home_conteudo">
+        <OfertaDetalhesModal
+          oferta={ofertaSelecionada}
+          onClose={() => setOfertaSelecionada(null)}
+        />
 
         <CabecalhoPagina etiqueta="PAINEL DA EMPRESA COLETORA" titulo="Visão geral" descricao="Encontre novos materiais e acompanhe suas atividades." />
 
@@ -158,7 +164,12 @@ export function Home() {
                   </span>
 
                   {/* Oferta aceita tem coleta; as outras só têm a oferta para ver */}
-                  <button className="home_botao_pequeno">
+                  <button
+                    className="home_botao_pequeno"
+                    onClick={oferta.status !== 'Aceita'
+                      ? () => setOfertaSelecionada(oferta)
+                      : undefined}
+                  >
                     {oferta.status === 'Aceita' ? 'Ver coleta' : 'Ver oferta'}
                   </button>
                 </div>

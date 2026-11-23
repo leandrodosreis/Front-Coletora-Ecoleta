@@ -23,7 +23,7 @@
 }
 
 .aba:hover:not(.aba_ativa) {
-  background: #E2E8F0;
+  background: var(--cor-superficie-secundaria);
   color: var(--cor-primaria);
 }
 

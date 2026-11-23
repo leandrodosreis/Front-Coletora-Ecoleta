@@ -1,0 +1,4 @@
+.mensagem_estado { margin: 16px 0; padding: 12px 14px; border: 1px solid var(--cor-borda); border-left-width: 3px; border-radius: 4px; font-size: 14px; line-height: 1.5; }
+.mensagem_info { color: var(--cor-texto-secundario); background: var(--cor-superficie-secundaria); border-left-color: var(--cor-primaria-secundaria); }
+.mensagem_erro { color: var(--cor-erro-texto); background: var(--cor-erro-fundo); border-color: var(--cor-erro-fundo); border-left-color: var(--cor-erro); }
+.mensagem_sucesso { color: var(--cor-sucesso-texto); background: var(--cor-sucesso-fundo); border-color: var(--cor-sucesso-fundo); border-left-color: var(--cor-sucesso); }

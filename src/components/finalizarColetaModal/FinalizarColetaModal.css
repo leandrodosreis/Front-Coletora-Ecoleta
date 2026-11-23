@@ -13,6 +13,8 @@
 .finalizar-container {
   width: 100%;
   max-width: 720px;
+  max-height: 90vh;
+  overflow-y: auto;
   padding: 32px 36px 40px;
   box-sizing: border-box;
   background: var(--cor-branco);

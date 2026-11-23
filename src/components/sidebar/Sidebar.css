@@ -191,7 +191,7 @@
 .sidebar_marca:focus-visible,
 .sidebar_mobile_marca:focus-visible,
 .sidebar_menu_botao:focus-visible {
-  outline: 3px solid #FFFFFF;
+  outline: 3px solid var(--cor-branco);
   outline-offset: 3px;
 }
 

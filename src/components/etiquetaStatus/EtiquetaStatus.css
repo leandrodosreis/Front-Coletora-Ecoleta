@@ -1,0 +1,5 @@
+.etiqueta_status { display: inline-flex; min-height: 24px; align-items: center; justify-content: center; padding: 4px 9px; border: 1px solid transparent; border-radius: 4px; font-size: 12px; font-weight: 600; line-height: 1.2; white-space: nowrap; }
+.etiqueta_sucesso { color: var(--cor-sucesso-texto); background: var(--cor-sucesso-fundo); }
+.etiqueta_alerta { color: var(--cor-alerta-texto); background: var(--cor-alerta-fundo); }
+.etiqueta_erro { color: var(--cor-erro-texto); background: var(--cor-erro-fundo); }
+.etiqueta_neutro { color: var(--cor-primaria); background: var(--cor-primaria-clara); }

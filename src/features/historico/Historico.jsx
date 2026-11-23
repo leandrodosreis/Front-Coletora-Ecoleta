@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { getHistorico } from './historicoApi';
 import './Historico.css';
 import { CabecalhoPagina } from '../../components/cabecalhoPagina/CabecalhoPagina';
+import { HistoricoDetalhesModal } from '../../components/historicoDetalhesModal/HistoricoDetalhesModal';
 
 function formatarNumero(valor) {
   return String(Number(valor)).replace('.', ',');
@@ -45,6 +46,7 @@ export function Historico() {
   // ESTADOS (informações que, ao mudar, atualizam a tela)
   const [historico, setHistorico] = useState([]); // lista vinda da API
   const [carregando, setCarregando] = useState(true); // true = ainda buscando na API
+  const [itemSelecionado, setItemSelecionado] = useState(null);
 
   // useEffect roda código quando a tela aparece.
   // O [] no final significa: "rode uma vez só, quando a tela abrir".
@@ -127,11 +129,13 @@ export function Historico() {
             {/* Grupo da direita: selo de status e botão */}
             <div className="historico_lado">
               <span className={classeDoSelo(item.status)}>{item.status}</span>
-              <button className="historico_botao_detalhe">Detalhe</button>
+              <button className="historico_botao_detalhe" onClick={() => setItemSelecionado(item)}>Detalhe</button>
             </div>
           </div>
         ))}
       </div>
+
+      <HistoricoDetalhesModal item={itemSelecionado} onClose={() => setItemSelecionado(null)} />
     </main>
   );
 }
