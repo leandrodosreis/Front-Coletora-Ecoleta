@@ -10,6 +10,7 @@ import { useState, useEffect } from 'react';
 import { getEstabelecimentosProximos } from './estabelecimentosApi';
 import './Estabelecimentos.css';
 import { CabecalhoPagina } from '../../components/cabecalhoPagina/CabecalhoPagina';
+import { useNavigate } from 'react-router-dom';
 
 // A API manda números como "35.00". Tira os zeros e troca o ponto por vírgula: 35
 function formatarNumero(valor) {
@@ -54,6 +55,7 @@ export function Estabelecimentos() {
   const [tipoEscolhido, setTipoEscolhido] = useState(''); // id do material escolhido ('' = todos)
   const [busca, setBusca] = useState(''); // texto digitado na busca
   const [carregando, setCarregando] = useState(true); // true = ainda buscando na API
+  const navigate = useNavigate(); // para mudar de tela
 
   // useEffect roda código quando a tela aparece.
   // O [] no final significa: "rode uma vez só, quando a tela abrir".
@@ -171,7 +173,9 @@ export function Estabelecimentos() {
                   <p className="estabelecimentos_residuos">{montarResiduos(estabelecimento.residuos)}</p>
 
                   {/* Sem função por enquanto */}
-                  <button className="estabelecimentos_botao">Ver resíduos →</button>
+                  <button className="estabelecimentos_botao" onClick={ () => navigate('/residuos') }>
+                    Ver resíduos →
+                  </button>
                 </div>
               </div>
             ))}

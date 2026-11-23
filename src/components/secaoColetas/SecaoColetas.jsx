@@ -6,7 +6,7 @@ import './SecaoColetas.css';
 //  titulo      -> título da seção
 //  coletas     -> lista de coletas (cada uma vira um card)
 //  onFinalizar -> função do botão "Finalizar coleta" dos cards (opcional)
-export function SecaoColetas({ etiqueta, titulo, coletas, onFinalizar }) {
+export function SecaoColetas({ etiqueta, titulo, coletas, onFinalizar, onVerMais }) {
   return (
     <section className="secao">
       <p className="secao_etiqueta">{etiqueta}</p>
@@ -18,6 +18,7 @@ export function SecaoColetas({ etiqueta, titulo, coletas, onFinalizar }) {
           key={coleta.id_coleta}
           coleta={coleta}
           onFinalizar={onFinalizar}
+          onVerMais={onVerMais}
         />
       ))}
     </section>

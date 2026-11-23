@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import { Abas } from '../../components/abas/Abas';
 import { SecaoColetas } from '../../components/secaoColetas/SecaoColetas';
 import { FinalizarColetaModal } from '../../components/finalizarColetaModal/FinalizarColetaModal';
-import { getColetasEmpresa } from './coletasApi';
+import { DetalhesResiduoModal } from '../../components/detalhesResiduoModal/DetalhesResiduoModal';
+import { getColetasEmpresa, getDetalhesColeta } from './coletasApi';
 import './Coletas.css';
 import { CabecalhoPagina } from '../../components/cabecalhoPagina/CabecalhoPagina';
 
@@ -18,6 +19,7 @@ export function Coletas() {
   const [coletas, setColetas] = useState([]);
   const [carregando, setCarregando] = useState(true);
   const [coletaSelecionada, setColetaSelecionada] = useState(null);
+  const [coletaDetalhes, setColetaDetalhes] = useState(null);
 
   // Busca as coletas da empresa na API.
   async function carregarColetas() {
@@ -95,11 +97,19 @@ export function Coletas() {
             etiqueta="Agendadas"
             titulo="Coletas agendadas"
             coletas={coletasAgendadas}
+            onVerMais={(coleta) => setColetaDetalhes({ id: coleta.id_coleta })}
           />
         )}
       </div>
 
       {/* Modal de finalização da coleta selecionada. */}
+      <DetalhesResiduoModal
+        isOpen={Boolean(coletaDetalhes)}
+        residuo={coletaDetalhes}
+        buscarDetalhes={getDetalhesColeta}
+        onClose={() => setColetaDetalhes(null)}
+      />
+
       <FinalizarColetaModal
         isOpen={Boolean(coletaSelecionada)}
         coleta={coletaSelecionada}

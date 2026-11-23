@@ -63,3 +63,20 @@ export const atualizarPerfil = async function (perfil) {
     mensagem: mensagemDeErro(resultado, 'Não foi possível atualizar o perfil.')
   };
 };
+
+// ALTERA A SENHA DA EMPRESA -> PATCH /empresa-coletora/perfil/senha
+export const alterarSenha = async function (dadosSenha) {
+  let resultado = await requisicao('/v1/ecoleta/empresa-coletora/perfil/senha', {
+    metodo: 'PATCH',
+    corpo: dadosSenha
+  });
+
+  if (resultado.ok) {
+    return { ok: true };
+  }
+
+  return {
+    ok: false,
+    mensagem: mensagemDeErro(resultado, 'Não foi possível alterar a senha.')
+  };
+};

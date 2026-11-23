@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getPerfil, atualizarPerfil } from './perfilApi';
+import { getPerfil, atualizarPerfil, alterarSenha } from './perfilApi';
 import "./Perfil.css"
 import { CabecalhoPagina } from '../../components/cabecalhoPagina/CabecalhoPagina';
 
@@ -17,6 +17,12 @@ export function Perfil() {
   const [salvando, setSalvando] = useState(false);
   const [mensagem, setMensagem] = useState('');
   const [perfilOriginal, setPerfilOriginal] = useState(null);
+  const [modalSenhaAberto, setModalSenhaAberto] = useState(false);
+  const [senhaAtual, setSenhaAtual] = useState('');
+  const [novaSenha, setNovaSenha] = useState('');
+  const [confirmarSenha, setConfirmarSenha] = useState('');
+  const [salvandoSenha, setSalvandoSenha] = useState(false);
+  const [erroSenha, setErroSenha] = useState('');
 
   useEffect(() => {
   async function carregarDados() {
@@ -89,6 +95,51 @@ async function buscarCEP(cep) {
     console.error(error);
     setMensagem('Não foi possível consultar o CEP.');
   }
+}
+
+// Abre o formulário de alteração de senha.
+function abrirAlteracaoSenha() {
+  setSenhaAtual('');
+  setNovaSenha('');
+  setConfirmarSenha('');
+  setErroSenha('');
+  setModalSenhaAberto(true);
+}
+
+// Envia a senha atual e a nova senha para a API.
+async function salvarNovaSenha(evento) {
+  evento.preventDefault();
+  setErroSenha('');
+
+  if (novaSenha.length < 8 || novaSenha.length > 30) {
+    setErroSenha('A nova senha deve ter entre 8 e 30 caracteres.');
+    return;
+  }
+
+  if (novaSenha !== confirmarSenha) {
+    setErroSenha('A confirmação da nova senha não corresponde.');
+    return;
+  }
+
+  setSalvandoSenha(true);
+
+  let resultado = await alterarSenha({
+    senha_atual: senhaAtual,
+    nova_senha: novaSenha,
+    confirmar_senha: confirmarSenha
+  });
+
+  if (resultado.ok) {
+    setModalSenhaAberto(false);
+    setMensagem('Senha alterada com sucesso!');
+    setSenhaAtual('');
+    setNovaSenha('');
+    setConfirmarSenha('');
+  } else {
+    setErroSenha(resultado.mensagem);
+  }
+
+  setSalvandoSenha(false);
 }
 
 // Salva as alterações na API
@@ -200,7 +251,7 @@ async function salvarPerfil() {
                   {/* A API nunca devolve a senha, então mostramos só os pontinhos */}
                   <p className="perfil_senha">••••••••</p>
 
-                  <button className="perfil_botao perfil_botao_centro">Alterar senha</button>
+                  <button className="perfil_botao perfil_botao_centro" onClick={abrirAlteracaoSenha}>Alterar senha</button>
                 </section>
               </div>
 
@@ -294,6 +345,74 @@ async function salvarPerfil() {
           </>
         )}
       </div>
+
+      {modalSenhaAberto && (
+        <div className="perfil_modal_overlay" onClick={() => !salvandoSenha && setModalSenhaAberto(false)}>
+          <section
+            className="perfil_modal_senha"
+            onClick={(evento) => evento.stopPropagation()}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="titulo-alterar-senha"
+          >
+            <span className="perfil_modal_marca">ECOLETA</span>
+            <h2 id="titulo-alterar-senha">Alterar senha</h2>
+            <p className="perfil_modal_descricao">Informe sua senha atual e defina uma nova senha.</p>
+
+            <form onSubmit={salvarNovaSenha}>
+              <div className="perfil_modal_campo">
+                <label htmlFor="senha_atual">Senha atual</label>
+                <input
+                  id="senha_atual"
+                  type="password"
+                  value={senhaAtual}
+                  onChange={(evento) => setSenhaAtual(evento.target.value)}
+                  autoComplete="current-password"
+                  required
+                />
+              </div>
+
+              <div className="perfil_modal_campo">
+                <label htmlFor="nova_senha">Nova senha</label>
+                <input
+                  id="nova_senha"
+                  type="password"
+                  value={novaSenha}
+                  onChange={(evento) => setNovaSenha(evento.target.value)}
+                  minLength={8}
+                  maxLength={30}
+                  autoComplete="new-password"
+                  required
+                />
+                <small>Utilize entre 8 e 30 caracteres.</small>
+              </div>
+
+              <div className="perfil_modal_campo">
+                <label htmlFor="confirmar_senha">Confirmar nova senha</label>
+                <input
+                  id="confirmar_senha"
+                  type="password"
+                  value={confirmarSenha}
+                  onChange={(evento) => setConfirmarSenha(evento.target.value)}
+                  minLength={8}
+                  maxLength={30}
+                  autoComplete="new-password"
+                  required
+                />
+              </div>
+
+              {erroSenha && <p className="perfil_modal_erro">{erroSenha}</p>}
+
+              <div className="perfil_modal_acoes">
+                <button type="button" className="perfil_botao" onClick={() => setModalSenhaAberto(false)} disabled={salvandoSenha}>Cancelar</button>
+                <button type="submit" className="perfil_modal_confirmar" disabled={salvandoSenha}>
+                  {salvandoSenha ? 'Salvando...' : 'Alterar senha'}
+                </button>
+              </div>
+            </form>
+          </section>
+        </div>
+      )}
     </main>
   );
 

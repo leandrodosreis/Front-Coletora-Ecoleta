@@ -11,7 +11,7 @@ function formatarValor(valor) {
   return Number(valor).toFixed(2).replace('.', ',');
 }
 
-export function CardColeta({ coleta, onFinalizar }) {
+export function CardColeta({ coleta, onFinalizar, onVerMais }) {
   const aguardando = coleta.status_coleta === 'Aguardando Finalização';
 
   return (
@@ -50,9 +50,10 @@ export function CardColeta({ coleta, onFinalizar }) {
           onClick={() => {
             if (aguardando) {
               onFinalizar(coleta);
+            } else if (onVerMais) {
+              onVerMais(coleta);
             }
           }}
-          disabled={!aguardando}
         >
           {aguardando ? 'Finalizar coleta' : 'Ver mais'}
         </button>

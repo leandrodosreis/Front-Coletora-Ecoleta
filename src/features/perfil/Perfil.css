@@ -184,3 +184,123 @@
 }
 
   
+
+/* Modal de alteração de senha */
+.perfil_modal_overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(15, 23, 42, 0.48);
+  box-sizing: border-box;
+}
+
+.perfil_modal_senha {
+  width: 100%;
+  max-width: 440px;
+  padding: 28px;
+  background: var(--cor-branco);
+  border: 1px solid var(--cor-borda);
+  border-radius: 16px;
+  box-sizing: border-box;
+}
+
+.perfil_modal_marca {
+  color: var(--cor-primaria);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.perfil_modal_senha h2 {
+  margin: 10px 0 6px;
+  color: var(--cor-texto-principal);
+  font-size: 22px;
+}
+
+.perfil_modal_descricao {
+  margin: 0 0 22px;
+  color: var(--cor-texto-secundario);
+  font-size: 13px;
+}
+
+.perfil_modal_campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.perfil_modal_campo label {
+  color: var(--cor-texto-secundario);
+  font-size: 12px;
+}
+
+.perfil_modal_campo input {
+  width: 100%;
+  height: 40px;
+  padding: 0 11px;
+  border: 1px solid var(--cor-borda);
+  border-radius: 7px;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 13px;
+}
+
+.perfil_modal_campo input:focus {
+  outline: none;
+  border-color: var(--cor-primaria);
+  box-shadow: 0 0 0 3px rgba(30, 58, 95, 0.12);
+}
+
+.perfil_modal_campo small {
+  color: var(--cor-texto-secundario);
+  font-size: 11px;
+}
+
+.perfil_modal_erro {
+  margin: 4px 0 0;
+  color: var(--cor-erro, #dc2626);
+  font-size: 12px;
+}
+
+.perfil_modal_acoes {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.perfil_modal_confirmar {
+  padding: 11px 16px;
+  color: #fff;
+  background: var(--cor-primaria);
+  border: 1px solid var(--cor-primaria);
+  border-radius: 9px;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.perfil_modal_acoes button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@media (max-width: 480px) {
+  .perfil_modal_senha {
+    padding: 22px 18px;
+  }
+
+  .perfil_modal_acoes {
+    flex-direction: column-reverse;
+  }
+
+  .perfil_modal_acoes button {
+    width: 100%;
+    min-height: 42px;
+  }
+}

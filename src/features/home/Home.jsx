@@ -3,6 +3,8 @@ import './Home.css';
 import { useNavigate } from 'react-router-dom';
 import { CabecalhoPagina } from '../../components/cabecalhoPagina/CabecalhoPagina';
 import { OfertaDetalhesModal } from '../../components/ofertaDetalhesModal/OfertaDetalhesModal';
+import { DetalhesResiduoModal } from '../../components/detalhesResiduoModal/DetalhesResiduoModal';
+import { getDetalhesColeta } from '../coletas/coletasApi';
 import { getHome } from './homeApi';
 
 const homeInicial = {
@@ -40,6 +42,7 @@ export function Home() {
   const [carregando, setCarregando] = useState(true); // true = ainda buscando na API
   const [erro, setErro] = useState(false); // true = a API falhou
   const [ofertaSelecionada, setOfertaSelecionada] = useState(null);
+  const [coletaSelecionada, setColetaSelecionada] = useState(null);
 
   // useEffect roda código quando a tela aparece.
   // O [] no final significa: "rode uma vez só, quando a tela abrir".
@@ -73,6 +76,13 @@ export function Home() {
         <OfertaDetalhesModal
           oferta={ofertaSelecionada}
           onClose={() => setOfertaSelecionada(null)}
+        />
+
+        <DetalhesResiduoModal
+          isOpen={Boolean(coletaSelecionada)}
+          residuo={coletaSelecionada}
+          buscarDetalhes={getDetalhesColeta}
+          onClose={() => setColetaSelecionada(null)}
         />
 
         <CabecalhoPagina etiqueta="PAINEL DA EMPRESA COLETORA" titulo="Visão geral" descricao="Encontre novos materiais e acompanhe suas atividades." />
@@ -129,7 +139,9 @@ export function Home() {
 
             <div className="home_lista_topo">
               <h2>Ofertas recentes</h2>
-              <button className="home_ver_todas">VER TODAS →</button>
+              <button className="home_ver_todas" onClick={() => navigate('/Coletas')}>
+                VER TODAS →
+              </button>
             </div>
 
             {/* Se a lista estiver vazia, mostra um aviso */}
@@ -166,9 +178,13 @@ export function Home() {
                   {/* Oferta aceita tem coleta; as outras só têm a oferta para ver */}
                   <button
                     className="home_botao_pequeno"
-                    onClick={oferta.status !== 'Aceita'
-                      ? () => setOfertaSelecionada(oferta)
-                      : undefined}
+                    onClick={() => {
+                      if (oferta.status === 'Aceita' && oferta.idColeta) {
+                        setColetaSelecionada({ id: oferta.idColeta });
+                      } else if (oferta.status !== 'Aceita') {
+                        setOfertaSelecionada(oferta);
+                      }
+                    }}
                   >
                     {oferta.status === 'Aceita' ? 'Ver coleta' : 'Ver oferta'}
                   </button>

@@ -58,3 +58,24 @@ export const finalizarColeta = async function (idColeta, dadosColeta) {
 
   return resultado.dados ?? {};
 };
+
+// Busca os detalhes de uma coleta agendada pelo ID da coleta.
+export const getDetalhesColeta = async function (idColeta) {
+  if (!idColeta) {
+    throw new Error('Não foi possível identificar a coleta.');
+  }
+
+  let resultado = await requisicao(`/v1/ecoleta/empresa-coletora/coletas/${idColeta}`);
+
+  if (!resultado.ok || !resultado.dados?.response) {
+    throw new Error(resultado.dados?.message || 'Não foi possível carregar os detalhes da coleta.');
+  }
+
+  let coleta = resultado.dados.response.coleta?.[0];
+
+  if (!coleta) {
+    throw new Error('Nenhum detalhe foi encontrado para esta coleta.');
+  }
+
+  return coleta;
+};
