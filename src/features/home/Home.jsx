@@ -32,8 +32,22 @@ function formatarValor(valor) {
 }
 
 function formatarData(data) {
-  let [dia, mes, ano] = data.slice(0, 10).split('-');
-  return `${dia}/${mes}/${ano}`;
+  if (!data) return '';
+
+  let dataLimpa = data.slice(0, 10);
+
+  // Verifica se a data está no formato AAAA-MM-DD
+  if (dataLimpa.includes('-')) {
+    let [ano, mes, dia] = dataLimpa.split('-');
+    return `${dia}/${mes}/${ano}`;
+  }
+
+  // Se já estiver no formato DD/MM/AAAA
+  if (dataLimpa.includes('/')) {
+    return dataLimpa;
+  }
+
+  return data;
 }
 
 export function Home() {
