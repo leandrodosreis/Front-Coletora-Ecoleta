@@ -2,9 +2,9 @@
 :root {
   /* Marca e acoes principais */
   --cor-primaria: #173C35;
-  --cor-primaria-hover: #162D49;
-  --cor-primaria-secundaria: #2563A6;
-  --cor-primaria-clara: #E8F0FC;
+  --cor-primaria-hover: #102D28;
+  --cor-primaria-secundaria: #266853;
+  --cor-primaria-clara: #E8F3EF;
 
   /* Superficies e bordas */
   --cor-fundo: #F4F7FB;
@@ -19,8 +19,8 @@
   --cor-texto: #26354A;
   --cor-texto-secundario: #64748B;
   --cor-texto-terciario: #94A3B8;
-  --cor-texto-claro: #D6E5F2;
-  --cor-texto-claro-secundario: #A9C5DC;
+  --cor-texto-claro: #D6E9E3;
+  --cor-texto-claro-secundario: #A9CFC3;
 
   /* Estados semanticos: sucesso, alerta e erro */
   --cor-sucesso: #16A34A;
